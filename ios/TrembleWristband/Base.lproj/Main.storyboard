@@ -159,29 +159,13 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PH5-LW-CYD">
-                                        <rect key="frame" x="20" y="150" width="280" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ルーム名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bH2-xT-hVv">
-                                        <rect key="frame" x="20" y="127" width="68" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="bH2-xT-hVv" firstAttribute="leading" secondItem="7cA-mI-J2H" secondAttribute="leading" id="AYv-61-dWi"/>
                                     <constraint firstAttribute="bottom" secondItem="1av-De-MbJ" secondAttribute="bottom" id="CF7-wI-cJv"/>
                                     <constraint firstItem="7cA-mI-J2H" firstAttribute="leading" secondItem="1Qs-gK-0Bg" secondAttribute="leading" constant="20" id="CtV-iH-Qrw"/>
-                                    <constraint firstAttribute="trailing" secondItem="PH5-LW-CYD" secondAttribute="trailing" constant="20" id="Fzn-7Y-psi"/>
                                     <constraint firstAttribute="trailing" secondItem="1av-De-MbJ" secondAttribute="trailing" id="V2Y-5L-5ew"/>
-                                    <constraint firstAttribute="bottom" secondItem="PH5-LW-CYD" secondAttribute="bottom" constant="20" id="c9W-Y2-7Al"/>
                                     <constraint firstItem="1av-De-MbJ" firstAttribute="leading" secondItem="1Qs-gK-0Bg" secondAttribute="leading" id="emG-kb-sap"/>
-                                    <constraint firstItem="PH5-LW-CYD" firstAttribute="leading" secondItem="7cA-mI-J2H" secondAttribute="leading" id="mdW-rP-LGE"/>
-                                    <constraint firstItem="PH5-LW-CYD" firstAttribute="top" secondItem="bH2-xT-hVv" secondAttribute="bottom" constant="2" id="w3j-y1-5Vf"/>
                                     <constraint firstAttribute="height" constant="200" id="yuu-8w-fpl"/>
                                     <constraint firstItem="1av-De-MbJ" firstAttribute="top" secondItem="1Qs-gK-0Bg" secondAttribute="top" id="zk0-u8-ppC"/>
                                     <constraint firstItem="7cA-mI-J2H" firstAttribute="top" secondItem="1Qs-gK-0Bg" secondAttribute="top" constant="20" id="zzu-ck-L9l"/>
@@ -249,7 +233,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="FEz-XD-kXB"/>
                     <connections>
-                        <outlet property="roomNameTextField" destination="PH5-LW-CYD" id="B1h-VG-tZf"/>
                         <outlet property="userNameLabel" destination="amb-Su-pzo" id="b9l-P2-tyD"/>
                     </connections>
                 </viewController>
