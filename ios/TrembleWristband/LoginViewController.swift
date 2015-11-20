@@ -8,37 +8,70 @@
 
 import UIKit
 import TwitterKit
+import CoreLocation
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, CLLocationManagerDelegate {
 
+    var locationManager:CLLocationManager!
+    
+    var latitude = 0.0
+    var longitude = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createLoginButton()
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 100
+        locationManager.startUpdatingLocation()
+    }
+    
+    func createLoginButton() {
         let logInButton = TWTRLogInButton { (session, error) in
             if let unwrappedSession = session {
-                let alert = UIAlertController(title: "Logged In",
-                                            message: "User \(unwrappedSession.userName) has logged in",
-                                    preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
-                    self.performSegueWithIdentifier("toGameStartVC", sender: self)
-                }))
-                self.presentViewController(alert, animated: true, completion: nil)
-                let userDefault = NSUserDefaults.standardUserDefaults()
-                userDefault.setValue(unwrappedSession.userName, forKey: "userName")
+                self.didLoggedIn(unwrappedSession)
             } else {
                 NSLog("Login error: %@", error!.localizedDescription);
             }
         }
-
-        // TODO: Change where the log in button is positioned in your view
-        logInButton.center = CGPoint(x: self.view.center.x, y: self.view.center.y+100)
+        logInButton.center = CGPoint(x: self.view.center.x, y: self.view.center.y+130)
         logInButton.layer.borderColor = UIColor.whiteColor().CGColor
         logInButton.layer.borderWidth = 1.0
         self.view.addSubview(logInButton)
-
-
-        // Do any additional setup after loading the view.
+    }
+    
+    func didLoggedIn(session:TWTRSession) {
+        let alert = UIAlertController(title: "Logged In",
+                                    message: "User \(session.userName) has logged in",
+                             preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: UIAlertActionStyle.Default,
+                                    handler: { (action:UIAlertAction!) -> Void in
+                                                self.performSegueWithIdentifier("toGameStartVC", sender: self)
+                                    }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.setValue(session.userName, forKey: "userName")
     }
 
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
+            locationManager.requestAlwaysAuthorization()
+        }
+    }
+
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        latitude =  (manager.location?.coordinate.latitude)!
+        longitude = (manager.location?.coordinate.longitude)!
+        print(latitude)
+        print(longitude)
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("error：\(error)")
+    }
     
 }

@@ -26,8 +26,6 @@ class GameStartViewController: UIViewController {
         self.view.endEditing(true)
     }
     @IBAction func didPushedCreateRoomButton(sender: AnyObject) {
-        let roomName = roomNameTextField.text
-        print(roomName)
         performSegueWithIdentifier("toCreateRoomVC", sender: self)
     }
     
