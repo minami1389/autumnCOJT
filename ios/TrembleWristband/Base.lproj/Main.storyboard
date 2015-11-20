@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="230"/>
+            <point key="canvasLocation" x="-439" y="224"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="nJm-09-Bow">
@@ -60,7 +60,58 @@
                     <view key="view" contentMode="scaleToFill" id="CSh-yS-K05">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siO-rd-f0f">
+                                <rect key="frame" x="-31" y="80" width="383" height="307"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bomb_red.png" translatesAutoresizingMaskIntoConstraints="NO" id="pj2-Ws-wKZ">
+                                        <rect key="frame" x="20" y="20" width="180" height="182"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="179" id="Emo-xz-fSY"/>
+                                            <constraint firstAttribute="height" constant="182" id="xzg-Rg-0ry"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bomb_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="qDD-Ic-CFP">
+                                        <rect key="frame" x="103" y="121" width="176" height="166"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="166" id="Fiw-tZ-a1k"/>
+                                            <constraint firstAttribute="width" constant="176" id="cp1-uX-GlO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bomb_green.png" translatesAutoresizingMaskIntoConstraints="NO" id="dBu-ZT-eaa">
+                                        <rect key="frame" x="187" y="52" width="176" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="Kbl-kS-QTc"/>
+                                            <constraint firstAttribute="width" constant="176" id="vda-A4-vCf"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="J8U-KZ-Dw7">
+                                        <rect key="frame" x="57" y="100" width="270" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="270" id="8Nq-PV-P18"/>
+                                            <constraint firstAttribute="height" constant="120" id="kBh-IR-kGh"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="J8U-KZ-Dw7" firstAttribute="top" secondItem="siO-rd-f0f" secondAttribute="top" constant="100" id="EyS-O8-2pO"/>
+                                    <constraint firstItem="J8U-KZ-Dw7" firstAttribute="leading" secondItem="siO-rd-f0f" secondAttribute="leading" constant="56" id="LXY-Ca-ycv"/>
+                                    <constraint firstAttribute="trailing" secondItem="qDD-Ic-CFP" secondAttribute="trailing" constant="104" id="LjF-MA-qMF"/>
+                                    <constraint firstItem="pj2-Ws-wKZ" firstAttribute="top" secondItem="siO-rd-f0f" secondAttribute="top" constant="20" id="M45-qQ-5Qk"/>
+                                    <constraint firstAttribute="bottom" secondItem="qDD-Ic-CFP" secondAttribute="bottom" constant="20" id="ZXW-Yz-Cbw"/>
+                                    <constraint firstAttribute="trailing" secondItem="dBu-ZT-eaa" secondAttribute="trailing" constant="20" id="Zuu-H3-N9k"/>
+                                    <constraint firstItem="pj2-Ws-wKZ" firstAttribute="leading" secondItem="siO-rd-f0f" secondAttribute="leading" constant="20" id="e4f-xn-Q7a"/>
+                                    <constraint firstAttribute="trailing" secondItem="J8U-KZ-Dw7" secondAttribute="trailing" constant="56" id="gov-mZ-2KE"/>
+                                    <constraint firstItem="dBu-ZT-eaa" firstAttribute="top" secondItem="siO-rd-f0f" secondAttribute="top" constant="52" id="w9r-o2-kR4"/>
+                                    <constraint firstAttribute="height" constant="307" id="yL0-CX-ZM0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15686274509803921" green="0.52941176470588236" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="siO-rd-f0f" firstAttribute="top" secondItem="apu-SG-HGb" secondAttribute="bottom" constant="60" id="Df4-qo-vez"/>
+                            <constraint firstItem="siO-rd-f0f" firstAttribute="centerX" secondItem="CSh-yS-K05" secondAttribute="centerX" id="Lyi-MA-sjP"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="f41-0Z-yw5" kind="modal" identifier="toGameStartVC" id="ed3-pe-4Sh"/>
@@ -68,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2i-eq-hHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="213" y="230"/>
+            <point key="canvasLocation" x="182" y="230"/>
         </scene>
         <!--Game Start View Controller-->
         <scene sceneID="geZ-GS-vva">
@@ -85,7 +136,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="minami1389さん" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amb-Su-pzo">
                                 <rect key="frame" x="20" y="40" width="128" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qs-gK-0Bg" userLabel="createRoomView">
@@ -289,21 +340,27 @@
             <point key="canvasLocation" x="959" y="230"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="Sru-1q-MQg">
+        <scene sceneID="fZj-Av-qf0">
             <objects>
-                <viewController id="E4D-Ac-cyf" sceneMemberID="viewController">
+                <viewController id="bJm-CO-znK" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Dmh-6m-Mkr"/>
-                        <viewControllerLayoutGuide type="bottom" id="Evg-zB-LFk"/>
+                        <viewControllerLayoutGuide type="top" id="ScS-ct-9wW"/>
+                        <viewControllerLayoutGuide type="bottom" id="3BK-l2-cnu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7N3-bx-MDJ">
+                    <view key="view" contentMode="scaleToFill" id="8Mw-Vb-D0Y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v8Q-2V-ntl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QrS-d7-cbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="bomb_blue.png" width="504" height="505"/>
+        <image name="bomb_green.png" width="504" height="505"/>
+        <image name="bomb_red.png" width="504" height="505"/>
+        <image name="icon.png" width="968" height="411"/>
+    </resources>
 </document>

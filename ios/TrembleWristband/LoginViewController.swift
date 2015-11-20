@@ -11,6 +11,7 @@ import TwitterKit
 
 class LoginViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let logInButton = TWTRLogInButton { (session, error) in
@@ -30,7 +31,9 @@ class LoginViewController: UIViewController {
         }
 
         // TODO: Change where the log in button is positioned in your view
-        logInButton.center = self.view.center
+        logInButton.center = CGPoint(x: self.view.center.x, y: self.view.center.y+100)
+        logInButton.layer.borderColor = UIColor.whiteColor().CGColor
+        logInButton.layer.borderWidth = 1.0
         self.view.addSubview(logInButton)
 
 

@@ -15,12 +15,16 @@
 		E90386D11BF5D19400AE4BD3 /* GameStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90386D01BF5D19400AE4BD3 /* GameStartViewController.swift */; };
 		E90386D51BF5D55500AE4BD3 /* JointRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */; };
 		E90386D71BF5D56D00AE4BD3 /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */; };
+		E9618E951BFF09210059229E /* bomb_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E9618E921BFF09210059229E /* bomb_blue.png */; };
+		E9618E961BFF09210059229E /* bomb_green.png in Resources */ = {isa = PBXBuildFile; fileRef = E9618E931BFF09210059229E /* bomb_green.png */; };
+		E9618E971BFF09210059229E /* bomb_red.png in Resources */ = {isa = PBXBuildFile; fileRef = E9618E941BFF09210059229E /* bomb_red.png */; };
 		E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */; };
 		E9E06DF51BE9BDB7006E99D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E06DF41BE9BDB7006E99D3 /* ViewController.swift */; };
 		E9E06DF81BE9BDB7006E99D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9E06DF61BE9BDB7006E99D3 /* Main.storyboard */; };
 		E9E06DFA1BE9BDB7006E99D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E06DF91BE9BDB7006E99D3 /* Images.xcassets */; };
 		E9E06DFD1BE9BDB7006E99D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E06DFB1BE9BDB7006E99D3 /* LaunchScreen.xib */; };
 		E9E06E091BE9BDB7006E99D3 /* TrembleWristbandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E06E081BE9BDB7006E99D3 /* TrembleWristbandTests.swift */; };
+		E9F189581BFC456000E36F27 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F189571BFC456000E36F27 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,9 @@
 		E90386D01BF5D19400AE4BD3 /* GameStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartViewController.swift; sourceTree = "<group>"; };
 		E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JointRoomViewController.swift; sourceTree = "<group>"; };
 		E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateRoomViewController.swift; path = ../CreateRoomViewController.swift; sourceTree = "<group>"; };
+		E9618E921BFF09210059229E /* bomb_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_blue.png; path = image/bomb_blue.png; sourceTree = SOURCE_ROOT; };
+		E9618E931BFF09210059229E /* bomb_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_green.png; path = image/bomb_green.png; sourceTree = SOURCE_ROOT; };
+		E9618E941BFF09210059229E /* bomb_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_red.png; path = image/bomb_red.png; sourceTree = SOURCE_ROOT; };
 		E9E06DED1BE9BDB7006E99D3 /* TrembleWristband.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrembleWristband.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E06DF11BE9BDB7006E99D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +59,7 @@
 		E9E06E021BE9BDB7006E99D3 /* TrembleWristbandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrembleWristbandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E06E071BE9BDB7006E99D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E06E081BE9BDB7006E99D3 /* TrembleWristbandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrembleWristbandTests.swift; sourceTree = "<group>"; };
+		E9F189571BFC456000E36F27 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = image/icon.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,7 @@
 		E9E06DEF1BE9BDB7006E99D3 /* TrembleWristband */ = {
 			isa = PBXGroup;
 			children = (
+				E9F189591BFC456600E36F27 /* image */,
 				E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */,
 				E9E06DF41BE9BDB7006E99D3 /* ViewController.swift */,
 				E90386CC1BF5CF9C00AE4BD3 /* LoginViewController.swift */,
@@ -145,6 +154,17 @@
 				E9E06E071BE9BDB7006E99D3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9F189591BFC456600E36F27 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				E9618E921BFF09210059229E /* bomb_blue.png */,
+				E9618E931BFF09210059229E /* bomb_green.png */,
+				E9618E941BFF09210059229E /* bomb_red.png */,
+				E9F189571BFC456000E36F27 /* icon.png */,
+			);
+			name = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +251,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E90386C91BF5CEFB00AE4BD3 /* TwitterKitResources.bundle in Resources */,
+				E9618E971BFF09210059229E /* bomb_red.png in Resources */,
+				E9F189581BFC456000E36F27 /* icon.png in Resources */,
 				E9E06DF81BE9BDB7006E99D3 /* Main.storyboard in Resources */,
+				E9618E951BFF09210059229E /* bomb_blue.png in Resources */,
 				E9E06DFD1BE9BDB7006E99D3 /* LaunchScreen.xib in Resources */,
+				E9618E961BFF09210059229E /* bomb_green.png in Resources */,
 				E9E06DFA1BE9BDB7006E99D3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
