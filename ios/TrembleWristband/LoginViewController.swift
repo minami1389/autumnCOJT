@@ -54,7 +54,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         self.presentViewController(alert, animated: true, completion: nil)
         
         let userDefault = NSUserDefaults.standardUserDefaults()
-        userDefault.setValue(session.userName, forKey: "userName")
+        userDefault.setValue(session.userID, forKey: "userID")
     }
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -73,5 +73,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("error：\(error)")
     }
+    
+    
     
 }
