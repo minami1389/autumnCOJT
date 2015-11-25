@@ -13,31 +13,80 @@ import TwitterKit
 
 //Central
 
-class JointRoomViewController: UIViewController, CBCentralManagerDelegate {
+class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
 
     let serviceUUID = CBUUID(string: "632D50CB-9DC0-496C-8E28-19F4E0AA0DBC")
     let characteristicUUID = CBUUID(string: "DF89A6DD-DC47-4C5C-8147-1141C62E1B04")
 
     var centralManager: CBCentralManager!
-    var peripheral: CBPeripheral!
-    var characteristic: CBCharacteristic!
+    var asobiPeripheral: CBPeripheral!
+    var asobiCharacteristic: CBCharacteristic!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
-        fetchHostUserData("412063232")
     }
 
     func centralManagerDidUpdateState(central: CBCentralManager) {
-        if central.state != CBCentralManagerState.PoweredOn { return }
-        centralManager.scanForPeripheralsWithServices([serviceUUID], options: nil)
+        if central.state != CBCentralManagerState.PoweredOn {
+            print("PoweredOff")
+            return
+        }
+        print("PoweredOn")
+        centralManager.scanForPeripheralsWithServices(nil, options: nil)
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        print("discover:\(peripheral.description)")
-        print(advertisementData)
+        if peripheral.name == "Asobeat Device" {
+            print("discover:\(peripheral.description)")
+            asobiPeripheral = peripheral
+            centralManager.connectPeripheral(asobiPeripheral, options: nil)
+        }
     }
+    
+    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+        print("Connected")
+        peripheral.delegate = self
+        peripheral.discoverServices(nil)
+    }
+    
+    func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+            print("Connect error...")
+    }
+    
+    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+        print("Disconnect")
+        centralManager.cancelPeripheralConnection(asobiPeripheral)
+        asobiPeripheral = nil
+        asobiCharacteristic = nil
+    }
+    
+    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+        if error != nil {
+            print("error: \(error)")
+            return
+        }
+        let services = peripheral.services!
+        for service in services {
+            peripheral.discoverCharacteristics(nil, forService: service)
+        }
+    }
+    
+    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+        if error != nil {
+            print("error: \(error)")
+            return
+        }
+        let characteristics = service.characteristics!
+        for characteristic in characteristics {
+            if characteristic.UUID.isEqual(characteristicUUID) {
+                asobiCharacteristic = characteristic
+                print("characteristic:\(characteristic)")
+            }
+        }
 
+    }
+ 
     @IBAction func didPushedCancelButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(false, completion: nil)
     }
