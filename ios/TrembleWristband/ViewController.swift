@@ -9,6 +9,8 @@
 import UIKit
 import CoreBluetooth
 
+//Central
+
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     var isScanning = false

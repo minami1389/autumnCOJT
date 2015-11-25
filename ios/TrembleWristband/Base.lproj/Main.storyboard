@@ -140,10 +140,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qs-gK-0Bg" userLabel="createRoomView">
-                                <rect key="frame" x="0.0" y="121" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="268" width="320" height="150"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1av-De-MbJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -160,30 +160,25 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.85490196078431369" green="0.38431372549019605" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="1av-De-MbJ" secondAttribute="bottom" id="CF7-wI-cJv"/>
                                     <constraint firstItem="7cA-mI-J2H" firstAttribute="leading" secondItem="1Qs-gK-0Bg" secondAttribute="leading" constant="20" id="CtV-iH-Qrw"/>
                                     <constraint firstAttribute="trailing" secondItem="1av-De-MbJ" secondAttribute="trailing" id="V2Y-5L-5ew"/>
                                     <constraint firstItem="1av-De-MbJ" firstAttribute="leading" secondItem="1Qs-gK-0Bg" secondAttribute="leading" id="emG-kb-sap"/>
-                                    <constraint firstAttribute="height" constant="200" id="yuu-8w-fpl"/>
+                                    <constraint firstAttribute="height" constant="150" id="yuu-8w-fpl"/>
                                     <constraint firstItem="1av-De-MbJ" firstAttribute="top" secondItem="1Qs-gK-0Bg" secondAttribute="top" id="zk0-u8-ppC"/>
                                     <constraint firstItem="7cA-mI-J2H" firstAttribute="top" secondItem="1Qs-gK-0Bg" secondAttribute="top" constant="20" id="zzu-ck-L9l"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngH-TI-QUd" userLabel="joinRoomView">
-                                <rect key="frame" x="0.0" y="326" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPY-7k-W93">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="didPushedJoinRoomButton:" destination="f41-0Z-yw5" eventType="touchUpInside" id="21w-cA-ahp"/>
@@ -197,7 +192,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.32000000000000001" blue="0.32800000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.52156862745098043" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="zPY-7k-W93" firstAttribute="top" secondItem="ngH-TI-QUd" secondAttribute="top" id="Vkh-Af-Rsg"/>
                                     <constraint firstItem="RUl-Gd-2PP" firstAttribute="leading" secondItem="ngH-TI-QUd" secondAttribute="leading" constant="20" id="XsO-QC-bne"/>
@@ -206,23 +201,18 @@
                                     <constraint firstAttribute="trailing" secondItem="zPY-7k-W93" secondAttribute="trailing" id="gsM-2J-D4E"/>
                                     <constraint firstItem="RUl-Gd-2PP" firstAttribute="top" secondItem="ngH-TI-QUd" secondAttribute="top" constant="20" id="nkQ-zU-r4t"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.65098039215686276" green="0.8901960784313725" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ngH-TI-QUd" firstAttribute="leading" secondItem="1Qs-gK-0Bg" secondAttribute="leading" id="3Hk-8e-kuf"/>
                             <constraint firstItem="1Qs-gK-0Bg" firstAttribute="leading" secondItem="pYE-0I-MoW" secondAttribute="leading" id="3hE-Be-Omm"/>
                             <constraint firstItem="ngH-TI-QUd" firstAttribute="centerX" secondItem="pYE-0I-MoW" secondAttribute="centerX" id="FOI-jD-bKf"/>
                             <constraint firstItem="ngH-TI-QUd" firstAttribute="height" secondItem="1Qs-gK-0Bg" secondAttribute="height" id="I52-QK-uy7"/>
-                            <constraint firstItem="1Qs-gK-0Bg" firstAttribute="top" secondItem="amb-Su-pzo" secondAttribute="bottom" constant="60" id="N3S-LC-OzX"/>
+                            <constraint firstItem="D18-7v-SHK" firstAttribute="top" secondItem="ngH-TI-QUd" secondAttribute="bottom" id="MXg-ww-AJG"/>
                             <constraint firstItem="amb-Su-pzo" firstAttribute="top" secondItem="F0m-KG-trD" secondAttribute="bottom" constant="20" id="cwK-EF-gXn"/>
-                            <constraint firstItem="ngH-TI-QUd" firstAttribute="top" secondItem="1Qs-gK-0Bg" secondAttribute="bottom" constant="5" id="jZ8-2y-5xd"/>
+                            <constraint firstItem="ngH-TI-QUd" firstAttribute="top" secondItem="1Qs-gK-0Bg" secondAttribute="bottom" id="jZ8-2y-5xd"/>
                             <constraint firstItem="ngH-TI-QUd" firstAttribute="trailing" secondItem="1Qs-gK-0Bg" secondAttribute="trailing" id="lHm-KB-KPn"/>
                             <constraint firstItem="amb-Su-pzo" firstAttribute="leading" secondItem="pYE-0I-MoW" secondAttribute="leading" constant="20" id="xPj-Jv-GTc"/>
                             <constraint firstAttribute="trailing" secondItem="1Qs-gK-0Bg" secondAttribute="trailing" id="y7V-pX-8bk"/>

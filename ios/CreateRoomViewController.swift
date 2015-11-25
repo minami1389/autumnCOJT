@@ -7,32 +7,54 @@
 //
 
 import UIKit
+import CoreBluetooth
 
-class CreateRoomViewController: UIViewController {
+//Peripheral
+
+class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate {
+
+    let serviceUUID = CBUUID(string: "632D50CB-9DC0-496C-8E28-19F4E0AA0DBC")
+    let characteristicUUID = CBUUID(string: "DF89A6DD-DC47-4C5C-8147-1141C62E1B04")
+
+    var peripheralManager: CBPeripheralManager!
+    var characteristic: CBMutableCharacteristic!
+
+    var userId = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil, options: [CBPeripheralManagerOptionShowPowerAlertKey:true]);
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        userId = String(userDefault.valueForKey("userId"))
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.peripheralManager.stopAdvertising()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
+        if peripheral.state != CBPeripheralManagerState.PoweredOn { return }
+        
+        let service = CBMutableService(type: serviceUUID, primary: true)
+        let characteristic = CBMutableCharacteristic(type: characteristicUUID, properties: CBCharacteristicProperties.Read, value: userId.dataUsingEncoding(NSUTF8StringEncoding), permissions: CBAttributePermissions.Readable)
+        service.characteristics = [characteristic]
+        peripheralManager.addService(service)
+        let advertisingData = [CBAdvertisementDataLocalNameKey: "Asobeat Device"]
+        peripheralManager.startAdvertising(advertisingData)
     }
+    
+    func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError?) {
+        if error != nil {
+            print("Failed...error:\(error)")
+        }
+        print("Succeeded!")
+    }
+    
+    
     
     @IBAction func didPushedCancelButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(false, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }
