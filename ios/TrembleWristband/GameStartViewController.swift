@@ -18,8 +18,9 @@ class GameStartViewController: UIViewController {
         // Do any additional setup after loading the view.
         let userDefault = NSUserDefaults.standardUserDefaults()
         let userName = userDefault.valueForKey("userName")
-        //let userId = userDefault.valueForKey("userId")
+        let userId = userDefault.valueForKey("userID")
         userNameLabel.text = String(userName!)
+        print(userId)
     }
 
     @IBAction func didTapScreen(sender: AnyObject) {

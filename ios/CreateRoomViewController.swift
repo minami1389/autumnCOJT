@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreBluetooth
+import TwitterKit
+
 
 //Peripheral
 
@@ -48,6 +50,7 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate {
             print("Failed...error:\(error)")
         }
         print("Succeeded!")
+        print(peripheral.description)
     }
     
     

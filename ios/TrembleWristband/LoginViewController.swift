@@ -56,6 +56,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         let userDefault = NSUserDefaults.standardUserDefaults()
         userDefault.setValue(session.userID, forKey: "userID")
         userDefault.setValue(session.userName, forKey: "userName")
+        print(session.userID)
     }
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
