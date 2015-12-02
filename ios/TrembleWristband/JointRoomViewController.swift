@@ -33,20 +33,18 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             return
         }
         print("PoweredOn")
-        centralManager.scanForPeripheralsWithServices(nil, options: nil)
+        centralManager.scanForPeripheralsWithServices([serviceUUID], options: nil)
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        if peripheral.name == "Asobeat Device" {
-            print("discover:\(peripheral.description)")
-            asobiPeripheral = peripheral
-            centralManager.connectPeripheral(asobiPeripheral, options: nil)
-        }
+        print("discover:\(peripheral.description)")
+        asobiPeripheral = peripheral
+        asobiPeripheral.delegate = self
+        centralManager.connectPeripheral(asobiPeripheral, options: nil)
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         print("Connected")
-        peripheral.delegate = self
         peripheral.discoverServices(nil)
     }
     
@@ -82,9 +80,19 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             if characteristic.UUID.isEqual(characteristicUUID) {
                 asobiCharacteristic = characteristic
                 print("characteristic:\(characteristic)")
+                asobiPeripheral.readValueForCharacteristic(asobiCharacteristic)
             }
         }
-
+    }
+    
+    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        if error != nil {
+            print("error:\(error)")
+            return
+        }
+        let data = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)
+        print("data:\(data)")
+        
     }
  
     @IBAction func didPushedCancelButton(sender: AnyObject) {

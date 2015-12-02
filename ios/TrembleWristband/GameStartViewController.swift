@@ -18,7 +18,7 @@ class GameStartViewController: UIViewController {
         // Do any additional setup after loading the view.
         let userDefault = NSUserDefaults.standardUserDefaults()
         let userName = userDefault.valueForKey("userName")
-        let userId = userDefault.valueForKey("userID")
+        let userId = userDefault.valueForKey("userId")
         userNameLabel.text = String(userName!)
         print(userId)
     }

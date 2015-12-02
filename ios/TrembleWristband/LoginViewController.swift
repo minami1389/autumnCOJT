@@ -54,7 +54,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         self.presentViewController(alert, animated: true, completion: nil)
         
         let userDefault = NSUserDefaults.standardUserDefaults()
-        userDefault.setValue(session.userID, forKey: "userID")
+        userDefault.setValue(session.userID, forKey: "userId")
         userDefault.setValue(session.userName, forKey: "userName")
         print(session.userID)
     }

@@ -37,11 +37,12 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate {
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
         if peripheral.state != CBPeripheralManagerState.PoweredOn { return }
         
+        print("id:\(userId)")
         let service = CBMutableService(type: serviceUUID, primary: true)
         let characteristic = CBMutableCharacteristic(type: characteristicUUID, properties: CBCharacteristicProperties.Read, value: userId.dataUsingEncoding(NSUTF8StringEncoding), permissions: CBAttributePermissions.Readable)
         service.characteristics = [characteristic]
         peripheralManager.addService(service)
-        let advertisingData = [CBAdvertisementDataLocalNameKey: "Asobeat Device"]
+        let advertisingData = [CBAdvertisementDataServiceUUIDsKey:[serviceUUID]]
         peripheralManager.startAdvertising(advertisingData)
     }
     
