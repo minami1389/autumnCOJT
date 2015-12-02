@@ -27,7 +27,7 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate {
         super.viewDidLoad()
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil, options: [CBPeripheralManagerOptionShowPowerAlertKey:true]);
         let userDefault = NSUserDefaults.standardUserDefaults()
-        userId = String(userDefault.valueForKey("userId"))
+        userId = String(userDefault.valueForKey("userId")!)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -37,9 +37,8 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate {
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
         if peripheral.state != CBPeripheralManagerState.PoweredOn { return }
         
-        print("id:\(userId)")
         let service = CBMutableService(type: serviceUUID, primary: true)
-        let characteristic = CBMutableCharacteristic(type: characteristicUUID, properties: CBCharacteristicProperties.Read, value: userId.dataUsingEncoding(NSUTF8StringEncoding), permissions: CBAttributePermissions.Readable)
+        let characteristic = CBMutableCharacteristic(type: characteristicUUID, properties: CBCharacteristicProperties.Read, value: userId.dataUsingEncoding(NSUTF8StringEncoding)!, permissions: CBAttributePermissions.Readable)
         service.characteristics = [characteristic]
         peripheralManager.addService(service)
         let advertisingData = [CBAdvertisementDataServiceUUIDsKey:[serviceUUID]]

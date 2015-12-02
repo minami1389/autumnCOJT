@@ -90,9 +90,8 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             print("error:\(error)")
             return
         }
-        let data = NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding)
-        print("data:\(data)")
-        
+        let twitterId = (NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding))! as String
+        fetchHostUserData(twitterId)
     }
  
     @IBAction func didPushedCancelButton(sender: AnyObject) {
@@ -100,6 +99,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     }
     
     func fetchHostUserData(twitterId: String) {
+        print(twitterId)
         let client = Twitter.sharedInstance().APIClient
         client.loadUserWithID(twitterId, completion: { (user, error) in
             if error != nil {
