@@ -21,6 +21,8 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     var centralManager: CBCentralManager!
     var asobiPeripheral: CBPeripheral!
     var asobiCharacteristic: CBCharacteristic!
+    
+    var twitterIds: NSMutableArray = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +93,10 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             return
         }
         let twitterId = (NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding))! as String
-        fetchHostUserData(twitterId)
+        if !twitterIds.containsObject(twitterId) {
+            twitterIds.addObject(twitterId)
+            fetchHostUserData(twitterId)
+        }
     }
  
     @IBAction func didPushedCancelButton(sender: AnyObject) {
@@ -108,9 +113,9 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
                 let iconUrl = NSURL(string: (user?.profileImageLargeURL)!)
                 let iconData = NSData(contentsOfURL: iconUrl!)
                 let iconImage = UIImage(data: iconData!)
-                print(user?.userID)
-                print(user?.name)
-                print(user?.screenName)
+                print(user?.userID!)
+                print(user?.name!)
+                print(user?.screenName!)
             }
         })
         
