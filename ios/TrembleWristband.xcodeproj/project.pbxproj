@@ -18,6 +18,8 @@
 		E9618E951BFF09210059229E /* bomb_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E9618E921BFF09210059229E /* bomb_blue.png */; };
 		E9618E961BFF09210059229E /* bomb_green.png in Resources */ = {isa = PBXBuildFile; fileRef = E9618E931BFF09210059229E /* bomb_green.png */; };
 		E9618E971BFF09210059229E /* bomb_red.png in Resources */ = {isa = PBXBuildFile; fileRef = E9618E941BFF09210059229E /* bomb_red.png */; };
+		E9C4D1121C0EC1EB008D2A5C /* shopetan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9C4D1111C0EC1EB008D2A5C /* shopetan.jpg */; };
+		E9C4D1141C0EC359008D2A5C /* TwitterUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4D1131C0EC359008D2A5C /* TwitterUserTableViewCell.swift */; };
 		E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */; };
 		E9E06DF51BE9BDB7006E99D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E06DF41BE9BDB7006E99D3 /* ViewController.swift */; };
 		E9E06DF81BE9BDB7006E99D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9E06DF61BE9BDB7006E99D3 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		E9618E921BFF09210059229E /* bomb_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_blue.png; path = image/bomb_blue.png; sourceTree = SOURCE_ROOT; };
 		E9618E931BFF09210059229E /* bomb_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_green.png; path = image/bomb_green.png; sourceTree = SOURCE_ROOT; };
 		E9618E941BFF09210059229E /* bomb_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_red.png; path = image/bomb_red.png; sourceTree = SOURCE_ROOT; };
+		E9C4D1111C0EC1EB008D2A5C /* shopetan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = shopetan.jpg; path = image/shopetan.jpg; sourceTree = SOURCE_ROOT; };
+		E9C4D1131C0EC359008D2A5C /* TwitterUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterUserTableViewCell.swift; sourceTree = "<group>"; };
 		E9E06DED1BE9BDB7006E99D3 /* TrembleWristband.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrembleWristband.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E06DF11BE9BDB7006E99D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				E90386D01BF5D19400AE4BD3 /* GameStartViewController.swift */,
 				E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */,
 				E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */,
+				E9C4D1131C0EC359008D2A5C /* TwitterUserTableViewCell.swift */,
 				E9E06DF61BE9BDB7006E99D3 /* Main.storyboard */,
 				E9E06DF91BE9BDB7006E99D3 /* Images.xcassets */,
 				E9E06DFB1BE9BDB7006E99D3 /* LaunchScreen.xib */,
@@ -159,6 +164,7 @@
 		E9F189591BFC456600E36F27 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				E9C4D1111C0EC1EB008D2A5C /* shopetan.jpg */,
 				E9618E921BFF09210059229E /* bomb_blue.png */,
 				E9618E931BFF09210059229E /* bomb_green.png */,
 				E9618E941BFF09210059229E /* bomb_red.png */,
@@ -258,6 +264,7 @@
 				E9618E951BFF09210059229E /* bomb_blue.png in Resources */,
 				E9E06DFD1BE9BDB7006E99D3 /* LaunchScreen.xib in Resources */,
 				E9618E961BFF09210059229E /* bomb_green.png in Resources */,
+				E9C4D1121C0EC1EB008D2A5C /* shopetan.jpg in Resources */,
 				E9E06DFA1BE9BDB7006E99D3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +301,7 @@
 			files = (
 				E90386CD1BF5CF9C00AE4BD3 /* LoginViewController.swift in Sources */,
 				E90386D71BF5D56D00AE4BD3 /* CreateRoomViewController.swift in Sources */,
+				E9C4D1141C0EC359008D2A5C /* TwitterUserTableViewCell.swift in Sources */,
 				E9E06DF51BE9BDB7006E99D3 /* ViewController.swift in Sources */,
 				E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */,
 				E90386D51BF5D55500AE4BD3 /* JointRoomViewController.swift in Sources */,

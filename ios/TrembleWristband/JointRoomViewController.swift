@@ -13,8 +13,10 @@ import TwitterKit
 
 //Central
 
-class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
+class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     let serviceUUID = CBUUID(string: "632D50CB-9DC0-496C-8E28-19F4E0AA0DBC")
     let characteristicUUID = CBUUID(string: "DF89A6DD-DC47-4C5C-8147-1141C62E1B04")
 
@@ -118,6 +120,15 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
                 print(user?.screenName!)
             }
         })
-        
+    }
+    
+    //TableView
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TwitterUserCell") as! TwitterUserTableViewCell
+        return cell
     }
 }
