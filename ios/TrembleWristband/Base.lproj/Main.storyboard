@@ -302,25 +302,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="しょぺたん" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywn-RX-b15">
-                                                    <rect key="frame" x="80" y="10" width="110" height="26.5"/>
+                                                    <rect key="frame" x="68" y="16" width="110" height="26.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ss_shopetan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8O-RK-DrZ">
-                                                    <rect key="frame" x="80" y="41" width="99" height="18"/>
+                                                    <rect key="frame" x="68" y="47" width="99" height="18"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oJE-Ze-o9e">
-                                                    <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oJE-Ze-o9e">
+                                                    <rect key="frame" x="10" y="16" width="48" height="48"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="RPy-Q4-PUc"/>
-                                                        <constraint firstAttribute="width" constant="60" id="Ygt-w8-mpX"/>
+                                                        <constraint firstAttribute="height" constant="48" id="RPy-Q4-PUc"/>
+                                                        <constraint firstAttribute="width" constant="48" id="Ygt-w8-mpX"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>

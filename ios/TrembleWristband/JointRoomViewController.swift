@@ -95,43 +95,30 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             return
         }
         let twitterId = (NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding))! as String
-        print("didUpdateValue")
-        if containsInUsersWithId(twitterId) == false {
-            fetchHostUserData(twitterId)
+        let user = User(id: twitterId)
+        if  user.containsUsers(users) == false {
+            users.addObject(user)
+            fetchHostUserData(user)
         }
     }
     
-    func containsInUsersWithId(id:String) -> Bool {
-        for obj in users {
-            let user = obj as! User
-            if user.id == id { return true }
-        }
-        return false
-    }
-
- 
     @IBAction func didPushedCancelButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     
-    func fetchHostUserData(twitterId: String) {
-        print("id:\(twitterId)")
+    func fetchHostUserData(user: User) {
         let client = Twitter.sharedInstance().APIClient
-        client.loadUserWithID(twitterId, completion: { (user, error) in
+        client.loadUserWithID(user.id, completion: { (obj, error) in
             if error != nil {
                 print("error:\(error)")
             } else {
                 do {
-                    let iconUrl = NSURL(string: (user?.profileImageLargeURL)!)
-                    print(iconUrl)
+                    let iconUrl = NSURL(string: (obj?.profileImageURL)!)
                     let iconData = try NSData(contentsOfURL: iconUrl!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
                     let image = UIImage(data: iconData)
-                    UIGraphicsBeginImageContext(CGSize(width: 60, height: 60))
-                    image?.drawInRect(CGRect(x: 0, y: 0, width: 60, height: 60))
-                    let iconImage = UIGraphicsGetImageFromCurrentImageContext()
-                    UIGraphicsEndImageContext()
-                    let user = User(id: (user?.userID)!, name: (user?.name)!, screenName: (user?.screenName)!, image: iconImage)
-                    self.users.addObject(user)
+                    user.name = (obj?.name)!
+                    user.screenName = (obj?.screenName)!
+                    user.image = image
                     self.tableView.reloadData()
                 } catch {
                     print("error")

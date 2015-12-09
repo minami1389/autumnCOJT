@@ -15,11 +15,17 @@ class User: NSObject {
     var screenName = ""
     var image:UIImage!
     
-    init(id: String, name: String, screenName: String, image: UIImage) {
+    init(id: String) {
         super.init()
         self.id = id
-        self.name = name
-        self.screenName = screenName
-        self.image = image
+    }
+    
+    func containsUsers(users:NSArray) -> Bool {
+        for obj in users {
+            if let user = obj as? User {
+                if user.id == self.id { return true }
+            }
+        }
+        return false
     }
 }
