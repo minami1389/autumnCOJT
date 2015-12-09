@@ -95,7 +95,8 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             return
         }
         let twitterId = (NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding))! as String
-        if containsInUsersWithId(twitterId) {
+        print("didUpdateValue")
+        if containsInUsersWithId(twitterId) == false {
             fetchHostUserData(twitterId)
         }
     }
@@ -114,18 +115,27 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     }
     
     func fetchHostUserData(twitterId: String) {
-        print(twitterId)
+        print("id:\(twitterId)")
         let client = Twitter.sharedInstance().APIClient
         client.loadUserWithID(twitterId, completion: { (user, error) in
             if error != nil {
                 print("error:\(error)")
             } else {
-                let iconUrl = NSURL(string: (user?.profileImageLargeURL)!)
-                let iconData = NSData(contentsOfURL: iconUrl!)
-                let iconImage = UIImage(data: iconData!)
-                let user = User(id: (user?.userID)!, name: (user?.name)!, screenName: (user?.screenName)!, image: iconImage!)
-                self.users.addObject(user)
-                self.tableView.reloadData()
+                do {
+                    let iconUrl = NSURL(string: (user?.profileImageLargeURL)!)
+                    print(iconUrl)
+                    let iconData = try NSData(contentsOfURL: iconUrl!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                    let image = UIImage(data: iconData)
+                    UIGraphicsBeginImageContext(CGSize(width: 60, height: 60))
+                    image?.drawInRect(CGRect(x: 0, y: 0, width: 60, height: 60))
+                    let iconImage = UIGraphicsGetImageFromCurrentImageContext()
+                    UIGraphicsEndImageContext()
+                    let user = User(id: (user?.userID)!, name: (user?.name)!, screenName: (user?.screenName)!, image: iconImage)
+                    self.users.addObject(user)
+                    self.tableView.reloadData()
+                } catch {
+                    print("error")
+                }
             }
         })
     }
@@ -139,6 +149,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
         let cell = tableView.dequeueReusableCellWithIdentifier("TwitterUserCell") as! TwitterUserTableViewCell
         let user = users[indexPath.row] as! User
         cell.imageView?.image = user.image
+        print(user.image.size)
         cell.nameLabel.text = user.screenName
         cell.idLabel.text = user.name
         return cell
