@@ -24,7 +24,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     var asobiPeripheral: CBPeripheral!
     var asobiCharacteristic: CBCharacteristic!
     
-    var twitterIds: NSMutableArray = []
+    var users: NSMutableArray = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,11 +95,19 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             return
         }
         let twitterId = (NSString(data: characteristic.value!, encoding: NSUTF8StringEncoding))! as String
-        if !twitterIds.containsObject(twitterId) {
-            twitterIds.addObject(twitterId)
+        if containsInUsersWithId(twitterId) {
             fetchHostUserData(twitterId)
         }
     }
+    
+    func containsInUsersWithId(id:String) -> Bool {
+        for obj in users {
+            let user = obj as! User
+            if user.id == id { return true }
+        }
+        return false
+    }
+
  
     @IBAction func didPushedCancelButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(false, completion: nil)
@@ -115,20 +123,24 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
                 let iconUrl = NSURL(string: (user?.profileImageLargeURL)!)
                 let iconData = NSData(contentsOfURL: iconUrl!)
                 let iconImage = UIImage(data: iconData!)
-                print(user?.userID!)
-                print(user?.name!)
-                print(user?.screenName!)
+                let user = User(id: (user?.userID)!, name: (user?.name)!, screenName: (user?.screenName)!, image: iconImage!)
+                self.users.addObject(user)
+                self.tableView.reloadData()
             }
         })
     }
     
     //TableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return users.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TwitterUserCell") as! TwitterUserTableViewCell
+        let user = users[indexPath.row] as! User
+        cell.imageView?.image = user.image
+        cell.nameLabel.text = user.screenName
+        cell.idLabel.text = user.name
         return cell
     }
 }
