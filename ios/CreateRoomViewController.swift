@@ -41,7 +41,8 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate {
         let characteristic = CBMutableCharacteristic(type: characteristicUUID, properties: CBCharacteristicProperties.Read, value: userId.dataUsingEncoding(NSUTF8StringEncoding)!, permissions: CBAttributePermissions.Readable)
         service.characteristics = [characteristic]
         peripheralManager.addService(service)
-        let advertisingData = [CBAdvertisementDataServiceUUIDsKey:[serviceUUID]]
+        let localName = "asobeat:" + userId
+        let advertisingData = [CBAdvertisementDataLocalNameKey:localName]
         peripheralManager.startAdvertising(advertisingData)
     }
     

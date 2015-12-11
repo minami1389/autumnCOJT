@@ -23,9 +23,13 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     var centralManager: CBCentralManager!
     var asobiPeripheral: CBPeripheral!
     var asobiCharacteristic: CBCharacteristic!
+   
+    var asobiPeripherals = [CBPeripheral]()
     
     var users: NSMutableArray = []
 
+    var isRequest = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
@@ -37,14 +41,29 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             return
         }
         print("PoweredOn")
-        centralManager.scanForPeripheralsWithServices([serviceUUID], options: nil)
+        centralManager.scanForPeripheralsWithServices(nil, options: nil)
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
         print("discover:\(peripheral.description)")
-        asobiPeripheral = peripheral
-        asobiPeripheral.delegate = self
-        centralManager.connectPeripheral(asobiPeripheral, options: nil)
+        print("advertise:\(advertisementData)")
+        let localName = advertisementData["kCBAdvDataLocalName"] as? NSString
+        print(localName)
+        if let localName = advertisementData["kCBAdvDataLocalName"] as? NSString {
+            if localName.hasPrefix("asobeat:") {
+                let twitterId = localName.substringFromIndex(8)
+                let user = User(id: twitterId)
+                if  user.containsUsers(users) == false {
+                    print("asobeat user")
+                    users.addObject(user)
+                    asobiPeripherals.append(peripheral)
+                    fetchHostUserData(user)
+                }
+            }
+        }
+//        asobiPeripheral = peripheral
+//        asobiPeripheral.delegate = self
+//        centralManager.connectPeripheral(asobiPeripheral, options: nil)
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
@@ -98,6 +117,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
         let user = User(id: twitterId)
         if  user.containsUsers(users) == false {
             users.addObject(user)
+            asobiPeripherals.append(asobiPeripheral)
             fetchHostUserData(user)
         }
     }
@@ -134,11 +154,16 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TwitterUserCell") as! TwitterUserTableViewCell
+        print("user:\(users[indexPath.row])")
         let user = users[indexPath.row] as! User
         cell.imageView?.image = user.image
-        print(user.image.size)
         cell.nameLabel.text = user.screenName
         cell.idLabel.text = user.name
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let roomRequestVC = self.storyboard?.instantiateViewControllerWithIdentifier("RoomRequestVC") as! RoomRequestViewController
+        self.presentViewController(roomRequestVC, animated: true, completion: nil)
     }
 }
