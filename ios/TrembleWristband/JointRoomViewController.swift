@@ -16,6 +16,7 @@ import TwitterKit
 class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var progressCoverView: UIView!
     
     let serviceUUID = CBUUID(string: "632D50CB-9DC0-496C-8E28-19F4E0AA0DBC")
     let characteristicUUID = CBUUID(string: "DF89A6DD-DC47-4C5C-8147-1141C62E1B04")
@@ -33,8 +34,14 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     override func viewDidLoad() {
         super.viewDidLoad()
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
+        SVProgressHUD.setBackgroundColor(UIColor.blackColor())
+        SVProgressHUD.setForegroundColor(UIColor.whiteColor())
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        SVProgressHUD.dismiss()
+    }
+    
     func centralManagerDidUpdateState(central: CBCentralManager) {
         if central.state != CBCentralManagerState.PoweredOn {
             print("PoweredOff")
@@ -154,7 +161,6 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TwitterUserCell") as! TwitterUserTableViewCell
-        print("user:\(users[indexPath.row])")
         let user = users[indexPath.row] as! User
         cell.imageView?.image = user.image
         cell.nameLabel.text = user.screenName
@@ -163,7 +169,9 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let roomRequestVC = self.storyboard?.instantiateViewControllerWithIdentifier("RoomRequestVC") as! RoomRequestViewController
-        self.presentViewController(roomRequestVC, animated: true, completion: nil)
+        let user = users[indexPath.row] as! User
+        SVProgressHUD.showWithStatus("\(user.screenName)さんに\nリクエスト中")
+        //tableView.userInteractionEnabled = false
+        progressCoverView.hidden = false
     }
 }

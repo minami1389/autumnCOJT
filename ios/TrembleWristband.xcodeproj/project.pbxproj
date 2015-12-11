@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1970A9351C17D74800154A9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A9341C17D74800154A9E /* User.swift */; };
-		1970A93E1C17FA2800154A9E /* RoomRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A93D1C17FA2800154A9E /* RoomRequestViewController.swift */; };
+		363871F10E9A58CEA3018DC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D33A4854AFA95112166BA0 /* libPods.a */; };
 		E90386C71BF5CEFB00AE4BD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */; };
 		E90386C81BF5CEFB00AE4BD3 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C41BF5CEFB00AE4BD3 /* TwitterKit.framework */; };
 		E90386C91BF5CEFB00AE4BD3 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E90386C51BF5CEFB00AE4BD3 /* TwitterKitResources.bundle */; };
@@ -23,7 +23,6 @@
 		E9C4D1121C0EC1EB008D2A5C /* shopetan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9C4D1111C0EC1EB008D2A5C /* shopetan.jpg */; };
 		E9C4D1141C0EC359008D2A5C /* TwitterUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4D1131C0EC359008D2A5C /* TwitterUserTableViewCell.swift */; };
 		E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */; };
-		E9E06DF51BE9BDB7006E99D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E06DF41BE9BDB7006E99D3 /* ViewController.swift */; };
 		E9E06DF81BE9BDB7006E99D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9E06DF61BE9BDB7006E99D3 /* Main.storyboard */; };
 		E9E06DFA1BE9BDB7006E99D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E06DF91BE9BDB7006E99D3 /* Images.xcassets */; };
 		E9E06DFD1BE9BDB7006E99D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E06DFB1BE9BDB7006E99D3 /* LaunchScreen.xib */; };
@@ -43,7 +42,9 @@
 
 /* Begin PBXFileReference section */
 		1970A9341C17D74800154A9E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
-		1970A93D1C17FA2800154A9E /* RoomRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomRequestViewController.swift; sourceTree = "<group>"; };
+		19AFA3C81C1ABC720005235F /* TrembleWristband-Bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrembleWristband-Bridging-header.h"; sourceTree = SOURCE_ROOT; };
+		85D33A4854AFA95112166BA0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1E66436F7D49CF9D9A8F875 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		E90386C41BF5CEFB00AE4BD3 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		E90386C51BF5CEFB00AE4BD3 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		E9E06DED1BE9BDB7006E99D3 /* TrembleWristband.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrembleWristband.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E06DF11BE9BDB7006E99D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E9E06DF41BE9BDB7006E99D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E9E06DF71BE9BDB7006E99D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9E06DF91BE9BDB7006E99D3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E9E06DFC1BE9BDB7006E99D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -68,6 +68,7 @@
 		E9E06E071BE9BDB7006E99D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E06E081BE9BDB7006E99D3 /* TrembleWristbandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrembleWristbandTests.swift; sourceTree = "<group>"; };
 		E9F189571BFC456000E36F27 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = image/icon.png; sourceTree = SOURCE_ROOT; };
+		FF356207318073CFFD988344 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 				E90386C71BF5CEFB00AE4BD3 /* Fabric.framework in Frameworks */,
 				E90386CA1BF5CEFB00AE4BD3 /* TwitterCore.framework in Frameworks */,
 				E90386C81BF5CEFB00AE4BD3 /* TwitterKit.framework in Frameworks */,
+				363871F10E9A58CEA3018DC9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E9EECCE8739310DBED72B22 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E1E66436F7D49CF9D9A8F875 /* Pods.debug.xcconfig */,
+				FF356207318073CFFD988344 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		96BBCB960DA5667556E9A150 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85D33A4854AFA95112166BA0 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E90386CB1BF5CF0700AE4BD3 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +128,8 @@
 				E9E06DEF1BE9BDB7006E99D3 /* TrembleWristband */,
 				E9E06E051BE9BDB7006E99D3 /* TrembleWristbandTests */,
 				E9E06DEE1BE9BDB7006E99D3 /* Products */,
+				8E9EECCE8739310DBED72B22 /* Pods */,
+				96BBCB960DA5667556E9A150 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,16 +145,15 @@
 		E9E06DEF1BE9BDB7006E99D3 /* TrembleWristband */ = {
 			isa = PBXGroup;
 			children = (
+				19AFA3C81C1ABC720005235F /* TrembleWristband-Bridging-header.h */,
 				E9F189591BFC456600E36F27 /* image */,
 				E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */,
-				E9E06DF41BE9BDB7006E99D3 /* ViewController.swift */,
 				E90386CC1BF5CF9C00AE4BD3 /* LoginViewController.swift */,
 				E90386D01BF5D19400AE4BD3 /* GameStartViewController.swift */,
 				E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */,
 				E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */,
 				1970A9341C17D74800154A9E /* User.swift */,
 				E9C4D1131C0EC359008D2A5C /* TwitterUserTableViewCell.swift */,
-				1970A93D1C17FA2800154A9E /* RoomRequestViewController.swift */,
 				E9E06DF61BE9BDB7006E99D3 /* Main.storyboard */,
 				E9E06DF91BE9BDB7006E99D3 /* Images.xcassets */,
 				E9E06DFB1BE9BDB7006E99D3 /* LaunchScreen.xib */,
@@ -186,10 +206,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9E06E0C1BE9BDB7006E99D3 /* Build configuration list for PBXNativeTarget "TrembleWristband" */;
 			buildPhases = (
+				4708B15DBBB4AD47815BD08D /* Check Pods Manifest.lock */,
 				E9E06DE91BE9BDB7006E99D3 /* Sources */,
 				E9E06DEA1BE9BDB7006E99D3 /* Frameworks */,
 				E9E06DEB1BE9BDB7006E99D3 /* Resources */,
 				E90386C21BF5CE9E00AE4BD3 /* ShellScript */,
+				09C244EFDAB543E15070B99C /* Embed Pods Frameworks */,
+				39E497CC76A6E108E566D70F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,6 +308,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		09C244EFDAB543E15070B99C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39E497CC76A6E108E566D70F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4708B15DBBB4AD47815BD08D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		E90386C21BF5CE9E00AE4BD3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,11 +376,9 @@
 				E90386CD1BF5CF9C00AE4BD3 /* LoginViewController.swift in Sources */,
 				E90386D71BF5D56D00AE4BD3 /* CreateRoomViewController.swift in Sources */,
 				E9C4D1141C0EC359008D2A5C /* TwitterUserTableViewCell.swift in Sources */,
-				E9E06DF51BE9BDB7006E99D3 /* ViewController.swift in Sources */,
 				1970A9351C17D74800154A9E /* User.swift in Sources */,
 				E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */,
 				E90386D51BF5D55500AE4BD3 /* JointRoomViewController.swift in Sources */,
-				1970A93E1C17FA2800154A9E /* RoomRequestViewController.swift in Sources */,
 				E90386D11BF5D19400AE4BD3 /* GameStartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +504,7 @@
 		};
 		E9E06E0D1BE9BDB7006E99D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1E66436F7D49CF9D9A8F875 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -452,11 +519,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TrembleWristband-Bridging-header.h";
 			};
 			name = Debug;
 		};
 		E9E06E0E1BE9BDB7006E99D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF356207318073CFFD988344 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -471,6 +540,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "TrembleWristband-Bridging-header.h";
 			};
 			name = Release;
 		};
