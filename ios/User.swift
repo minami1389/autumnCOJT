@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TwitterKit
 
 class User: NSObject {
 
@@ -27,5 +28,26 @@ class User: NSObject {
             }
         }
         return false
+    }
+    
+    func fetchHostUserData(completion:()->Void) {
+        let client = Twitter.sharedInstance().APIClient
+        client.loadUserWithID(self.id, completion: { (obj, error) in
+            if error != nil {
+                print("error:\(error)")
+            } else {
+                do {
+                    let iconUrl = NSURL(string: (obj?.profileImageURL)!)
+                    let iconData = try NSData(contentsOfURL: iconUrl!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                    let image = UIImage(data: iconData)
+                    self.name = (obj?.name)!
+                    self.screenName = (obj?.screenName)!
+                    self.image = image
+                    completion()
+                } catch {
+                    print("error")
+                }
+            }
+        })
     }
 }

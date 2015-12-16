@@ -1,15 +1,15 @@
 //
-//  TwitterUserTableViewCell.swift
+//  MemberUserTableViewCell.swift
 //  TrembleWristband
 //
-//  Created by minami on 12/2/15.
+//  Created by Baba Minami on 12/16/15.
 //  Copyright © 2015 AutumnCOJT. All rights reserved.
 //
 
 import UIKit
 
-class TwitterUserTableViewCell: UITableViewCell {
-
+class MemberUserTableViewCell: UITableViewCell {
+   
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!

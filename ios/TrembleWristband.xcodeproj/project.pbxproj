@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1946D2A71C211EF900C0C4AB /* MemberUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */; };
+		1946D2AB1C21265000C0C4AB /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2AA1C21265000C0C4AB /* Constans.swift */; };
 		1970A9351C17D74800154A9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A9341C17D74800154A9E /* User.swift */; };
 		363871F10E9A58CEA3018DC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D33A4854AFA95112166BA0 /* libPods.a */; };
 		E90386C71BF5CEFB00AE4BD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */; };
@@ -21,7 +23,7 @@
 		E9618E961BFF09210059229E /* bomb_green.png in Resources */ = {isa = PBXBuildFile; fileRef = E9618E931BFF09210059229E /* bomb_green.png */; };
 		E9618E971BFF09210059229E /* bomb_red.png in Resources */ = {isa = PBXBuildFile; fileRef = E9618E941BFF09210059229E /* bomb_red.png */; };
 		E9C4D1121C0EC1EB008D2A5C /* shopetan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9C4D1111C0EC1EB008D2A5C /* shopetan.jpg */; };
-		E9C4D1141C0EC359008D2A5C /* TwitterUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4D1131C0EC359008D2A5C /* TwitterUserTableViewCell.swift */; };
+		E9C4D1141C0EC359008D2A5C /* HostUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C4D1131C0EC359008D2A5C /* HostUserTableViewCell.swift */; };
 		E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */; };
 		E9E06DF81BE9BDB7006E99D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9E06DF61BE9BDB7006E99D3 /* Main.storyboard */; };
 		E9E06DFA1BE9BDB7006E99D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9E06DF91BE9BDB7006E99D3 /* Images.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberUserTableViewCell.swift; sourceTree = "<group>"; };
+		1946D2AA1C21265000C0C4AB /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		1970A9341C17D74800154A9E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		19AFA3C81C1ABC720005235F /* TrembleWristband-Bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrembleWristband-Bridging-header.h"; sourceTree = SOURCE_ROOT; };
 		85D33A4854AFA95112166BA0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +61,7 @@
 		E9618E931BFF09210059229E /* bomb_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_green.png; path = image/bomb_green.png; sourceTree = SOURCE_ROOT; };
 		E9618E941BFF09210059229E /* bomb_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bomb_red.png; path = image/bomb_red.png; sourceTree = SOURCE_ROOT; };
 		E9C4D1111C0EC1EB008D2A5C /* shopetan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = shopetan.jpg; path = image/shopetan.jpg; sourceTree = SOURCE_ROOT; };
-		E9C4D1131C0EC359008D2A5C /* TwitterUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterUserTableViewCell.swift; sourceTree = "<group>"; };
+		E9C4D1131C0EC359008D2A5C /* HostUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostUserTableViewCell.swift; sourceTree = "<group>"; };
 		E9E06DED1BE9BDB7006E99D3 /* TrembleWristband.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrembleWristband.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E06DF11BE9BDB7006E99D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1946D2A31C211BB800C0C4AB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E90386CC1BF5CF9C00AE4BD3 /* LoginViewController.swift */,
+				E90386D01BF5D19400AE4BD3 /* GameStartViewController.swift */,
+				E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */,
+				E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		1946D2A41C211BBF00C0C4AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1970A9341C17D74800154A9E /* User.swift */,
+				1946D2AA1C21265000C0C4AB /* Constans.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1946D2A51C211BC400C0C4AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9E06DF61BE9BDB7006E99D3 /* Main.storyboard */,
+				E9C4D1131C0EC359008D2A5C /* HostUserTableViewCell.swift */,
+				1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		8E9EECCE8739310DBED72B22 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,13 +182,9 @@
 				19AFA3C81C1ABC720005235F /* TrembleWristband-Bridging-header.h */,
 				E9F189591BFC456600E36F27 /* image */,
 				E9E06DF21BE9BDB7006E99D3 /* AppDelegate.swift */,
-				E90386CC1BF5CF9C00AE4BD3 /* LoginViewController.swift */,
-				E90386D01BF5D19400AE4BD3 /* GameStartViewController.swift */,
-				E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */,
-				E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */,
-				1970A9341C17D74800154A9E /* User.swift */,
-				E9C4D1131C0EC359008D2A5C /* TwitterUserTableViewCell.swift */,
-				E9E06DF61BE9BDB7006E99D3 /* Main.storyboard */,
+				1946D2A31C211BB800C0C4AB /* ViewController */,
+				1946D2A41C211BBF00C0C4AB /* Model */,
+				1946D2A51C211BC400C0C4AB /* View */,
 				E9E06DF91BE9BDB7006E99D3 /* Images.xcassets */,
 				E9E06DFB1BE9BDB7006E99D3 /* LaunchScreen.xib */,
 				E9E06DF01BE9BDB7006E99D3 /* Supporting Files */,
@@ -375,7 +405,9 @@
 			files = (
 				E90386CD1BF5CF9C00AE4BD3 /* LoginViewController.swift in Sources */,
 				E90386D71BF5D56D00AE4BD3 /* CreateRoomViewController.swift in Sources */,
-				E9C4D1141C0EC359008D2A5C /* TwitterUserTableViewCell.swift in Sources */,
+				1946D2AB1C21265000C0C4AB /* Constans.swift in Sources */,
+				1946D2A71C211EF900C0C4AB /* MemberUserTableViewCell.swift in Sources */,
+				E9C4D1141C0EC359008D2A5C /* HostUserTableViewCell.swift in Sources */,
 				1970A9351C17D74800154A9E /* User.swift in Sources */,
 				E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */,
 				E90386D51BF5D55500AE4BD3 /* JointRoomViewController.swift in Sources */,
