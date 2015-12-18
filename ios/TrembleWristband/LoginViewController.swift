@@ -8,13 +8,13 @@
 
 import UIKit
 import TwitterKit
-import CoreLocation
 
 class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createLoginButton()
+        GPAManager.sharedInstance.start()
     }
     
     func createLoginButton() {
@@ -44,7 +44,10 @@ class LoginViewController: UIViewController {
         
         let userDefault = NSUserDefaults.standardUserDefaults()
         userDefault.setValue(session.userID, forKey: "userId")
+        
         postUser(session.userID)
+        print(GPAManager.sharedInstance.coordinate().latitude)
+        print(GPAManager.sharedInstance.coordinate().longitude)
     }
 
     func postUser(twitterId:String) {
@@ -72,6 +75,5 @@ class LoginViewController: UIViewController {
         }
         task.resume()
     }
-    
     
 }
