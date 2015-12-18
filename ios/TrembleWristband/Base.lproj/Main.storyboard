@@ -255,7 +255,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="部屋探し中・・・" id="Qr0-ot-XXc">
+                                    <navigationItem title="Find AsoBeat" id="Qr0-ot-XXc">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bQX-fa-JNT">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -276,7 +276,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="HostUserCell" id="6fZ-xl-vcN" customClass="HostUserTableViewCell" customModule="TrembleWristband" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HostUserCell" id="6fZ-xl-vcN" customClass="HostUserTableViewCell" customModule="TrembleWristband" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6fZ-xl-vcN" id="aiT-P1-wdZ">
@@ -351,11 +351,12 @@
                     <connections>
                         <outlet property="progressCoverView" destination="Nex-o4-QHM" id="RyP-ky-1Um"/>
                         <outlet property="tableView" destination="DLV-f4-UKV" id="nsQ-Am-Njq"/>
+                        <segue destination="K3m-5g-bQJ" kind="modal" identifier="joinToMeasure" id="Bz6-aM-UGD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ma-QR-nnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="853"/>
+            <point key="canvasLocation" x="1020" y="562"/>
         </scene>
         <!--Create Room View Controller-->
         <scene sceneID="ZEF-sg-Ihv">
@@ -376,7 +377,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="プレイルーム作成" id="svV-aC-dlK">
+                                    <navigationItem title="Create AsoBeat" id="svV-aC-dlK">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qgy-d3-Tsd">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
@@ -386,7 +387,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="Done" id="JfK-Sx-qhW">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <action selector="didPushedDoneButton:" destination="5e8-L6-Jfd" id="8DP-2H-He1"/>
+                                                <action selector="didPushedDoneButton:" destination="5e8-L6-Jfd" id="W3x-nb-VIH"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -484,11 +485,30 @@
                     <navigationItem key="navigationItem" id="iNk-qZ-cNP"/>
                     <connections>
                         <outlet property="tableView" destination="cAu-Ip-8YF" id="jau-nj-zTy"/>
+                        <segue destination="K3m-5g-bQJ" kind="modal" identifier="createToMeasure" id="v3J-67-tgo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BhF-P7-i1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959" y="230"/>
+            <point key="canvasLocation" x="1020" y="-108"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Z6c-Sv-jrK">
+            <objects>
+                <viewController id="K3m-5g-bQJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0dt-yz-uTi"/>
+                        <viewControllerLayoutGuide type="bottom" id="vZc-DA-sVY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wo0-EV-ZMT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VZA-qT-nRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1394" y="166"/>
         </scene>
     </scenes>
     <resources>
@@ -497,4 +517,7 @@
         <image name="bomb_red.png" width="504" height="505"/>
         <image name="icon.png" width="968" height="411"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bz6-aM-UGD"/>
+    </inferredMetricsTieBreakers>
 </document>

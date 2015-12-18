@@ -11,6 +11,7 @@
 		1946D2AB1C21265000C0C4AB /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2AA1C21265000C0C4AB /* Constans.swift */; };
 		1970A9351C17D74800154A9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A9341C17D74800154A9E /* User.swift */; };
 		19A5D0011C23EF6D0032B349 /* GPAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D0001C23EF6D0032B349 /* GPAManager.swift */; };
+		19A5D0031C23FF880032B349 /* MeasureHeartBeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */; };
 		363871F10E9A58CEA3018DC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D33A4854AFA95112166BA0 /* libPods.a */; };
 		E90386C71BF5CEFB00AE4BD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */; };
 		E90386C81BF5CEFB00AE4BD3 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C41BF5CEFB00AE4BD3 /* TwitterKit.framework */; };
@@ -48,6 +49,7 @@
 		1946D2AA1C21265000C0C4AB /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		1970A9341C17D74800154A9E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		19A5D0001C23EF6D0032B349 /* GPAManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPAManager.swift; sourceTree = "<group>"; };
+		19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureHeartBeatViewController.swift; sourceTree = "<group>"; };
 		19AFA3C81C1ABC720005235F /* TrembleWristband-Bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrembleWristband-Bridging-header.h"; sourceTree = SOURCE_ROOT; };
 		85D33A4854AFA95112166BA0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E66436F7D49CF9D9A8F875 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				E90386D01BF5D19400AE4BD3 /* GameStartViewController.swift */,
 				E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */,
 				E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */,
+				19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				E9C4D1141C0EC359008D2A5C /* HostUserTableViewCell.swift in Sources */,
 				1970A9351C17D74800154A9E /* User.swift in Sources */,
 				E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */,
+				19A5D0031C23FF880032B349 /* MeasureHeartBeatViewController.swift in Sources */,
 				E90386D51BF5D55500AE4BD3 /* JointRoomViewController.swift in Sources */,
 				19A5D0011C23EF6D0032B349 /* GPAManager.swift in Sources */,
 				E90386D11BF5D19400AE4BD3 /* GameStartViewController.swift in Sources */,

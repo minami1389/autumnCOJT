@@ -127,7 +127,10 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
                 print("creatRoomError:\(err)")
                 return
             }
-             print("creatRoom:\(res)")
+            
+            let value = "createRoom".dataUsingEncoding(NSUTF8StringEncoding)!
+            self.peripheralManager.updateValue(value, forCharacteristic: self.notifyCharacteristic, onSubscribedCentrals: nil)
+            self.performSegueWithIdentifier("createToMeasure", sender: self)
         }
         task.resume()
     }

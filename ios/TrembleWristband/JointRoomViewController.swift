@@ -27,6 +27,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     
     var users = [User]()
     var userId = ""
+    var accepted = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,9 +123,17 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        let acceptedUserId = String(data: characteristic.value!, encoding: NSUTF8StringEncoding)
-        if acceptedUserId == userId {
-            SVProgressHUD.showSuccessWithStatus("リクエストが承認されました")
+        let characteristicValue = String(data: characteristic.value!, encoding: NSUTF8StringEncoding)
+        print(characteristicValue)
+        if characteristicValue == userId {
+            accepted = true
+            SVProgressHUD.showWithStatus("リクエストが承認されました\n他のメンバーを待っています")
+        } else if characteristicValue == "createRoom" {
+            if accepted {
+                self.performSegueWithIdentifier("joinToMeasure", sender: self)
+            } else {
+                SVProgressHUD.showErrorWithStatus("リクエストが承認されませんでした")
+            }
         }
     }
     
