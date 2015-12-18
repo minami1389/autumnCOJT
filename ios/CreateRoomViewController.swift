@@ -63,7 +63,7 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
             let twitterId = String(data: request.value!, encoding: NSUTF8StringEncoding)
             let user = User(id: twitterId!)
             users.append(user)
-            user.fetchHostUserData({
+            user.fetchHostUserTwitterData({
                 self.tableView.reloadData()
             })
         }

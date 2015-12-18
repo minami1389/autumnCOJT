@@ -59,7 +59,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
                 if  user.containsUsers(users) == false {
                     users.append(user)
                     asobiPeripherals.append(peripheral)
-                    user.fetchHostUserData({
+                    user.fetchHostUserTwitterData({
                         self.tableView.reloadData()
                     })
                 }

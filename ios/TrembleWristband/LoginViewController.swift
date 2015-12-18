@@ -10,22 +10,11 @@ import UIKit
 import TwitterKit
 import CoreLocation
 
-class LoginViewController: UIViewController, CLLocationManagerDelegate {
-
-    var locationManager:CLLocationManager!
-    
-    var latitude = 0.0
-    var longitude = 0.0
+class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createLoginButton()
-        
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
-        locationManager.startUpdatingLocation()
     }
     
     func createLoginButton() {
@@ -55,27 +44,34 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         
         let userDefault = NSUserDefaults.standardUserDefaults()
         userDefault.setValue(session.userID, forKey: "userId")
-        userDefault.setValue(session.userName, forKey: "userName")
-        print(session.userID)
+        postUser(session.userID)
     }
 
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
-            locationManager.requestAlwaysAuthorization()
+    func postUser(twitterId:String) {
+        let params:[String: AnyObject] = [
+            "twitter_id": twitterId,
+            "longitude": 0,
+            "latitude": 0,
+            "is_abnormality": "false"
+        ]
+        
+        let url = "http://49.212.151.224:3000/api/users"
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        do {
+            try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: .PrettyPrinted)
+        } catch{}
+        let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+            if err != nil {
+                print("postUserError:\(err)")
+                return
+            }
         }
+        task.resume()
     }
-
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        latitude =  (manager.location?.coordinate.latitude)!
-        longitude = (manager.location?.coordinate.longitude)!
-        print(latitude)
-        print(longitude)
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("error：\(error)")
-    }
-    
     
     
 }

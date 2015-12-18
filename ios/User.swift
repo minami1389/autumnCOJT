@@ -9,12 +9,16 @@
 import UIKit
 import TwitterKit
 
-class User: NSObject {
+class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
 
     var id = ""
     var name = ""
     var screenName = ""
-    var image:UIImage!
+    var image:UIImage?
+    var longitude = 0
+    var latitude = 0
+    var is_abnormality = false
+
     
     init(id: String) {
         super.init()
@@ -30,7 +34,7 @@ class User: NSObject {
         return false
     }
     
-    func fetchHostUserData(completion:()->Void) {
+    func fetchHostUserTwitterData(completion:()->Void) {
         let client = Twitter.sharedInstance().APIClient
         client.loadUserWithID(self.id, completion: { (obj, error) in
             if error != nil {
