@@ -17,7 +17,6 @@ class PlayGameViewController: UIViewController {
         
         let userDefault = NSUserDefaults.standardUserDefaults()
         let roomNumber = userDefault.objectForKey("roomNumber") as! String
-        roomNumberLabel.text = roomNumber
     }
 
     override func didReceiveMemoryWarning() {
