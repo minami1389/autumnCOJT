@@ -124,12 +124,14 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         let characteristicValue = String(data: characteristic.value!, encoding: NSUTF8StringEncoding)
-        print(characteristicValue)
         if characteristicValue == userId {
             accepted = true
             SVProgressHUD.showWithStatus("リクエストが承認されました\n他のメンバーを待っています")
-        } else if characteristicValue == "createRoom" {
+        } else if characteristicValue?.hasPrefix("createRoom:") == true {
             if accepted {
+                let roomNumber = characteristicValue?.componentsSeparatedByString(":")[1]
+                let userDefault = NSUserDefaults.standardUserDefaults()
+                userDefault.setObject(roomNumber!, forKey: "roomNumber")
                 self.performSegueWithIdentifier("joinToMeasure", sender: self)
             } else {
                 SVProgressHUD.showErrorWithStatus("リクエストが承認されませんでした")

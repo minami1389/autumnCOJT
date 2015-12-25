@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1911D3691C2D1BF5005DB43E /* PlayGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911D3681C2D1BF5005DB43E /* PlayGameViewController.swift */; };
 		1946D2A71C211EF900C0C4AB /* MemberUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */; };
 		1946D2AB1C21265000C0C4AB /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2AA1C21265000C0C4AB /* Constans.swift */; };
 		1970A9351C17D74800154A9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A9341C17D74800154A9E /* User.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1911D3681C2D1BF5005DB43E /* PlayGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayGameViewController.swift; sourceTree = "<group>"; };
 		1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberUserTableViewCell.swift; sourceTree = "<group>"; };
 		1946D2AA1C21265000C0C4AB /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		1970A9341C17D74800154A9E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */,
 				E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */,
 				19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */,
+				1911D3681C2D1BF5005DB43E /* PlayGameViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			files = (
 				E90386CD1BF5CF9C00AE4BD3 /* LoginViewController.swift in Sources */,
 				E90386D71BF5D56D00AE4BD3 /* CreateRoomViewController.swift in Sources */,
+				1911D3691C2D1BF5005DB43E /* PlayGameViewController.swift in Sources */,
 				1946D2AB1C21265000C0C4AB /* Constans.swift in Sources */,
 				1946D2A71C211EF900C0C4AB /* MemberUserTableViewCell.swift in Sources */,
 				E9C4D1141C0EC359008D2A5C /* HostUserTableViewCell.swift in Sources */,

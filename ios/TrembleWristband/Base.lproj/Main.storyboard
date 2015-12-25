@@ -1,55 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="f41-0Z-yw5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="673-By-p9e">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jo6-Vq-bP8">
-                                <rect key="frame" x="144" y="269" width="33" height="30"/>
-                                <state key="normal" title="scan">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pushButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="F22-LP-tDA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hf-1h-6Bz">
-                                <rect key="frame" x="141" y="341" width="38" height="30"/>
-                                <state key="normal" title="notify">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="pushNotify:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FGh-VN-cbz"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Jo6-Vq-bP8" secondAttribute="centerX" id="6V1-2c-GtX"/>
-                            <constraint firstItem="5hf-1h-6Bz" firstAttribute="top" secondItem="Jo6-Vq-bP8" secondAttribute="bottom" constant="42" id="SqI-VS-pEv"/>
-                            <constraint firstAttribute="centerX" secondItem="5hf-1h-6Bz" secondAttribute="centerX" id="lsM-Cs-J4R"/>
-                            <constraint firstAttribute="centerY" secondItem="Jo6-Vq-bP8" secondAttribute="centerY" id="uaa-Te-ksQ"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-439" y="224"/>
-        </scene>
         <!--Login View Controller-->
         <scene sceneID="nJm-09-Bow">
             <objects>
@@ -492,10 +448,10 @@
             </objects>
             <point key="canvasLocation" x="1020" y="-108"/>
         </scene>
-        <!--View Controller-->
+        <!--Measure Heart Beat View Controller-->
         <scene sceneID="Z6c-Sv-jrK">
             <objects>
-                <viewController id="K3m-5g-bQJ" sceneMemberID="viewController">
+                <viewController id="K3m-5g-bQJ" customClass="MeasureHeartBeatViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0dt-yz-uTi"/>
                         <viewControllerLayoutGuide type="bottom" id="vZc-DA-sVY"/>
@@ -503,12 +459,57 @@
                     <view key="view" contentMode="scaleToFill" id="wo0-EV-ZMT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bl-Gb-dJx">
+                                <rect key="frame" x="143" y="269" width="34" height="30"/>
+                                <state key="normal" title=" 計測"/>
+                                <connections>
+                                    <action selector="didPushMeasureButton:" destination="K3m-5g-bQJ" eventType="touchUpInside" id="ma5-l4-kJc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="jVq-7N-zVc" kind="modal" identifier="measureToPlay" id="Snt-9h-2KW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZA-qT-nRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1394" y="166"/>
+        </scene>
+        <!--Play Game View Controller-->
+        <scene sceneID="88L-5k-ags">
+            <objects>
+                <viewController id="jVq-7N-zVc" customClass="PlayGameViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mle-9s-U9p"/>
+                        <viewControllerLayoutGuide type="bottom" id="eZc-ZC-Xwy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nHf-zR-DhG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="roomNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5r-Ls-Q2f">
+                                <rect key="frame" x="109.5" y="274" width="101.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e5r-Ls-Q2f" firstAttribute="centerX" secondItem="nHf-zR-DhG" secondAttribute="centerX" id="7Oa-c4-cI1"/>
+                            <constraint firstItem="e5r-Ls-Q2f" firstAttribute="centerY" secondItem="nHf-zR-DhG" secondAttribute="centerY" id="CZS-e0-Yfy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="roomNumberLabel" destination="e5r-Ls-Q2f" id="s7k-Sz-PHU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CRZ-Cj-Hks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757" y="166"/>
         </scene>
     </scenes>
     <resources>

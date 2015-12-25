@@ -109,7 +109,6 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
         for id in userIds {
             url += "+\(id)"
         }
-        print(url)
         
         let params: [String:AnyObject] = [
             "host_user": myUserId
@@ -118,6 +117,7 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {
             try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: .PrettyPrinted)
@@ -128,11 +128,39 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
                 return
             }
             
-            let value = "createRoom".dataUsingEncoding(NSUTF8StringEncoding)!
+            self.getRoomNumber()
+        }
+        task.resume()
+    }
+    
+    func getRoomNumber() {
+        let url = "http://49.212.151.224:3000/api/rooms?getRoomFromHostUserID=\(myUserId)"
+        
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        request.HTTPMethod = "GET"
+        
+        let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+            if err != nil {
+                print("getRoomError:\(err)")
+                return
+            }
+            
+            var roomNumber = ""
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
+                let room = json.firstObject! as! NSDictionary
+                roomNumber = room["_id"] as! String
+                let userDefault = NSUserDefaults.standardUserDefaults()
+                userDefault.setObject(roomNumber, forKey: "roomNumber")
+            } catch {}
+        
+            let value = "createRoom:\(roomNumber)".dataUsingEncoding(NSUTF8StringEncoding)!
             self.peripheralManager.updateValue(value, forCharacteristic: self.notifyCharacteristic, onSubscribedCentrals: nil)
             self.performSegueWithIdentifier("createToMeasure", sender: self)
         }
         task.resume()
+
     }
     
     
