@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		1911D3691C2D1BF5005DB43E /* PlayGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911D3681C2D1BF5005DB43E /* PlayGameViewController.swift */; };
 		1911D36B1C2D32EC005DB43E /* heart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1911D36A1C2D32EC005DB43E /* heart.jpg */; };
+		19446D9F1C2D3C49006420AE /* PlayUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19446D9E1C2D3C49006420AE /* PlayUserTableViewCell.swift */; };
 		1946D2A71C211EF900C0C4AB /* MemberUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */; };
 		1946D2AB1C21265000C0C4AB /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2AA1C21265000C0C4AB /* Constans.swift */; };
 		1970A9351C17D74800154A9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A9341C17D74800154A9E /* User.swift */; };
-		19A5D0011C23EF6D0032B349 /* GPAManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D0001C23EF6D0032B349 /* GPAManager.swift */; };
+		19A5D0011C23EF6D0032B349 /* GPSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D0001C23EF6D0032B349 /* GPSManager.swift */; };
 		19A5D0031C23FF880032B349 /* MeasureHeartBeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */; };
 		363871F10E9A58CEA3018DC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D33A4854AFA95112166BA0 /* libPods.a */; };
 		E90386C71BF5CEFB00AE4BD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */; };
@@ -49,10 +50,11 @@
 /* Begin PBXFileReference section */
 		1911D3681C2D1BF5005DB43E /* PlayGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayGameViewController.swift; sourceTree = "<group>"; };
 		1911D36A1C2D32EC005DB43E /* heart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = heart.jpg; path = image/heart.jpg; sourceTree = SOURCE_ROOT; };
+		19446D9E1C2D3C49006420AE /* PlayUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayUserTableViewCell.swift; sourceTree = "<group>"; };
 		1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberUserTableViewCell.swift; sourceTree = "<group>"; };
 		1946D2AA1C21265000C0C4AB /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		1970A9341C17D74800154A9E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
-		19A5D0001C23EF6D0032B349 /* GPAManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPAManager.swift; sourceTree = "<group>"; };
+		19A5D0001C23EF6D0032B349 /* GPSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSManager.swift; sourceTree = "<group>"; };
 		19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureHeartBeatViewController.swift; sourceTree = "<group>"; };
 		19AFA3C81C1ABC720005235F /* TrembleWristband-Bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrembleWristband-Bridging-header.h"; sourceTree = SOURCE_ROOT; };
 		85D33A4854AFA95112166BA0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +125,7 @@
 			children = (
 				1970A9341C17D74800154A9E /* User.swift */,
 				1946D2AA1C21265000C0C4AB /* Constans.swift */,
-				19A5D0001C23EF6D0032B349 /* GPAManager.swift */,
+				19A5D0001C23EF6D0032B349 /* GPSManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -134,6 +136,7 @@
 				E9E06DF61BE9BDB7006E99D3 /* Main.storyboard */,
 				E9C4D1131C0EC359008D2A5C /* HostUserTableViewCell.swift */,
 				1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */,
+				19446D9E1C2D3C49006420AE /* PlayUserTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -423,10 +426,11 @@
 				1946D2A71C211EF900C0C4AB /* MemberUserTableViewCell.swift in Sources */,
 				E9C4D1141C0EC359008D2A5C /* HostUserTableViewCell.swift in Sources */,
 				1970A9351C17D74800154A9E /* User.swift in Sources */,
+				19446D9F1C2D3C49006420AE /* PlayUserTableViewCell.swift in Sources */,
 				E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */,
 				19A5D0031C23FF880032B349 /* MeasureHeartBeatViewController.swift in Sources */,
 				E90386D51BF5D55500AE4BD3 /* JointRoomViewController.swift in Sources */,
-				19A5D0011C23EF6D0032B349 /* GPAManager.swift in Sources */,
+				19A5D0011C23EF6D0032B349 /* GPSManager.swift in Sources */,
 				E90386D11BF5D19400AE4BD3 /* GameStartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

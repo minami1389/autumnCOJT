@@ -7,32 +7,108 @@
 //
 
 import UIKit
+import CoreLocation
+import GoogleMaps
 
-class PlayGameViewController: UIViewController {
+class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var roomNumberLabel: UILabel!
+    @IBOutlet weak var mapView: GMSMapView!
+    var locationManager: CLLocationManager!
+    
+    var roomNumber = ""
+    var userId = ""
+    var timer:NSTimer!
+    var didUpdate = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
+        mapView.myLocationEnabled = true
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.distanceFilter = 300
+        locationManager.startUpdatingLocation()
+        
         let userDefault = NSUserDefaults.standardUserDefaults()
-        let roomNumber = userDefault.objectForKey("roomNumber") as! String
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        roomNumber = userDefault.objectForKey("roomNumber") as! String
+        userId = userDefault.objectForKey("userId") as! String
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "onUpdate:", userInfo: nil, repeats: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        let coordinate = CLLocationCoordinate2D(latitude:newLocation.coordinate.latitude,longitude:newLocation.coordinate.longitude)
+        let nowPosition = GMSCameraPosition.cameraWithLatitude(coordinate.latitude,longitude:coordinate.longitude,zoom:15)
+        print(coordinate)
+        mapView.camera = nowPosition
     }
-    */
+    
+    func onUpdate(timer:NSTimer) {
+        
+    }
+    
+    /*func updateUserInfo() {
+        let url = "http://49.212.151.224:3000/api/users/:\(userId)"
+        
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        request.HTTPMethod = "GET"
+        
+        let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+            if err != nil {
+                print("getRoomError:\(err)")
+                return
+            }
+            
+            var roomNumber = ""
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
+                let room = json.firstObject! as! NSDictionary
+                roomNumber = room["_id"] as! String
+                let userDefault = NSUserDefaults.standardUserDefaults()
+                userDefault.setObject(roomNumber, forKey: "roomNumber")
+            } catch {}
+            
+            let value = "createRoom:\(roomNumber)".dataUsingEncoding(NSUTF8StringEncoding)!
+            self.peripheralManager.updateValue(value, forCharacteristic: self.notifyCharacteristic, onSubscribedCentrals: nil)
+            self.performSegueWithIdentifier("createToMeasure", sender: self)
+        }
+        task.resume()
 
+    }
+    
+    func getRoomUsers() {
+        let url = "http://49.212.151.224:3000/api/users/:\(roomNumber)"
+    
+    let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+    request.HTTPMethod = "GET"
+    
+    let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+        if err != nil {
+            print("getRoomError:\(err)")
+            return
+        }
+        
+        var roomNumber = ""
+        do {
+            let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
+            let room = json.firstObject! as! NSDictionary
+            roomNumber = room["_id"] as! String
+            let userDefault = NSUserDefaults.standardUserDefaults()
+            userDefault.setObject(roomNumber, forKey: "roomNumber")
+        } catch {}
+        
+        let value = "createRoom:\(roomNumber)".dataUsingEncoding(NSUTF8StringEncoding)!
+        self.peripheralManager.updateValue(value, forCharacteristic: self.notifyCharacteristic, onSubscribedCentrals: nil)
+        self.performSegueWithIdentifier("createToMeasure", sender: self)
+    }
+    task.resume()
+    }*/
 }

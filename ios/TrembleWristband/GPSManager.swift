@@ -1,5 +1,5 @@
 //
-//  GPAManager.swift
+//  GPSManager.swift
 //  TrembleWristband
 //
 //  Created by Baba Minami on 12/18/15.
@@ -9,16 +9,16 @@
 import UIKit
 import CoreLocation
 
-class GPAManager: NSObject, CLLocationManagerDelegate{
+class GPSManager: NSObject, CLLocationManagerDelegate{
 
     private var locationManager:CLLocationManager!
     
     private var latitude = 0.0
     private var longitude = 0.0
     
-    class var sharedInstance: GPAManager {
+    class var sharedInstance: GPSManager {
         struct Singleton {
-            static var instance = GPAManager()
+            static var instance = GPSManager()
         }
         return Singleton.instance
     }
