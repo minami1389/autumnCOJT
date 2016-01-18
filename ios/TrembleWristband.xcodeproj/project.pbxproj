@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190FF8A51C4CE3C1004E63A1 /* loginBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 190FF8A41C4CE3C1004E63A1 /* loginBg.png */; };
 		1911D3691C2D1BF5005DB43E /* PlayGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911D3681C2D1BF5005DB43E /* PlayGameViewController.swift */; };
 		1911D36B1C2D32EC005DB43E /* heart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1911D36A1C2D32EC005DB43E /* heart.jpg */; };
+		1914CC261C4613EE0049C224 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1914CC211C4613EE0049C224 /* logo.png */; };
+		1914CC271C4613EE0049C224 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1914CC221C4613EE0049C224 /* tutorial1.png */; };
+		1914CC281C4613EE0049C224 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1914CC231C4613EE0049C224 /* tutorial2.png */; };
+		1914CC291C4613EE0049C224 /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1914CC241C4613EE0049C224 /* tutorial3.png */; };
+		1914CC2A1C4613EE0049C224 /* tutorial4.png in Resources */ = {isa = PBXBuildFile; fileRef = 1914CC251C4613EE0049C224 /* tutorial4.png */; };
 		19446D9F1C2D3C49006420AE /* PlayUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19446D9E1C2D3C49006420AE /* PlayUserTableViewCell.swift */; };
 		1946D2A71C211EF900C0C4AB /* MemberUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */; };
 		1946D2AB1C21265000C0C4AB /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2AA1C21265000C0C4AB /* Constans.swift */; };
@@ -48,8 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190FF8A41C4CE3C1004E63A1 /* loginBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loginBg.png; path = image/loginBg.png; sourceTree = SOURCE_ROOT; };
 		1911D3681C2D1BF5005DB43E /* PlayGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayGameViewController.swift; sourceTree = "<group>"; };
 		1911D36A1C2D32EC005DB43E /* heart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = heart.jpg; path = image/heart.jpg; sourceTree = SOURCE_ROOT; };
+		1914CC211C4613EE0049C224 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = image/logo.png; sourceTree = SOURCE_ROOT; };
+		1914CC221C4613EE0049C224 /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorial1.png; path = image/tutorial1.png; sourceTree = SOURCE_ROOT; };
+		1914CC231C4613EE0049C224 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorial2.png; path = image/tutorial2.png; sourceTree = SOURCE_ROOT; };
+		1914CC241C4613EE0049C224 /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorial3.png; path = image/tutorial3.png; sourceTree = SOURCE_ROOT; };
+		1914CC251C4613EE0049C224 /* tutorial4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorial4.png; path = image/tutorial4.png; sourceTree = SOURCE_ROOT; };
 		19446D9E1C2D3C49006420AE /* PlayUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayUserTableViewCell.swift; sourceTree = "<group>"; };
 		1946D2A61C211EF900C0C4AB /* MemberUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberUserTableViewCell.swift; sourceTree = "<group>"; };
 		1946D2AA1C21265000C0C4AB /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
@@ -234,6 +246,12 @@
 		E9F189591BFC456600E36F27 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				190FF8A41C4CE3C1004E63A1 /* loginBg.png */,
+				1914CC211C4613EE0049C224 /* logo.png */,
+				1914CC221C4613EE0049C224 /* tutorial1.png */,
+				1914CC231C4613EE0049C224 /* tutorial2.png */,
+				1914CC241C4613EE0049C224 /* tutorial3.png */,
+				1914CC251C4613EE0049C224 /* tutorial4.png */,
 				1911D36A1C2D32EC005DB43E /* heart.jpg */,
 				E9C4D1111C0EC1EB008D2A5C /* shopetan.jpg */,
 				E9618E921BFF09210059229E /* bomb_blue.png */,
@@ -331,14 +349,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190FF8A51C4CE3C1004E63A1 /* loginBg.png in Resources */,
+				1914CC2A1C4613EE0049C224 /* tutorial4.png in Resources */,
 				E90386C91BF5CEFB00AE4BD3 /* TwitterKitResources.bundle in Resources */,
 				E9618E971BFF09210059229E /* bomb_red.png in Resources */,
+				1914CC261C4613EE0049C224 /* logo.png in Resources */,
+				1914CC291C4613EE0049C224 /* tutorial3.png in Resources */,
 				1911D36B1C2D32EC005DB43E /* heart.jpg in Resources */,
 				E9F189581BFC456000E36F27 /* icon.png in Resources */,
 				E9E06DF81BE9BDB7006E99D3 /* Main.storyboard in Resources */,
+				1914CC281C4613EE0049C224 /* tutorial2.png in Resources */,
 				E9618E951BFF09210059229E /* bomb_blue.png in Resources */,
 				E9E06DFD1BE9BDB7006E99D3 /* LaunchScreen.xib in Resources */,
 				E9618E961BFF09210059229E /* bomb_green.png in Resources */,
+				1914CC271C4613EE0049C224 /* tutorial1.png in Resources */,
 				E9C4D1121C0EC1EB008D2A5C /* shopetan.jpg in Resources */,
 				E9E06DFA1BE9BDB7006E99D3 /* Images.xcassets in Resources */,
 			);

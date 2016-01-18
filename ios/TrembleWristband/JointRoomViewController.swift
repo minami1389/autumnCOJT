@@ -56,7 +56,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
         if let localName = advertisementData["kCBAdvDataLocalName"] as? NSString {
             if localName.hasPrefix("asobeat:") {
                 let twitterId = localName.substringFromIndex(8)
-                let user = User(id: twitterId)
+                let user = User(twitterId: twitterId)
                 if  user.containsUsers(users) == false {
                     users.append(user)
                     asobiPeripherals.append(peripheral)

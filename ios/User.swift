@@ -12,6 +12,7 @@ import TwitterKit
 class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
 
     var id = ""
+    var twitterId = ""
     var name = ""
     var screenName = ""
     var image:UIImage?
@@ -20,15 +21,15 @@ class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
     var is_abnormality = false
 
     
-    init(id: String) {
+    init(twitterId: String) {
         super.init()
-        self.id = id
+        self.twitterId = twitterId
     }
     
     func containsUsers(users:NSArray) -> Bool {
         for obj in users {
             if let user = obj as? User {
-                if user.id == self.id { return true }
+                if user.twitterId == self.twitterId { return true }
             }
         }
         return false
@@ -36,7 +37,7 @@ class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
     
     func fetchHostUserTwitterData(completion:()->Void) {
         let client = Twitter.sharedInstance().APIClient
-        client.loadUserWithID(self.id, completion: { (obj, error) in
+        client.loadUserWithID(self.twitterId, completion: { (obj, error) in
             if error != nil {
                 print("error:\(error)")
             } else {

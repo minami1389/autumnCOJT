@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createLoginButton()
-        GPAManager.sharedInstance.start()
+        GPSManager.sharedInstance.start()
     }
     
     func createLoginButton() {
@@ -32,8 +32,12 @@ class LoginViewController: UIViewController {
     }
     
     func didLoggedIn(session:TWTRSession) {
-        let alert = UIAlertController(title: "Logged In",
-                                    message: "User \(session.userName) has logged in",
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.setValue(session.userID, forKey: "twitterId")
+        postUser(session.userID)
+        
+        let alert = UIAlertController(title: "ログイン",
+                                    message: "\(session.userName)でログインしました",
                              preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK",
                                       style: UIAlertActionStyle.Default,
@@ -41,13 +45,6 @@ class LoginViewController: UIViewController {
                                                 self.performSegueWithIdentifier("toGameStartVC", sender: self)
                                     }))
         self.presentViewController(alert, animated: true, completion: nil)
-        
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        userDefault.setValue(session.userID, forKey: "userId")
-        
-        postUser(session.userID)
-        print(GPAManager.sharedInstance.coordinate().latitude)
-        print(GPAManager.sharedInstance.coordinate().longitude)
     }
 
     func postUser(twitterId:String) {
@@ -72,6 +69,13 @@ class LoginViewController: UIViewController {
                 print("postUserError:\(err)")
                 return
             }
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+                if let userInfo = json["op"] as? NSDictionary {
+                    let userDefault = NSUserDefaults.standardUserDefaults()
+                    userDefault.setValue(userInfo["_id"], forKey: "userId")
+                }
+            } catch {}
         }
         task.resume()
     }
