@@ -19,7 +19,8 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     var roomNumber = ""
     var userId = ""
     var timer:NSTimer!
-    var didUpdate = false
+    var didUpdate = true
+    var isAbnormality = "false"
 
     
     override func viewDidLoad() {
@@ -50,39 +51,45 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     }
     
     func onUpdate(timer:NSTimer) {
-        
+        if didUpdate {
+            didUpdate = false
+            updateUserInfo()
+        }
     }
     
-    /*func updateUserInfo() {
-        let url = "http://49.212.151.224:3000/api/users/:\(userId)"
+    func updateUserInfo() {
+        let params:[String: AnyObject] = [
+            "twitter_id": userId,
+            "longitude": (locationManager.location?.coordinate.longitude)!,
+            "latitude": (locationManager.location?.coordinate.latitude)!,
+            "is_abnormality": isAbnormality
+        ]
         
+        let url = "http://49.212.151.224:3000/api/users/\(userId)"
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        request.HTTPMethod = "GET"
+        request.HTTPMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        do {
+            try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: .PrettyPrinted)
+        } catch{}
         let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+            self.didUpdate = true
             if err != nil {
-                print("getRoomError:\(err)")
+                print("updateUserInfoError:\(err)")
                 return
             }
             
-            var roomNumber = ""
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
-                let room = json.firstObject! as! NSDictionary
-                roomNumber = room["_id"] as! String
-                let userDefault = NSUserDefaults.standardUserDefaults()
-                userDefault.setObject(roomNumber, forKey: "roomNumber")
+                print(json)
             } catch {}
-            
-            let value = "createRoom:\(roomNumber)".dataUsingEncoding(NSUTF8StringEncoding)!
-            self.peripheralManager.updateValue(value, forCharacteristic: self.notifyCharacteristic, onSubscribedCentrals: nil)
-            self.performSegueWithIdentifier("createToMeasure", sender: self)
         }
         task.resume()
-
     }
     
+    /*
     func getRoomUsers() {
         let url = "http://49.212.151.224:3000/api/users/:\(roomNumber)"
     

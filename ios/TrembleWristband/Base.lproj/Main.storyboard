@@ -20,12 +20,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kfz-5E-8RF">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Kfz-5E-8RF" firstAttribute="top" secondItem="apu-SG-HGb" secondAttribute="bottom" id="MIU-Q2-fn9"/>
+                            <constraint firstItem="Kfz-5E-8RF" firstAttribute="top" secondItem="CSh-yS-K05" secondAttribute="top" id="Rfb-g6-gi2"/>
                             <constraint firstItem="HTU-Bd-uU5" firstAttribute="top" secondItem="Kfz-5E-8RF" secondAttribute="bottom" id="cz1-RW-gs5"/>
                             <constraint firstItem="Kfz-5E-8RF" firstAttribute="leading" secondItem="CSh-yS-K05" secondAttribute="leading" id="mzd-Mj-A78"/>
                             <constraint firstAttribute="trailing" secondItem="Kfz-5E-8RF" secondAttribute="trailing" id="yYz-no-ZAT"/>
@@ -42,7 +42,7 @@
         <!--Game Start View Controller-->
         <scene sceneID="geZ-GS-vva">
             <objects>
-                <viewController id="f41-0Z-yw5" customClass="GameStartViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameStartVC" id="f41-0Z-yw5" customClass="GameStartViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F0m-KG-trD"/>
                         <viewControllerLayoutGuide type="bottom" id="D18-7v-SHK"/>

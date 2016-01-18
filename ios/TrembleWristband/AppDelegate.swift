@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Fabric.with([Twitter.self])
         GMSServices.provideAPIKey(kGoogleMapsAPIKey)
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("userId") != nil {
+            window?.rootViewController = UIStoryboard(name: "Main",bundle:nil).instantiateViewControllerWithIdentifier("GameStartVC") as! GameStartViewController
+        }
         return true
     }
 

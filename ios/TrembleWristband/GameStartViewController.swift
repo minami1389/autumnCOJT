@@ -60,5 +60,6 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
     }
     @IBAction func didPushLogoutButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("userId")
     }
 }
