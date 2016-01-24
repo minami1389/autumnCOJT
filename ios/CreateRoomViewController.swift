@@ -81,7 +81,7 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let value = memberUsers[indexPath.row].id.dataUsingEncoding(NSUTF8StringEncoding)!
+        guard let value = memberUsers[indexPath.row].id?.dataUsingEncoding(NSUTF8StringEncoding) else { return }
         peripheralManager.updateValue(value, forCharacteristic: notifyCharacteristic, onSubscribedCentrals: nil)
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.userInteractionEnabled = false
@@ -97,7 +97,8 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
         for var i = 0; i < memberUsers.count; i++ {
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0))
             if cell?.selected == true {
-                acceptedUserIds.append(memberUsers[i].id)
+                guard let id = memberUsers[i].id else { return }
+                acceptedUserIds.append(id)
             }
         }
         createRoom(acceptedUserIds)

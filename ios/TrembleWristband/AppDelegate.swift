@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if NSUserDefaults.standardUserDefaults().objectForKey("userId") != nil {
             window?.rootViewController = UIStoryboard(name: "Main",bundle:nil).instantiateViewControllerWithIdentifier("GameStartVC") as! GameStartViewController
         }
+        
+        GPSManager.sharedInstance.start()
+        
         return true
     }
 

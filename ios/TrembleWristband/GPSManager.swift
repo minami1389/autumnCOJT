@@ -11,40 +11,31 @@ import CoreLocation
 
 class GPSManager: NSObject, CLLocationManagerDelegate{
 
-    private var locationManager:CLLocationManager!
+    static let sharedInstance = GPSManager()
     
-    private var latitude = 0.0
-    private var longitude = 0.0
-    
-    class var sharedInstance: GPSManager {
-        struct Singleton {
-            static var instance = GPSManager()
-        }
-        return Singleton.instance
-    }
-    
+    private var locationManager:CLLocationManager?
+   
     func start() {
         locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
-        locationManager.startUpdatingLocation()
+        locationManager?.delegate = self
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.distanceFilter = 100
+        locationManager?.startUpdatingLocation()
     }
     
     func coordinate() -> CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        if let coordinate = locationManager?.location?.coordinate {
+            return coordinate
+        } else {
+            return CLLocationCoordinate2DMake(0, 0)
+        }
     }
    
 //delegate
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined) {
-            locationManager.requestAlwaysAuthorization()
+            locationManager?.requestAlwaysAuthorization()
         }
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        latitude =  (manager.location?.coordinate.latitude)!
-        longitude = (manager.location?.coordinate.longitude)!
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

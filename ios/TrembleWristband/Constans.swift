@@ -15,3 +15,5 @@ let kNotifyCharacteristicUUID = CBUUID(string: "3F9FC005-8D20-4631-A80F-67CE7B46
 let kHeartBeatCharacteristicUUID = CBUUID(string: "C6931E22-F44F-4635-8575-830DD8C90FFD")
 let kVibrationCharacteristicUUID = CBUUID(string: "638599D4-42C2-45D8-ADBA-D24C7E35A369")
 
+let kUserDefaultTwitterIdKey = "TwitterId"
+let kUserDefaultUserIdKey = "UserId"
