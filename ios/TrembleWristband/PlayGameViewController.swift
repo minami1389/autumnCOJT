@@ -16,11 +16,12 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     @IBOutlet weak var mapView: GMSMapView!
     var locationManager: CLLocationManager?
     
-    var roomNumber: String?
+    var roomID: String?
     var twitterID: String?
     var timer:NSTimer?
     var didUpdate = true
     var isAbnormal = "false"
+    var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         
         let userDefault = NSUserDefaults.standardUserDefaults()
         if let value = userDefault.objectForKey(kUserDefaultRoomIdKey) as? String {
-            roomNumber = value
+            roomID = value
         }
         if let value = userDefault.objectForKey(kUserDefaultUserIdKey) as? String {
             twitterID = value
@@ -56,8 +57,12 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             guard let location = locationManager?.location else { return }
             guard let twitterID = twitterID else { return }
             APIManager.sharedInstance.updateUser(twitterID, location: location, isAbnormal: isAbnormal, completion: { () -> Void in
-                self.didUpdate = true
-                print("update")
+                guard let roomID = self.roomID else { return }
+                APIManager.sharedInstance.fetchUsers(roomID, completion: { (users) -> Void in
+                    self.users = users
+                    self.didUpdate = true
+                    print("update")
+                })
             })
         }
     }

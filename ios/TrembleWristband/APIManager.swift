@@ -116,6 +116,67 @@ class APIManager: NSObject {
         }
         task.resume()
     }
+    
+    func fetchUsers(roomID: String, completion:([User])->Void) {
+        guard let url = NSURL(string: "\(endPoint)/users?getUsersFromRoomId=\(roomID)") else { return }
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "GET"
+        let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+            if err != nil {
+                print("getRoomError:\(err)")
+                return
+            }
+            do {
+                let dispatchGroup = dispatch_group_create()
+                let dispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+                
+                var users = [User]()
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
+                for obj in json {
+                    dispatch_group_async(dispatchGroup, dispatchQueue, { () -> Void in
+                        guard let twitterID = obj["twitter_id"] as? String else { return }
+                        self.fetchUser(twitterID, completion: { (user) -> Void in
+                            users.append(user)
+                        })
+                    })
+                }
+                
+                dispatch_group_notify(dispatchGroup, dispatchQueue, { () -> Void in
+                    completion(users)
+                })
+                
+            } catch {}
+        }
+        task.resume()
+    }
+    
+    
+    private func fetchUser(twitterId: String, completion:(User)->Void) {
+        guard let url = NSURL(string: "\(endPoint)/users/\(twitterId)") else { return }
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "GET"
+        let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+            if err != nil {
+                print("getRoomError:\(err)")
+                return
+            }
+            do {
+                guard let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? NSDictionary else {
+                    print("not dictionary")
+                    return
+                }
+                let user = User(twitterId: twitterId)
+                user.longitude = json["longintude"] as? Float
+                user.latitude = json["latitude"] as? Float
+                let isAbnormality = json["is_abnormality"] as? String
+                user.is_abnormality = (isAbnormality == "true")
+                completion(user)
+                
+            } catch {}
+        }
+        task.resume()
+
+    }
 
     
     
