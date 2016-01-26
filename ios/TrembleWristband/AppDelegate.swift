@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Twitter.self])
         GMSServices.provideAPIKey(kGoogleMapsAPIKey)
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("userId") != nil {
+        if let _ = UserManager.sharedInstance.getMe() {
             window?.rootViewController = UIStoryboard(name: "Main",bundle:nil).instantiateViewControllerWithIdentifier("GameStartVC") as! GameStartViewController
         }
         

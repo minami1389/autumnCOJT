@@ -12,13 +12,13 @@ import TwitterKit
 class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
 
     var id: String?
+    var longitude: Float?
+    var latitude: Float?
+    var is_abnormality: Bool?
     var twitterId: String?
     var name: String?
     var screenName: String?
     var image:UIImage?
-    var longitude: Float?
-    var latitude: Float?
-    var is_abnormality: Bool?
 
     
     init(twitterId: String) {
@@ -35,25 +35,24 @@ class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
         return false
     }
     
-    func fetchHostUserTwitterData(completion:()->Void) {
+    func fetchUserTwitterData(completion:()->Void) {
         let client = Twitter.sharedInstance().APIClient
         guard let twitterId = twitterId else { return }
         client.loadUserWithID(twitterId, completion: { (obj, error) in
             if error != nil {
                 print("error:\(error)")
-            } else {
-                do {
-                    let iconUrl = NSURL(string: (obj?.profileImageURL)!)
-                    let iconData = try NSData(contentsOfURL: iconUrl!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-                    let image = UIImage(data: iconData)
-                    self.name = (obj?.name)!
-                    self.screenName = (obj?.screenName)!
-                    self.image = image
-                    completion()
-                } catch {
-                    print("error")
-                }
+                return
             }
+            do {
+                let iconUrl = NSURL(string: (obj?.profileImageURL)!)
+                let iconData = try NSData(contentsOfURL: iconUrl!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                let image = UIImage(data: iconData)
+                self.name = (obj?.name)!
+                self.screenName = (obj?.screenName)!
+                self.image = image
+                completion()
+            } catch { }
         })
     }
+    
 }

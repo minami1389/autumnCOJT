@@ -13,11 +13,6 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     override func viewDidLayoutSubviews() {
         setupScrollSubViews()
     }
@@ -60,6 +55,8 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
     }
     @IBAction func didPushLogoutButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("userId")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(kUserDefaultUserIdKey)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(kUserDefaultTwitterIdKey)
     }
+    
 }

@@ -10,4 +10,8 @@ import UIKit
 
 class Room: NSObject {
 
+    static let sharedInstance = Room()
+    
+    var id:String?
+    
 }

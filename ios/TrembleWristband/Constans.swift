@@ -17,3 +17,4 @@ let kVibrationCharacteristicUUID = CBUUID(string: "638599D4-42C2-45D8-ADBA-D24C7
 
 let kUserDefaultTwitterIdKey = "TwitterId"
 let kUserDefaultUserIdKey = "UserId"
+let kUserDefaultRoomIdKey = "RoomId"

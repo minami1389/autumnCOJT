@@ -31,9 +31,14 @@ class LoginViewController: UIViewController {
     }
     
     func didLoggedIn(session:TWTRSession) {
-        NSUserDefaults.standardUserDefaults().setValue(session.userID, forKey: kUserDefaultTwitterIdKey)
-        APIManager.sharedInstance.createUser(session.userID)
-        showDidLoginAlert(session.userName)
+        APIManager.sharedInstance.createUser(session.userID) { (user) -> Void in
+            user.fetchUserTwitterData({
+                UserManager.sharedInstance.setMe(user)
+                NSUserDefaults.standardUserDefaults().setObject(user.twitterId, forKey: kUserDefaultTwitterIdKey)
+                NSUserDefaults.standardUserDefaults().setObject(user.twitterId, forKey: kUserDefaultUserIdKey)
+                self.showDidLoginAlert(session.userName)
+            })
+        }
     }
     
     func showDidLoginAlert(userName: String) {

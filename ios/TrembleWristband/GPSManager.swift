@@ -6,7 +6,6 @@
 //  Copyright © 2015 AutumnCOJT. All rights reserved.
 //
 
-import UIKit
 import CoreLocation
 
 class GPSManager: NSObject, CLLocationManagerDelegate{
