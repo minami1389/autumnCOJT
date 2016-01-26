@@ -133,9 +133,8 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             SVProgressHUD.showWithStatus("リクエストが承認されました\n他のメンバーを待っています")
         } else if characteristicValue?.hasPrefix("createRoom:") == true {
             if accepted {
-                let roomNumber = characteristicValue?.componentsSeparatedByString(":")[1]
-                let userDefault = NSUserDefaults.standardUserDefaults()
-                userDefault.setObject(roomNumber!, forKey: "roomNumber")
+                guard let roomNumber = characteristicValue?.componentsSeparatedByString(":")[1] else { return }
+                NSUserDefaults.standardUserDefaults().setObject(roomNumber, forKey: kUserDefaultRoomIdKey)
                 self.performSegueWithIdentifier("joinToMeasure", sender: self)
             } else {
                 SVProgressHUD.showErrorWithStatus("リクエストが承認されませんでした")

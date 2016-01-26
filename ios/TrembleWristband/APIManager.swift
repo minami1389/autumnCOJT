@@ -6,6 +6,8 @@
 //  Copyright © 2016 AutumnCOJT. All rights reserved.
 //
 
+import CoreLocation
+
 class APIManager: NSObject {
 
     static let sharedInstance = APIManager()
@@ -89,4 +91,32 @@ class APIManager: NSObject {
         }
         task.resume()
     }
+    
+    func updateUser(twitterId: String, location:CLLocation, isAbnormal:String, completion:()->Void) {
+        let params:[String: AnyObject] = [
+            "twitter_id": twitterId,
+            "longitude": location.coordinate.longitude,
+            "latitude": location.coordinate.latitude,
+            "is_abnormality": isAbnormal
+        ]
+        
+        guard let url = NSURL(string: "\(endPoint)/users/\(twitterId)") else { return }
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: .PrettyPrinted)
+        } catch{}
+        let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+            if err != nil {
+                print("updateUserInfoError:\(err)")
+                return
+            }
+            completion()
+        }
+        task.resume()
+    }
+
+    
+    
 }
