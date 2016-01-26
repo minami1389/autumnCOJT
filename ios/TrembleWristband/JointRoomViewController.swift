@@ -18,25 +18,23 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var progressCoverView: UIView!
     
-    var centralManager: CBCentralManager!
-    var asobiPeripheral: CBPeripheral!
-    var writeCharacteristic: CBCharacteristic!
-    var notifyCharacteristic: CBCharacteristic!
+    var centralManager: CBCentralManager?
+    var asobiPeripheral: CBPeripheral?
+    var writeCharacteristic: CBCharacteristic?
+    var notifyCharacteristic: CBCharacteristic?
    
     var asobiPeripherals = [CBPeripheral]()
     
     var users = [User]()
-    var userId = ""
     var accepted = false
+    var twitterId:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
         SVProgressHUD.setBackgroundColor(UIColor.blackColor())
         SVProgressHUD.setForegroundColor(UIColor.whiteColor())
-        
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        userId = String(userDefault.valueForKey("userId")!)
+        twitterId = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultTwitterIdKey) as? String
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -49,7 +47,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             return
         }
         print("PoweredOn")
-        centralManager.scanForPeripheralsWithServices(nil, options: nil)
+        centralManager?.scanForPeripheralsWithServices(nil, options: nil)
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
@@ -70,7 +68,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         print("Connected")
-        asobiPeripheral.discoverServices(nil)
+        asobiPeripheral?.discoverServices(nil)
     }
     
     func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
@@ -79,8 +77,11 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         print("Disconnect")
-        centralManager.cancelPeripheralConnection(asobiPeripheral)
-        asobiPeripheral.setNotifyValue(false, forCharacteristic: notifyCharacteristic)
+        if let asobiPeripheral = asobiPeripheral {
+            centralManager?.cancelPeripheralConnection(asobiPeripheral)
+            guard let notifyCharacteristic = notifyCharacteristic else { return }
+            asobiPeripheral.setNotifyValue(false, forCharacteristic: notifyCharacteristic)
+        }
         asobiPeripheral = nil
         writeCharacteristic = nil
         notifyCharacteristic = nil
@@ -106,10 +107,13 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
         for characteristic in characteristics {
             if characteristic.UUID.isEqual(kWriteCharacteristicUUID) {
                 writeCharacteristic = characteristic
-                asobiPeripheral.writeValue(userId.dataUsingEncoding(NSUTF8StringEncoding)!, forCharacteristic: writeCharacteristic, type: CBCharacteristicWriteType.WithResponse)
+                guard let value = twitterId?.dataUsingEncoding(NSUTF8StringEncoding) else { return }
+                guard let writeCharacteristic = writeCharacteristic else { return }
+                asobiPeripheral?.writeValue(value, forCharacteristic: writeCharacteristic, type: .WithResponse)
             } else if characteristic.UUID.isEqual(kNotifyCharacteristicUUID) {
                 notifyCharacteristic = characteristic
-                asobiPeripheral.setNotifyValue(true, forCharacteristic: notifyCharacteristic)
+                guard let notifyCharacteristic = notifyCharacteristic else { return }
+                asobiPeripheral?.setNotifyValue(true, forCharacteristic: notifyCharacteristic)
             }
         }
     }
@@ -119,12 +123,12 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             print("write:\(error)")
             return
         }
-        print("did write")
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        let characteristicValue = String(data: characteristic.value!, encoding: NSUTF8StringEncoding)
-        if characteristicValue == userId {
+        guard let value = characteristic.value else { return }
+        let characteristicValue = String(data: value, encoding: NSUTF8StringEncoding)
+        if characteristicValue == twitterId {
             accepted = true
             SVProgressHUD.showWithStatus("リクエストが承認されました\n他のメンバーを待っています")
         } else if characteristicValue?.hasPrefix("createRoom:") == true {
@@ -163,7 +167,8 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
         SVProgressHUD.showWithStatus("\(user.screenName)さんに\nリクエスト中")
         progressCoverView.hidden = false
         asobiPeripheral = asobiPeripherals[indexPath.row]
-        asobiPeripheral.delegate = self
-        centralManager.connectPeripheral(asobiPeripheral, options: nil)
+        asobiPeripheral?.delegate = self
+        guard let asobiPeripheral = asobiPeripheral else { return }
+        centralManager?.connectPeripheral(asobiPeripheral, options: nil)
     }
 }
