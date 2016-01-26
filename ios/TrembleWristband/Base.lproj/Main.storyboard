@@ -458,7 +458,7 @@
         <!--Play Game View Controller-->
         <scene sceneID="88L-5k-ags">
             <objects>
-                <viewController id="jVq-7N-zVc" customClass="PlayGameViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayGameVC" id="jVq-7N-zVc" customClass="PlayGameViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mle-9s-U9p"/>
                         <viewControllerLayoutGuide type="bottom" id="eZc-ZC-Xwy"/>

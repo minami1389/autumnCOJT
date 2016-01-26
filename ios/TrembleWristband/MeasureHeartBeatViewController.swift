@@ -24,7 +24,7 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
 
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
     }
-
+    
     func centralManagerDidUpdateState(central: CBCentralManager) {
         if central.state != CBCentralManagerState.PoweredOn {
             print("PoweredOff")
@@ -114,7 +114,7 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
     
     func checkHeartBeat() {
         print("resultHeartBeat:\(resultHeartBeat)")
-        NSUserDefaults.standardUserDefaults().setInteger(resultHeartBeat, forKey: "heartBeat")
+        NSUserDefaults.standardUserDefaults().setInteger(resultHeartBeat, forKey: kUserDefaultHeartBeatKey)
         switchVibration(true)
         showCompleteMeasureAlert()
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
@@ -135,6 +135,11 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
         let alert = UIAlertController(title: "計測完了", message: "あなたの通常時心拍は\(resultHeartBeat)です", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
             self.performSegueWithIdentifier("measureToPlay", sender: self)
+            let playGameVC = self.storyboard?.instantiateViewControllerWithIdentifier("PlayGameVC") as! PlayGameViewController
+            playGameVC.asobiPeripheral = self.asobiPeripheral
+            playGameVC.heartBeatCharacteristic = self.heartBeatCharacteristic
+            playGameVC.vibrationCharacteristic = self.vibrationCharacteristic
+            self.presentViewController(playGameVC, animated: true, completion: nil)
         }))
         presentViewController(alert, animated: true, completion: nil)
     }
