@@ -21,10 +21,23 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
     
     @IBOutlet weak var heartBeatLabel: UILabel!
     @IBOutlet weak var measureButton: UIButton!
+    @IBOutlet weak var stateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
+        centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
+        if let image = UIImage(named: "bg.png") {
+            view.backgroundColor = UIColor(patternImage: image)
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        SVProgressHUD.setBackgroundColor(UIColor.clearColor())
+        SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+        SVProgressHUD.showWithMaskType(.Gradient)
+        stateLabel.text = "Device探索中"
+        measureButton.setTitle("", forState: .Normal)
     }
     
     
@@ -87,10 +100,12 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
         let characteristics = service.characteristics!
         for characteristic in characteristics {
             if characteristic.UUID.isEqual(kHeartBeatCharacteristicUUID) {
-                print("discoverHeartBeat")
                 heartBeatCharacteristic = characteristic
                 guard let heartBeatCharacteristic = heartBeatCharacteristic else { return }
                 asobiPeripheral?.setNotifyValue(true, forCharacteristic: heartBeatCharacteristic)
+                SVProgressHUD.dismiss()
+                stateLabel.text = "Device発見"
+                measureButton.setTitle("計測開始", forState: .Normal)
             } else if characteristic.UUID.isEqual(kVibrationCharacteristicUUID) {
                 vibrationCharacteristic = characteristic
             }
@@ -116,10 +131,14 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
     }
     
     func checkHeartBeat() {
+        SVProgressHUD.dismiss()
+        stateLabel.text = "計測完了"
+        measureButton.setTitle("Let`s Asobeat!!", forState: .Normal)
+        heartBeatLabel.text = "\(resultHeartBeat)"
         print("resultHeartBeat:\(resultHeartBeat)")
         NSUserDefaults.standardUserDefaults().setInteger(resultHeartBeat, forKey: kUserDefaultHeartBeatKey)
         switchVibration(true)
-        showCompleteMeasureAlert()
+        //showCompleteMeasureAlert()
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.switchVibration(false)
@@ -149,6 +168,8 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
 
     
     @IBAction func didPushMeasureButton(sender: AnyObject) {
+        SVProgressHUD.showWithMaskType(.Gradient)
+        stateLabel.text = "計測中"
         if measureTimer == nil {
             measureTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "checkHeartBeat", userInfo: nil, repeats: false)
         }

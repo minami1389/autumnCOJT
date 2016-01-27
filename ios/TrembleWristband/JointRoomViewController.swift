@@ -59,7 +59,9 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
                     users.append(user)
                     asobiPeripherals.append(peripheral)
                     user.fetchUserTwitterData({
-                        self.tableView.reloadData()
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.tableView.reloadData()
+                        })
                     })
                 }
             }
@@ -135,7 +137,11 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
             if accepted {
                 guard let roomNumber = characteristicValue?.componentsSeparatedByString(":")[1] else { return }
                 NSUserDefaults.standardUserDefaults().setObject(roomNumber, forKey: kUserDefaultRoomIdKey)
-                self.performSegueWithIdentifier("joinToMeasure", sender: self)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("measureVC") as? MeasureHeartBeatViewController {
+                        self.presentViewController(vc, animated: true, completion: nil)
+                    }
+                })
             } else {
                 SVProgressHUD.showErrorWithStatus("リクエストが承認されませんでした")
             }
@@ -162,8 +168,10 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let user = users[indexPath.row] 
-        SVProgressHUD.showWithStatus("\(user.screenName)さんに\nリクエスト中")
+        let user = users[indexPath.row]
+        if let name = user.screenName {
+            SVProgressHUD.showWithStatus("\(name)さんに\nリクエスト中")
+        }
         progressCoverView.hidden = false
         asobiPeripheral = asobiPeripherals[indexPath.row]
         asobiPeripheral?.delegate = self
