@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="nJm-09-Bow">
             <objects>
-                <viewController id="673-By-p9e" customClass="LoginViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="673-By-p9e" customClass="LoginViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="apu-SG-HGb"/>
                         <viewControllerLayoutGuide type="bottom" id="HTU-Bd-uU5"/>

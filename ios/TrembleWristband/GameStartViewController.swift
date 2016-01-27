@@ -47,8 +47,7 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
         performSegueWithIdentifier("toJoinRoomVC", sender: self)
     }
     @IBAction func didPushLogoutButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(kUserDefaultUserIdKey)
+        UIApplication.sharedApplication().keyWindow?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
         NSUserDefaults.standardUserDefaults().removeObjectForKey(kUserDefaultTwitterIdKey)
     }
     
