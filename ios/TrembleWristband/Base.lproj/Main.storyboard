@@ -224,24 +224,16 @@
                                     <outlet property="delegate" destination="ev3-bI-2NR" id="t31-zA-FQC"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nex-o4-QHM">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Zwu-Na-Xqo" firstAttribute="top" secondItem="Nex-o4-QHM" secondAttribute="bottom" id="2A4-eK-2Ht"/>
-                            <constraint firstAttribute="trailing" secondItem="Nex-o4-QHM" secondAttribute="trailing" id="2ks-P6-bmy"/>
                             <constraint firstAttribute="trailing" secondItem="0XP-Mg-OTQ" secondAttribute="trailing" id="86x-9i-f84"/>
-                            <constraint firstItem="Nex-o4-QHM" firstAttribute="top" secondItem="0XP-Mg-OTQ" secondAttribute="bottom" id="HFW-e7-ryC"/>
                             <constraint firstAttribute="trailing" secondItem="DLV-f4-UKV" secondAttribute="trailing" id="JTN-6Q-BNP"/>
                             <constraint firstItem="DLV-f4-UKV" firstAttribute="top" secondItem="0XP-Mg-OTQ" secondAttribute="bottom" id="Jfu-TW-ILU"/>
                             <constraint firstItem="B0A-39-uKi" firstAttribute="top" secondItem="8LS-j4-a2K" secondAttribute="top" id="OQm-MW-lQM"/>
                             <constraint firstItem="DLV-f4-UKV" firstAttribute="leading" secondItem="8LS-j4-a2K" secondAttribute="leading" id="a5M-Tl-QVa"/>
                             <constraint firstItem="Zwu-Na-Xqo" firstAttribute="top" secondItem="DLV-f4-UKV" secondAttribute="bottom" id="d1S-lC-z2w"/>
                             <constraint firstAttribute="trailing" secondItem="B0A-39-uKi" secondAttribute="trailing" id="hWF-4M-f8O"/>
-                            <constraint firstItem="Nex-o4-QHM" firstAttribute="leading" secondItem="8LS-j4-a2K" secondAttribute="leading" id="k83-h7-bqb"/>
                             <constraint firstItem="B0A-39-uKi" firstAttribute="leading" secondItem="8LS-j4-a2K" secondAttribute="leading" id="lCP-rk-zT4"/>
                             <constraint firstItem="0XP-Mg-OTQ" firstAttribute="top" secondItem="qBT-yu-aYi" secondAttribute="bottom" id="lMV-Qq-Chc"/>
                             <constraint firstItem="0XP-Mg-OTQ" firstAttribute="leading" secondItem="8LS-j4-a2K" secondAttribute="leading" id="xu3-DN-Dcr"/>
@@ -249,7 +241,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="oEb-eo-BvW"/>
                     <connections>
-                        <outlet property="progressCoverView" destination="Nex-o4-QHM" id="RyP-ky-1Um"/>
                         <outlet property="tableView" destination="DLV-f4-UKV" id="nsQ-Am-Njq"/>
                     </connections>
                 </viewController>

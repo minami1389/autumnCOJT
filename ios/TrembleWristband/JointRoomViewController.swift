@@ -16,7 +16,6 @@ import TwitterKit
 class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var progressCoverView: UIView!
     
     var centralManager: CBCentralManager?
     var asobiPeripheral: CBPeripheral?
@@ -37,10 +36,6 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
         twitterId = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultTwitterIdKey) as? String
     }
 
-    override func viewWillDisappear(animated: Bool) {
-        SVProgressHUD.dismiss()
-    }
-    
     func centralManagerDidUpdateState(central: CBCentralManager) {
         if central.state != CBCentralManagerState.PoweredOn {
             print("PoweredOff")
@@ -132,16 +127,15 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
         let characteristicValue = String(data: value, encoding: NSUTF8StringEncoding)
         if characteristicValue == twitterId {
             accepted = true
-            SVProgressHUD.showWithStatus("リクエストが承認されました\n他のメンバーを待っています")
+            SVProgressHUD.showWithStatus("リクエストが承認されました\n他のメンバーを待っています", maskType: .Gradient)
         } else if characteristicValue?.hasPrefix("createRoom:") == true {
             if accepted {
                 guard let roomNumber = characteristicValue?.componentsSeparatedByString(":")[1] else { return }
                 NSUserDefaults.standardUserDefaults().setObject(roomNumber, forKey: kUserDefaultRoomIdKey)
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("measureVC") as? MeasureHeartBeatViewController {
-                        self.presentViewController(vc, animated: true, completion: nil)
-                    }
-                })
+                if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("measureVC") as? MeasureHeartBeatViewController {
+                    self.presentViewController(vc, animated: true, completion: nil)
+                }
+                
             } else {
                 SVProgressHUD.showErrorWithStatus("リクエストが承認されませんでした")
             }
@@ -170,9 +164,8 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let user = users[indexPath.row]
         if let name = user.screenName {
-            SVProgressHUD.showWithStatus("\(name)さんに\nリクエスト中")
+            SVProgressHUD.showWithStatus("\(name)さんに\nリクエスト中", maskType: .Gradient)
         }
-        progressCoverView.hidden = false
         asobiPeripheral = asobiPeripherals[indexPath.row]
         asobiPeripheral?.delegate = self
         guard let asobiPeripheral = asobiPeripheral else { return }

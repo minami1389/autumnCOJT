@@ -40,7 +40,6 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
         measureButton.setTitle("", forState: .Normal)
     }
     
-    
     func centralManagerDidUpdateState(central: CBCentralManager) {
         if central.state != CBCentralManagerState.PoweredOn {
             print("PoweredOff")
@@ -168,10 +167,15 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
 
     
     @IBAction func didPushMeasureButton(sender: AnyObject) {
-        SVProgressHUD.showWithMaskType(.Gradient)
-        stateLabel.text = "計測中"
-        if measureTimer == nil {
-            measureTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "checkHeartBeat", userInfo: nil, repeats: false)
+        if stateLabel.text == "Device発見" {
+            SVProgressHUD.showWithMaskType(.Gradient)
+            stateLabel.text = "計測中"
+            if measureTimer == nil {
+                measureTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "checkHeartBeat", userInfo: nil, repeats: false)
+            }
+        } else if stateLabel.text == "計測完了" {
+            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PlayGameVC") as! PlayGameViewController
+            self.presentViewController(vc, animated: true, completion: nil)
         }
     }
 
