@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func setMe(session: TWTRSession, msg:String) {
+    func setMe(session: TWTRSession) {
         let user = User(twitterId: session.userID)
         user.fetchUserTwitterData { () -> Void in
             UserManager.sharedInstance.setMe(User(twitterId: session.userID))
