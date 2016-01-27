@@ -19,11 +19,14 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
     var measureTimer:NSTimer?
     var resultHeartBeat = 0
     
+    @IBOutlet weak var heartBeatLabel: UILabel!
+    @IBOutlet weak var measureButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
+        //centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
     }
+    
     
     func centralManagerDidUpdateState(central: CBCentralManager) {
         if central.state != CBCentralManagerState.PoweredOn {

@@ -24,20 +24,30 @@ class LoginViewController: UIViewController {
                 NSLog("Login error: %@", error!.localizedDescription);
             }
         }
-        logInButton.center = CGPoint(x: self.view.center.x, y: self.view.center.y+150)
+        logInButton.center = CGPoint(x: self.view.center.x, y: self.view.center.y+180)
         logInButton.layer.borderColor = UIColor.whiteColor().CGColor
         logInButton.layer.borderWidth = 1.0
         self.view.addSubview(logInButton)
     }
     
     func didLoggedIn(session:TWTRSession) {
-        APIManager.sharedInstance.createUser(session.userID) { (user) -> Void in
-            user.fetchUserTwitterData({
-                UserManager.sharedInstance.setMe(user)
-                NSUserDefaults.standardUserDefaults().setObject(user.twitterId, forKey: kUserDefaultTwitterIdKey)
-                NSUserDefaults.standardUserDefaults().setObject(user.twitterId, forKey: kUserDefaultUserIdKey)
-                self.showDidLoginAlert(session.userName)
-            })
+        APIManager.sharedInstance.fetchUser(session.userID) { (user) -> Void in
+            if let _ = user {
+                self.setMe(session)
+                return
+            }
+            APIManager.sharedInstance.createUser(session.userID) { (user) -> Void in
+                self.setMe(session)
+            }
+        }
+    }
+    
+    func setMe(session: TWTRSession) {
+        let user = User(twitterId: session.userID)
+        user.fetchUserTwitterData { () -> Void in
+            UserManager.sharedInstance.setMe(User(twitterId: session.userID))
+            NSUserDefaults.standardUserDefaults().setObject(session.userID, forKey: kUserDefaultTwitterIdKey)
+            self.showDidLoginAlert(session.userName)
         }
     }
     

@@ -143,7 +143,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     }
     
     @IBAction func didPushedCancelButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     

@@ -24,6 +24,11 @@
 		19EB33A81C55262300C04A23 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB33A71C55262300C04A23 /* APIManager.swift */; };
 		19EB33AA1C55263100C04A23 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB33A91C55263100C04A23 /* Room.swift */; };
 		19EB33AC1C55372B00C04A23 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB33AB1C55372B00C04A23 /* UserManager.swift */; };
+		19FE56AF1C585330005C1206 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FE56AE1C585330005C1206 /* title.png */; };
+		19FE56B11C585373005C1206 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FE56B01C585373005C1206 /* bg.png */; };
+		19FE56B41C585860005C1206 /* createButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FE56B21C585860005C1206 /* createButton.png */; };
+		19FE56B51C585860005C1206 /* JoinButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FE56B31C585860005C1206 /* JoinButton.png */; };
+		19FE56B71C585DEA005C1206 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 19FE56B61C585DEA005C1206 /* circle.png */; };
 		363871F10E9A58CEA3018DC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D33A4854AFA95112166BA0 /* libPods.a */; };
 		E90386C71BF5CEFB00AE4BD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */; };
 		E90386C81BF5CEFB00AE4BD3 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C41BF5CEFB00AE4BD3 /* TwitterKit.framework */; };
@@ -75,6 +80,11 @@
 		19EB33A71C55262300C04A23 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		19EB33A91C55263100C04A23 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		19EB33AB1C55372B00C04A23 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		19FE56AE1C585330005C1206 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = ../../design/title.png; sourceTree = "<group>"; };
+		19FE56B01C585373005C1206 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = ../../design/bg.png; sourceTree = "<group>"; };
+		19FE56B21C585860005C1206 /* createButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = createButton.png; path = ../../design/createButton.png; sourceTree = "<group>"; };
+		19FE56B31C585860005C1206 /* JoinButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = JoinButton.png; path = ../../design/JoinButton.png; sourceTree = "<group>"; };
+		19FE56B61C585DEA005C1206 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle.png; path = ../../design/circle.png; sourceTree = "<group>"; };
 		85D33A4854AFA95112166BA0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E66436F7D49CF9D9A8F875 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -255,6 +265,11 @@
 		E9F189591BFC456600E36F27 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				19FE56B61C585DEA005C1206 /* circle.png */,
+				19FE56B21C585860005C1206 /* createButton.png */,
+				19FE56B31C585860005C1206 /* JoinButton.png */,
+				19FE56B01C585373005C1206 /* bg.png */,
+				19FE56AE1C585330005C1206 /* title.png */,
 				190FF8A41C4CE3C1004E63A1 /* loginBg.png */,
 				1914CC211C4613EE0049C224 /* logo.png */,
 				1914CC221C4613EE0049C224 /* tutorial1.png */,
@@ -359,6 +374,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				190FF8A51C4CE3C1004E63A1 /* loginBg.png in Resources */,
+				19FE56AF1C585330005C1206 /* title.png in Resources */,
+				19FE56B11C585373005C1206 /* bg.png in Resources */,
 				1914CC2A1C4613EE0049C224 /* tutorial4.png in Resources */,
 				E90386C91BF5CEFB00AE4BD3 /* TwitterKitResources.bundle in Resources */,
 				E9618E971BFF09210059229E /* bomb_red.png in Resources */,
@@ -369,10 +386,13 @@
 				E9E06DF81BE9BDB7006E99D3 /* Main.storyboard in Resources */,
 				1914CC281C4613EE0049C224 /* tutorial2.png in Resources */,
 				E9618E951BFF09210059229E /* bomb_blue.png in Resources */,
+				19FE56B51C585860005C1206 /* JoinButton.png in Resources */,
 				E9E06DFD1BE9BDB7006E99D3 /* LaunchScreen.xib in Resources */,
 				E9618E961BFF09210059229E /* bomb_green.png in Resources */,
 				1914CC271C4613EE0049C224 /* tutorial1.png in Resources */,
 				E9C4D1121C0EC1EB008D2A5C /* shopetan.jpg in Resources */,
+				19FE56B71C585DEA005C1206 /* circle.png in Resources */,
+				19FE56B41C585860005C1206 /* createButton.png in Resources */,
 				E9E06DFA1BE9BDB7006E99D3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

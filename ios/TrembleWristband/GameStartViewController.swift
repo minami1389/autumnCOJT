@@ -9,15 +9,8 @@
 import UIKit
 
 class GameStartViewController: UIViewController, UIScrollViewDelegate {
-
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
-    
-    override func viewDidLayoutSubviews() {
-        setupScrollSubViews()
-    }
-    
-    func setupScrollSubViews() {
+   
+    /*func setupScrollSubViews() {
         let margin:CGFloat = 10
         let viewWidth = scrollView.bounds.size.width - margin*2
         let viewHeight = scrollView.bounds.size.height - margin*2
@@ -39,7 +32,7 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
         UIView.animateWithDuration(0.3) { () -> Void in
             self.pageControl.currentPage = Int((scrollView.contentOffset.x+pageWidth/2)/pageWidth)
         }
-    }
+    }*/
     
 //IBAction
     @IBAction func didTapScreen(sender: AnyObject) {

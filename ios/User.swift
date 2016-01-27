@@ -24,6 +24,9 @@ class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
     init(twitterId: String) {
         super.init()
         self.twitterId = twitterId
+        self.longitude = 0
+        self.latitude = 0
+        self.is_abnormality = false
     }
     
     func containsUsers(users:NSArray) -> Bool {

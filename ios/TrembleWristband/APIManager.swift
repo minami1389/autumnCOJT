@@ -136,7 +136,9 @@ class APIManager: NSObject {
                     dispatch_group_async(dispatchGroup, dispatchQueue, { () -> Void in
                         guard let twitterID = obj["twitter_id"] as? String else { return }
                         self.fetchUser(twitterID, completion: { (user) -> Void in
-                            users.append(user)
+                            if let user = user {
+                                users.append(user)
+                            }
                         })
                     })
                 }
@@ -151,7 +153,7 @@ class APIManager: NSObject {
     }
     
     
-    private func fetchUser(twitterId: String, completion:(User)->Void) {
+    func fetchUser(twitterId: String, completion:(User?)->Void) {
         guard let url = NSURL(string: "\(endPoint)/users/\(twitterId)") else { return }
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -162,7 +164,7 @@ class APIManager: NSObject {
             }
             do {
                 guard let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? NSDictionary else {
-                    print("not dictionary")
+                    completion(nil)
                     return
                 }
                 let user = User(twitterId: twitterId)

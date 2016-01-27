@@ -89,7 +89,7 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
     
 //IBAction
     @IBAction func didPushedCancelButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func didPushedDoneButton(sender: AnyObject) {
@@ -105,7 +105,11 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
             print("roomId:\(roomId)")
             NSUserDefaults.standardUserDefaults().setObject(roomId, forKey: kUserDefaultRoomIdKey)
             self.broadCastRoomNumberToOther(roomId)
-            self.performSegueWithIdentifier("createToMeasure", sender: self)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("measureVC") as? MeasureHeartBeatViewController {
+                    self.presentViewController(vc, animated: true, completion: nil)
+                }
+            })
         }
     }
     

@@ -52,7 +52,10 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         if let value = userDefault.objectForKey(kUserDefaultUserIdKey) as? String {
             twitterID = value
         }
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "onUpdate:", userInfo: nil, repeats: true)
     }
     
