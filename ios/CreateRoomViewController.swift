@@ -110,7 +110,6 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
                     self.presentViewController(vc, animated: true, completion: nil)
                 }
             })
-            
         }
     }
     

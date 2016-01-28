@@ -531,7 +531,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbz-F9-TrV">
-                                <rect key="frame" x="0.0" y="40" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7uX-gm-fTw">
                                         <rect key="frame" x="10" y="5" width="60" height="60"/>
@@ -609,7 +609,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FDN-UN-jFz">
-                                <rect key="frame" x="0.0" y="418" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Ogc-wU-1Rl"/>
@@ -697,20 +697,20 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QhE-c2-WcQ" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="120" width="320" height="298"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QhE-c2-WcQ" firstAttribute="top" secondItem="Mle-9s-U9p" secondAttribute="bottom" id="8eb-Y3-z4Q"/>
                             <constraint firstItem="zbz-F9-TrV" firstAttribute="leading" secondItem="nHf-zR-DhG" secondAttribute="leading" id="Go0-np-WrN"/>
-                            <constraint firstItem="FDN-UN-jFz" firstAttribute="top" secondItem="QhE-c2-WcQ" secondAttribute="bottom" id="Lr7-rf-XFS"/>
-                            <constraint firstItem="zbz-F9-TrV" firstAttribute="top" secondItem="Mle-9s-U9p" secondAttribute="bottom" constant="20" id="NvB-5X-U8n"/>
-                            <constraint firstItem="eZc-ZC-Xwy" firstAttribute="top" secondItem="FDN-UN-jFz" secondAttribute="bottom" id="Opc-Ry-g51"/>
+                            <constraint firstItem="zbz-F9-TrV" firstAttribute="top" secondItem="Mle-9s-U9p" secondAttribute="bottom" id="NvB-5X-U8n"/>
+                            <constraint firstItem="eZc-ZC-Xwy" firstAttribute="top" secondItem="FDN-UN-jFz" secondAttribute="bottom" constant="-150" id="Opc-Ry-g51"/>
                             <constraint firstItem="QhE-c2-WcQ" firstAttribute="leading" secondItem="nHf-zR-DhG" secondAttribute="leading" id="PCX-bd-bH9"/>
-                            <constraint firstItem="QhE-c2-WcQ" firstAttribute="top" secondItem="zbz-F9-TrV" secondAttribute="bottom" constant="10" id="TN3-Al-2DS"/>
                             <constraint firstAttribute="trailing" secondItem="QhE-c2-WcQ" secondAttribute="trailing" id="YIb-x5-ht8"/>
                             <constraint firstAttribute="trailing" secondItem="zbz-F9-TrV" secondAttribute="trailing" id="gKa-I0-Khi"/>
+                            <constraint firstItem="eZc-ZC-Xwy" firstAttribute="top" secondItem="QhE-c2-WcQ" secondAttribute="bottom" id="mjL-73-IIW"/>
                             <constraint firstItem="FDN-UN-jFz" firstAttribute="leading" secondItem="nHf-zR-DhG" secondAttribute="leading" id="q9i-rd-gYs"/>
                             <constraint firstAttribute="trailing" secondItem="FDN-UN-jFz" secondAttribute="trailing" id="qNq-JD-Qwa"/>
                         </constraints>
