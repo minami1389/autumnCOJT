@@ -13,7 +13,7 @@ class PlayUserTableViewCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var heartImageView: UIImageView!
+    @IBOutlet weak var heartLabel: UILabel!
     
     
     override func awakeFromNib() {

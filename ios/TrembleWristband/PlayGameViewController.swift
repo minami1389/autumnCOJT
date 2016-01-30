@@ -11,22 +11,26 @@ import CoreLocation
 import GoogleMaps
 import CoreBluetooth
 
-class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, CBPeripheralDelegate {
+class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, CBPeripheralDelegate,UITableViewDelegate,UITableViewDataSource {
 
-    @IBOutlet weak var roomNumberLabel: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
-    var locationManager: CLLocationManager?
     
+    @IBOutlet weak var memberTableView: UITableView!
+    @IBOutlet weak var memberTableViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var myImageView: UIImageView!
+    @IBOutlet weak var myScreenNameLabel: UILabel!
+    @IBOutlet weak var myUserNameLabel: UILabel!
+    @IBOutlet weak var myHeartBeatLabel: UILabel!
+    
+    var locationManager: CLLocationManager?
     var asobiPeripheral: CBPeripheral?
     var heartBeatCharacteristic: CBCharacteristic?
     var vibrationCharacteristic: CBCharacteristic?
     
     var roomID: String?
-    var twitterID: String?
     var timer:NSTimer?
     var didUpdate = true
     var isAbnormal = "false"
-    var users = [User]()
     var averageHeartBeat = 0
     let defalutHeartBeat = NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey)
     
@@ -45,13 +49,33 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         
         asobiPeripheral?.delegate = self
         
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        if let value = userDefault.objectForKey(kUserDefaultRoomIdKey) as? String {
+        memberTableViewBottom.constant = -150
+        
+        if let me = UserManager.sharedInstance.getMe() {
+            myImageView.image = me.image
+            myScreenNameLabel.text = me.name
+            if let screenName = me.screenName {
+                myUserNameLabel.text = "@\(screenName)"
+            }
+            myHeartBeatLabel.text = String(NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey))
+        }
+        
+        if let value = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultRoomIdKey) as? String {
             roomID = value
         }
-        if let value = userDefault.objectForKey(kUserDefaultUserIdKey) as? String {
-            twitterID = value
-        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        SVProgressHUD.showWithStatus("", maskType: .Gradient)
+        guard let roomID = self.roomID else { return }
+        APIManager.sharedInstance.fetchUsers(roomID, completion: { (users) -> Void in
+            UserManager.sharedInstance.setOthers(users)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.memberTableView.reloadData()
+                SVProgressHUD.dismiss()
+            })
+        })
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -67,15 +91,37 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         if didUpdate {
             didUpdate = false
             guard let location = locationManager?.location else { return }
-            guard let twitterID = twitterID else { return }
+            guard let twitterID = UserManager.sharedInstance.getMe()?.twitterId else { return }
             APIManager.sharedInstance.updateUser(twitterID, location: location, isAbnormal: isAbnormal, completion: { () -> Void in
                 guard let roomID = self.roomID else { return }
                 APIManager.sharedInstance.fetchUsers(roomID, completion: { (users) -> Void in
-                    self.users = users
+                    UserManager.sharedInstance.setOthers(users)
                     self.didUpdate = true
-                    print("update")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.addAbnormalUserMarker()
+                        self.memberTableView.reloadData()
+                    })
                 })
             })
+        }
+    }
+    
+    func addAbnormalUserMarker() {
+        mapView.clear()
+        for user in UserManager.sharedInstance.getOthers() {
+            guard let userIsAbnormal = user.is_abnormality else { return }
+            if userIsAbnormal == true {
+                let marker = GMSMarker()
+                guard let latitude = user.latitude else { continue }
+                guard let longitude = user.longitude else { continue }
+                marker.position = CLLocationCoordinate2DMake(latitude, longitude)
+                marker.icon = user.image
+                marker.title = user.name
+                if let screenName = user.screenName {
+                    marker.snippet = "@\(screenName)"
+                }
+                marker.map = mapView
+            }
         }
     }
     
@@ -102,7 +148,38 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         asobiPeripheral?.writeValue(value, forCharacteristic: vibrationCharacteristic, type: .WithResponse)
     }
 
+//TableView
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return UserManager.sharedInstance.getOthers().count
+    }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("PlayUserCell", forIndexPath: indexPath) as! PlayUserTableViewCell
+        let member = UserManager.sharedInstance.getOthers()[indexPath.row]
+        cell.imageView?.image = member.image
+        cell.nameLabel.text = member.name
+        if let screenName = member.screenName {
+            cell.idLabel.text = "@\(screenName)"
+        }
+        return cell
+    }
     
+    @IBAction func didTapMemberSwitchButton(sender: AnyObject) {
+        if memberTableViewBottom.constant == 0 {
+            memberTableViewBottom.constant = -150
+        } else {
+            memberTableViewBottom.constant = 0
+        }
+        UIView.animateWithDuration(0.3) { () -> Void in
+            self.view.layoutIfNeeded()
+        }
+    }
     
+    @IBAction func didTapDebugButton(sender: AnyObject) {
+        if isAbnormal == "false" {
+            isAbnormal = "true"
+        } else {
+            isAbnormal = "false"
+        }
+    }
 }

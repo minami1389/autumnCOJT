@@ -81,7 +81,7 @@ class APIManager: NSObject {
             }
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
-                guard let room = json.firstObject as? NSDictionary else { return }
+                guard let room = json.lastObject as? NSDictionary else { return }
                 guard let roomId = room["id"] as? Int else {
                     print("id:\(room["id"])")
                     return
@@ -133,19 +133,24 @@ class APIManager: NSObject {
                 var users = [User]()
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! NSArray
                 for obj in json {
-                    dispatch_group_async(dispatchGroup, dispatchQueue, { () -> Void in
-                        guard let twitterID = obj["twitter_id"] as? String else { return }
-                        self.fetchUser(twitterID, completion: { (user) -> Void in
-                            if let user = user {
+                    dispatch_group_enter(dispatchGroup)
+                    guard let twitterID = obj["twitter_id"] else { return }
+                    guard let id = twitterID as? String else { return }
+                    self.fetchUser(id, completion: { (user) -> Void in
+                        guard let user = user else { return }
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            user.fetchUserTwitterData({
                                 users.append(user)
-                            }
+                                dispatch_group_leave(dispatchGroup)
+                            })
                         })
                     })
                 }
-                
+            
                 dispatch_group_notify(dispatchGroup, dispatchQueue, { () -> Void in
                     completion(users)
                 })
+                
                 
             } catch {}
         }
@@ -168,10 +173,10 @@ class APIManager: NSObject {
                     return
                 }
                 let user = User(twitterId: twitterId)
-                user.longitude = json["longintude"] as? Float
-                user.latitude = json["latitude"] as? Float
-                let isAbnormality = json["is_abnormality"] as? String
-                user.is_abnormality = (isAbnormality == "true")
+                user.longitude = json["longitude"] as? Double
+                user.latitude = json["latitude"] as? Double
+                let isAbnormality = json["is_abnormality"] as? Int
+                user.is_abnormality = (isAbnormality == 1)
                 completion(user)
                 
             } catch {}

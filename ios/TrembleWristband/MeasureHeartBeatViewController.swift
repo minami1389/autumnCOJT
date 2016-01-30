@@ -17,7 +17,7 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
     var vibrationCharacteristic: CBCharacteristic?
     
     var measureTimer:NSTimer?
-    var resultHeartBeat = 0
+    var resultHeartBeat = 60
     
     @IBOutlet weak var heartBeatLabel: UILabel!
     @IBOutlet weak var measureButton: UIButton!
@@ -38,6 +38,10 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
         SVProgressHUD.showWithMaskType(.Gradient)
         stateLabel.text = "Device探索中"
         measureButton.setTitle("", forState: .Normal)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        didPrepareMeasure()
     }
     
     func centralManagerDidUpdateState(central: CBCentralManager) {
@@ -102,13 +106,17 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
                 heartBeatCharacteristic = characteristic
                 guard let heartBeatCharacteristic = heartBeatCharacteristic else { return }
                 asobiPeripheral?.setNotifyValue(true, forCharacteristic: heartBeatCharacteristic)
-                SVProgressHUD.dismiss()
-                stateLabel.text = "Device発見"
-                measureButton.setTitle("計測開始", forState: .Normal)
+                didPrepareMeasure()
             } else if characteristic.UUID.isEqual(kVibrationCharacteristicUUID) {
                 vibrationCharacteristic = characteristic
             }
         }
+    }
+    
+    func didPrepareMeasure() {
+        SVProgressHUD.dismiss()
+        stateLabel.text = "Device発見"
+        measureButton.setTitle("計測開始", forState: .Normal)
     }
     
     func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
@@ -171,7 +179,7 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
             SVProgressHUD.showWithMaskType(.Gradient)
             stateLabel.text = "計測中"
             if measureTimer == nil {
-                measureTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "checkHeartBeat", userInfo: nil, repeats: false)
+                measureTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "checkHeartBeat", userInfo: nil, repeats: false)
             }
         } else if stateLabel.text == "計測完了" {
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PlayGameVC") as! PlayGameViewController

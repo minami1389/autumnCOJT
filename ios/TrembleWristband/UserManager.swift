@@ -11,21 +11,30 @@ class UserManager: NSObject {
     static let sharedInstance = UserManager()
     
     private var me: User?
-    private var others = [User?]()
+    private var others = [User]()
     
     func setMe(me: User?) {
         self.me = me
     }
     
-    func setOthers(user: User?) {
+    func setOther(user: User) {
         others.append(user)
+    }
+    
+    func setOthers(users: [User]) {
+        var otherUsers = [User]()
+        for user in users {
+            if user.twitterId == me?.twitterId { continue }
+            otherUsers.append(user)
+        }
+        others = otherUsers
     }
     
     func getMe() -> User? {
         return me
     }
     
-    func getOthers() -> [User?] {
+    func getOthers() -> [User] {
         return others
     }
     

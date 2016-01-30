@@ -12,8 +12,8 @@ import TwitterKit
 class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
 
     var id: String?
-    var longitude: Float?
-    var latitude: Float?
+    var longitude: Double?
+    var latitude: Double?
     var is_abnormality: Bool?
     var twitterId: String?
     var name: String?
