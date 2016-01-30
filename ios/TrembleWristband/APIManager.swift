@@ -76,7 +76,7 @@ class APIManager: NSObject {
         
         let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
             if err != nil {
-                print("getRoomError:\(err)")
+                print("fetchRoomError:\(err)")
                 return
             }
             do {
@@ -109,7 +109,7 @@ class APIManager: NSObject {
         } catch{}
         let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
             if err != nil {
-                print("updateUserInfoError:\(err)")
+                print("updateUserError:\(err)")
                 return
             }
             completion()
@@ -123,7 +123,7 @@ class APIManager: NSObject {
         request.HTTPMethod = "GET"
         let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
             if err != nil {
-                print("getRoomError:\(err)")
+                print("fetchUsersError:\(err)")
                 return
             }
             do {
@@ -164,7 +164,7 @@ class APIManager: NSObject {
         request.HTTPMethod = "GET"
         let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
             if err != nil {
-                print("getRoomError:\(err)")
+                print("fetchUser:\(err)")
                 return
             }
             do {

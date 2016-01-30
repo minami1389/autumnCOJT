@@ -38,7 +38,7 @@ class GPSManager: NSObject, CLLocationManagerDelegate{
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("error：\(error)")
+        print("locationManagerError：\(error)")
     }
     
 }

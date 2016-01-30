@@ -86,7 +86,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
         if error != nil {
-            print("error: \(error)")
+            print("didDiscoverServicesError: \(error)")
             return
         }
         let services = peripheral.services!
@@ -97,7 +97,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
         if error != nil {
-            print("error: \(error)")
+            print("didDiscoverCharacteristicsError: \(error)")
             return
         }
         let characteristics = service.characteristics!
