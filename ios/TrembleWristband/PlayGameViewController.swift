@@ -175,6 +175,19 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         }
     }
     
+    @IBAction func didTapEndButton(sender: AnyObject) {
+        let alert = UIAlertController(title: "End Game", message: "本当に終了してよろしいですか？", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "End", style: .Default, handler: { (action) -> Void in
+            guard let roomID = self.roomID else { return }
+            APIManager.sharedInstance.deleteRoom(roomID, completion: {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                      UIApplication.sharedApplication().keyWindow?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+                })
+            })
+        }))
+        presentViewController(alert, animated: true, completion: nil)
+    }
     @IBAction func didTapDebugButton(sender: AnyObject) {
         if isAbnormal == "false" {
             isAbnormal = "true"

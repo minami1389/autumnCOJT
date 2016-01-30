@@ -185,7 +185,7 @@ class APIManager: NSObject {
 
     }
     
-    func deleteRoom(roomID: String) {
+    func deleteRoom(roomID: String, completion:()->Void) {
         guard let url = NSURL(string: "\(endPoint)/rooms/\(roomID)") else { return }
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "DELETE"
@@ -194,7 +194,7 @@ class APIManager: NSObject {
                 print("deleteRoomError:\(err)")
                 return
             }
-            print("delete")
+            completion()
         }
         task.resume()
     }
