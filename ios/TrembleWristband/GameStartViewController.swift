@@ -29,6 +29,16 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
         setShowdow(userInfoView)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let me = UserManager.sharedInstance.getMe()
+        userNameLabel.text = me?.name
+        if let screenName = me?.screenName {
+            userScreenNameLabel.text = "@\(screenName)"
+        }
+        userImageView.image = me?.image
+    }
+    
     func setShowdow(view:UIView) {
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
         view.layer.shadowOpacity = 1.0
@@ -50,8 +60,9 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
         performSegueWithIdentifier("toJoinRoomVC", sender: self)
     }
     @IBAction func didPushLogoutButton(sender: AnyObject) {
-        UIApplication.sharedApplication().keyWindow?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
         NSUserDefaults.standardUserDefaults().removeObjectForKey(kUserDefaultTwitterIdKey)
+        NSUserDefaults.standardUserDefaults().synchronize()
+        UIApplication.sharedApplication().keyWindow?.rootViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RootVC")
     }
     
 }

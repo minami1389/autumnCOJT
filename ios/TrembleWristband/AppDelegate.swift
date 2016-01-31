@@ -23,16 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Twitter.self])
         GMSServices.provideAPIKey(kGoogleMapsAPIKey)
         
-        if let twitterID = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultTwitterIdKey) as? String  {
-            self.window?.rootViewController = UIStoryboard(name: "Main",bundle:nil).instantiateViewControllerWithIdentifier("GameStartVC") as! GameStartViewController
-            SVProgressHUD.show()
-            let user = User(twitterId: twitterID)
-            user.fetchUserTwitterData({ () -> Void in
-                UserManager.sharedInstance.setMe(user)
-                SVProgressHUD.dismiss()
-            })
-        }
-        
         GPSManager.sharedInstance.start()
         
         return true
