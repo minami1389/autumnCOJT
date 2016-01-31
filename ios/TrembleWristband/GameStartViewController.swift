@@ -10,29 +10,32 @@ import UIKit
 
 class GameStartViewController: UIViewController, UIScrollViewDelegate {
    
-    /*func setupScrollSubViews() {
-        let margin:CGFloat = 10
-        let viewWidth = scrollView.bounds.size.width - margin*2
-        let viewHeight = scrollView.bounds.size.height - margin*2
-        var viewX:CGFloat = margin
-        let viewY:CGFloat = margin
-        let subViewCount = 4
-        for var i = 0; i < subViewCount; i++ {
-            let imageView = UIImageView(image: UIImage(named: "tutorial\(i+1).png"))
-            imageView.frame = CGRect(x: viewX, y: viewY, width: viewWidth, height: viewHeight)
-            viewX += viewWidth+margin*2
-            self.scrollView.addSubview(imageView)
-        }
-        scrollView.contentSize = CGSize(width: viewX-margin, height: viewHeight)
-        pageControl.numberOfPages = subViewCount
+    @IBOutlet weak var createTeamButton: UIButton!
+    @IBOutlet weak var joinTeamButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    
+    @IBOutlet weak var userInfoView: UIView!
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userScreenNameLabel: UILabel!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setShowdow(createTeamButton)
+        setShowdow(joinTeamButton)
+        setShowdow(logoutButton)
+        setShowdow(userInfoView)
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let pageWidth = scrollView.frame.size.width
-        UIView.animateWithDuration(0.3) { () -> Void in
-            self.pageControl.currentPage = Int((scrollView.contentOffset.x+pageWidth/2)/pageWidth)
-        }
-    }*/
+    func setShowdow(view:UIView) {
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowOpacity = 1.0
+        view.layer.shadowRadius = 1.0
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.darkGrayColor().CGColor
+    }
     
 //IBAction
     @IBAction func didTapScreen(sender: AnyObject) {
