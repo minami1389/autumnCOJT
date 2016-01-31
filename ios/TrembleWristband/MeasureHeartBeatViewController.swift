@@ -183,6 +183,9 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
             }
         } else if stateLabel.text == "計測完了" {
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PlayGameVC") as! PlayGameViewController
+            vc.asobiPeripheral = asobiPeripheral
+            vc.heartBeatCharacteristic = heartBeatCharacteristic
+            vc.vibrationCharacteristic = vibrationCharacteristic
             self.presentViewController(vc, animated: true, completion: nil)
         }
     }

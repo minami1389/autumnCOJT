@@ -11,23 +11,44 @@ import TwitterKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createLoginButton()
+        attributeTitle()
+    }
+    
+    func attributeTitle() {
+        let attrText = NSMutableAttributedString(string: titleLabel.text!)
+        attrText.addAttributes([NSForegroundColorAttributeName:UIColor(red: 255/255, green: 145/255, blue: 0/255, alpha: 1.0)], range: NSRange(location: 0, length: 1))
+        attrText.addAttributes([NSForegroundColorAttributeName:UIColor(red: 245/255, green: 0/255, blue: 87/255, alpha: 1.0)], range: NSRange(location: 3, length: 1))
+        titleLabel.attributedText = attrText
+
     }
     
     func createLoginButton() {
         let logInButton = TWTRLogInButton { (session, error) in
+        }
+        logInButton.center = CGPoint(x: self.view.center.x, y: self.view.center.y+50)
+        logInButton.layer.borderColor = UIColor.whiteColor().CGColor
+        logInButton.layer.borderWidth = 1.0
+        self.view.addSubview(logInButton)
+        let tapGesture = UITapGestureRecognizer(target: self, action: "didTapLoginButton")
+        logInButton.addGestureRecognizer(tapGesture)
+    }
+    
+    func didTapLoginButton() {
+        SVProgressHUD.setBackgroundColor(UIColor.clearColor())
+        SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+        SVProgressHUD.showWithMaskType(.Gradient)
+        Twitter.sharedInstance().logInWithCompletion { (session, error) -> Void in
             if let unwrappedSession = session {
                 self.didLoggedIn(unwrappedSession)
             } else {
                 NSLog("Login error: %@", error!.localizedDescription);
             }
         }
-        logInButton.center = CGPoint(x: self.view.center.x, y: self.view.center.y+180)
-        logInButton.layer.borderColor = UIColor.whiteColor().CGColor
-        logInButton.layer.borderWidth = 1.0
-        self.view.addSubview(logInButton)
     }
     
     func didLoggedIn(session:TWTRSession) {
@@ -47,7 +68,14 @@ class LoginViewController: UIViewController {
         user.fetchUserTwitterData { () -> Void in
             UserManager.sharedInstance.setMe(user)
             NSUserDefaults.standardUserDefaults().setObject(session.userID, forKey: kUserDefaultTwitterIdKey)
-            self.showDidLoginAlert(session.userName)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                SVProgressHUD.setBackgroundColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3))
+                SVProgressHUD.showSuccessWithStatus("ログイン完了", maskType: .Gradient)
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    self.performSegueWithIdentifier("toGameStartVC", sender: self)
+                }
+            })
         }
     }
     
