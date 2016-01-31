@@ -17,12 +17,27 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         createLoginButton()
         attributeTitle()
+        titleLabel.highlighted = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        titleLabel.hidden = false
+        titleLabel.transform = CGAffineTransformMakeScale(1/2, 1/2)
+        UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.titleLabel.transform = CGAffineTransformScale(self.titleLabel.transform, 3, 3)
+
+            }) { (success) -> Void in
+                UIView.animateWithDuration(0.5) { () -> Void in
+                    self.titleLabel.transform = CGAffineTransformScale(self.titleLabel.transform, 2/3, 2/3)
+                }
+        }
     }
     
     func attributeTitle() {
         let attrText = NSMutableAttributedString(string: titleLabel.text!)
-        attrText.addAttributes([NSForegroundColorAttributeName:UIColor(red: 255/255, green: 145/255, blue: 0/255, alpha: 1.0)], range: NSRange(location: 0, length: 1))
-        attrText.addAttributes([NSForegroundColorAttributeName:UIColor(red: 245/255, green: 0/255, blue: 87/255, alpha: 1.0)], range: NSRange(location: 3, length: 1))
+        attrText.addAttributes([NSForegroundColorAttributeName:UIColor(red: 255/255, green: 145/255, blue: 0/255, alpha: 1.0), NSStrokeColorAttributeName:UIColor.darkGrayColor(), NSStrokeWidthAttributeName:-0.5], range: NSRange(location: 0, length: 1))
+        attrText.addAttributes([NSForegroundColorAttributeName:UIColor(red: 245/255, green: 0/255, blue: 87/255, alpha: 1.0), NSStrokeColorAttributeName:UIColor.darkGrayColor(), NSStrokeWidthAttributeName:-0.5], range: NSRange(location: 3, length: 1))
         titleLabel.attributedText = attrText
 
     }
@@ -30,7 +45,7 @@ class LoginViewController: UIViewController {
     func createLoginButton() {
         let logInButton = TWTRLogInButton { (session, error) in
         }
-        logInButton.center = CGPoint(x: self.view.center.x, y: self.view.center.y+50)
+        logInButton.center = CGPoint(x: self.view.center.x, y: self.view.center.y+40)
         logInButton.layer.borderColor = UIColor.whiteColor().CGColor
         logInButton.layer.borderWidth = 1.0
         self.view.addSubview(logInButton)

@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AsoBeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAX-du-M8d">
-                                <rect key="frame" x="3.5" y="172.5" width="313.5" height="83"/>
+                                <rect key="frame" x="3.5" y="192.5" width="313.5" height="83"/>
                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="68"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                         <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QAX-du-M8d" firstAttribute="centerX" secondItem="CSh-yS-K05" secondAttribute="centerX" id="5W8-fW-7Oi"/>
-                            <constraint firstItem="QAX-du-M8d" firstAttribute="centerY" secondItem="CSh-yS-K05" secondAttribute="centerY" constant="-70" id="aAl-02-Yx9"/>
+                            <constraint firstItem="QAX-du-M8d" firstAttribute="centerY" secondItem="CSh-yS-K05" secondAttribute="centerY" constant="-50" id="aAl-02-Yx9"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -123,17 +123,17 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jhh-cf-yky">
-                                        <rect key="frame" x="170" y="100" width="109.5" height="50.5"/>
+                                        <rect key="frame" x="170" y="97" width="124" height="55.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ぶらっく" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn3-4c-jsV">
-                                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="27"/>
-                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="29.5"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@minami1389" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJF-UZ-PFi">
-                                                <rect key="frame" x="0.0" y="32" width="109.5" height="18.5"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                                <rect key="frame" x="0.0" y="34.5" width="124" height="21"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -180,7 +180,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPY-7k-W93">
-                                <rect key="frame" x="10" y="434.5" width="380" height="65.5"/>
+                                <rect key="frame" x="10" y="434" width="380" height="65.5"/>
                                 <color key="backgroundColor" red="1" green="0.65490196078431373" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="33"/>
                                 <state key="normal" title="  Join   Team ➡︎">
