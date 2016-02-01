@@ -8,6 +8,7 @@
 
 import UIKit
 import TwitterKit
+import CoreLocation
 
 class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
 
@@ -56,6 +57,12 @@ class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
                 completion()
             } catch { }
         })
+    }
+    
+    func location() -> CLLocation? {
+        guard let latitude = latitude else { return nil }
+        guard let longitude = longitude else { return nil }
+        return CLLocation(latitude: latitude, longitude: longitude)
     }
     
 }

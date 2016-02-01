@@ -18,6 +18,7 @@
 		19EB33A81C55262300C04A23 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB33A71C55262300C04A23 /* APIManager.swift */; };
 		19EB33AA1C55263100C04A23 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB33A91C55263100C04A23 /* Room.swift */; };
 		19EB33AC1C55372B00C04A23 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB33AB1C55372B00C04A23 /* UserManager.swift */; };
+		19EF8C851C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EF8C841C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift */; };
 		AAEDE002C0BF480FBA78C931 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F234A730F3EC4E8514CFC37 /* Pods.framework */; };
 		E90386C71BF5CEFB00AE4BD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */; };
 		E90386C81BF5CEFB00AE4BD3 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C41BF5CEFB00AE4BD3 /* TwitterKit.framework */; };
@@ -58,6 +59,7 @@
 		19EB33A71C55262300C04A23 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		19EB33A91C55263100C04A23 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		19EB33AB1C55372B00C04A23 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		19EF8C841C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterDeviceViewController.swift; sourceTree = "<group>"; };
 		2F234A730F3EC4E8514CFC37 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E66436F7D49CF9D9A8F875 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				19B081311C5DC911008757F0 /* RootViewController.swift */,
+				19EF8C841C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift */,
 				E90386CC1BF5CF9C00AE4BD3 /* LoginViewController.swift */,
 				E90386D01BF5D19400AE4BD3 /* GameStartViewController.swift */,
 				E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */,
@@ -420,6 +423,7 @@
 				19446D9F1C2D3C49006420AE /* PlayUserTableViewCell.swift in Sources */,
 				E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */,
 				19A5D0031C23FF880032B349 /* MeasureHeartBeatViewController.swift in Sources */,
+				19EF8C851C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift in Sources */,
 				E90386D51BF5D55500AE4BD3 /* JointRoomViewController.swift in Sources */,
 				19A5D0011C23EF6D0032B349 /* GPSManager.swift in Sources */,
 				E90386D11BF5D19400AE4BD3 /* GameStartViewController.swift in Sources */,

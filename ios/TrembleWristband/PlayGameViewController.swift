@@ -31,9 +31,10 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     var timer:NSTimer?
     var didUpdate = true
     var isAbnormal = "false"
-    var averageHeartBeat = 0
     let defalutHeartBeat = NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey)
+    var averageHeartBeat = NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey)
     var abnormalHeartBeatDiff = 10
+    var distanceDiff:Double = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +64,6 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             roomID = value
         }
     }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         SVProgressHUD.showWithStatus("", maskType: .Gradient)
@@ -86,6 +86,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         mapView.camera = GMSCameraPosition.cameraWithTarget(newLocation.coordinate, zoom: 15)
     }
     
+    
     func onUpdate(timer:NSTimer) {
         if didUpdate {
             didUpdate = false
@@ -99,9 +100,22 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.addAbnormalUserMarker()
                         self.memberTableView.reloadData()
+                        self.checkNarrowUser()
                     })
                 })
             })
+        }
+    }
+    
+    func checkNarrowUser() {
+        let me = UserManager.sharedInstance.getMe()
+        for user in UserManager.sharedInstance.getOthers() {
+            guard let userLocation = user.location() else { return }
+            let dis = me?.location()?.distanceFromLocation(userLocation)
+            if dis < distanceDiff {
+                vibrate(1.0)
+                return
+            }
         }
     }
     
@@ -131,9 +145,11 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
                 myHeartBeatLabel.text = String(averageHeartBeat)
                 if averageHeartBeat > defalutHeartBeat+abnormalHeartBeatDiff && isAbnormal == "false" {
                     isAbnormal = "true"
+                    myHeartBeatLabel.textColor = UIColor(red: 255/255, green: 85/85, blue: 85/85, alpha: 1.0)
                     twiceVibrate(2.0)
                 } else {
                     isAbnormal = "false"
+                    myHeartBeatLabel.textColor = UIColor.whiteColor()
                 }
             }
         }
@@ -200,12 +216,5 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             })
         }))
         presentViewController(alert, animated: true, completion: nil)
-    }
-    @IBAction func didTapDebugButton(sender: AnyObject) {
-        if isAbnormal == "false" {
-            isAbnormal = "true"
-        } else {
-            isAbnormal = "false"
-        }
     }
 }

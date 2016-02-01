@@ -17,7 +17,9 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
     var vibrationCharacteristic: CBCharacteristic?
     
     var measureTimer:NSTimer?
-    var resultHeartBeat = 60
+    var resultHeartBeat = 0
+    
+    let deviceID = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultDeviceIDKey)
     
     @IBOutlet weak var heartBeatLabel: UILabel!
     @IBOutlet weak var measureButton: UIButton!
@@ -41,7 +43,7 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
     }
     
     override func viewDidAppear(animated: Bool) {
-        didPrepareMeasure()
+        //didPrepareMeasure()
     }
     
     func centralManagerDidUpdateState(central: CBCentralManager) {
@@ -54,8 +56,9 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        if let localName = advertisementData["kCBAdvDataLocalName"] as? NSString {
-            if localName.hasPrefix("asobeatDevice") {
+        guard let deviceID = deviceID as? String else { return }
+        if let localName = advertisementData["kCBAdvDataLocalName"] as? String {
+            if localName == "\(deviceID)" {
                 asobiPeripheral = peripheral
                 asobiPeripheral?.delegate = self
                 guard let asobiPeripheral = asobiPeripheral else { return }
@@ -183,7 +186,7 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
             SVProgressHUD.showWithMaskType(.Gradient)
             stateLabel.text = "計測中"
             if measureTimer == nil {
-                measureTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "checkHeartBeat", userInfo: nil, repeats: false)
+                measureTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "checkHeartBeat", userInfo: nil, repeats: false)
             }
         } else if stateLabel.text == "計測完了" {
             let vc = self.storyboard?.instantiateViewControllerWithIdentifier("PlayGameVC") as! PlayGameViewController

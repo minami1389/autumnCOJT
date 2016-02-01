@@ -19,12 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let kGoogleMapsAPIKey = "AIzaSyAKM3d7GpH2stOHFrgOt90EAiHFDgPQNuM"
 
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.with([Twitter.self])
         GMSServices.provideAPIKey(kGoogleMapsAPIKey)
         
         GPSManager.sharedInstance.start()
+        
         
         return true
     }

@@ -89,9 +89,17 @@ class LoginViewController: UIViewController {
                 SVProgressHUD.showSuccessWithStatus("ログイン完了", maskType: .Gradient)
                 let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
                 dispatch_after(delayTime, dispatch_get_main_queue()) {
-                    self.performSegueWithIdentifier("toGameStartVC", sender: self)
+                    self.presentToNextVC()
                 }
             })
+        }
+    }
+    
+    func presentToNextVC() {
+        if let _ = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultDeviceIDKey) as? String  {
+            self.performSegueWithIdentifier("toGameStartVC", sender: self)
+        } else {
+            self.performSegueWithIdentifier("toRegisterDeviceVC", sender: self)
         }
     }
     
