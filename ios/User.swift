@@ -51,7 +51,7 @@ class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
                 let iconData = try NSData(contentsOfURL: iconUrl!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 let image = UIImage(data: iconData)
                 self.name = (obj?.name)!
-                self.screenName = (obj?.screenName)!
+                self.screenName = (obj?.formattedScreenName)!
                 self.image = image
                 completion()
             } catch { }

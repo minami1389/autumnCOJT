@@ -27,9 +27,7 @@ class RootViewController: UIViewController {
                 UserManager.sharedInstance.setMe(user)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     SVProgressHUD.dismiss()
-                    let startVC = self.storyboard?.instantiateViewControllerWithIdentifier("GameStartVC") as! GameStartViewController
-                    startVC.modalTransitionStyle = .CrossDissolve
-                    self.presentViewController(startVC, animated: true, completion: nil)
+                    self.performSegueWithIdentifier("rootToGame", sender: self)
                 })
             })
         } else {
@@ -37,9 +35,7 @@ class RootViewController: UIViewController {
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
             dispatch_after(delayTime, dispatch_get_main_queue()) {
                 SVProgressHUD.dismiss()
-                let loginVC = self.storyboard?.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
-                loginVC.modalTransitionStyle = .CrossDissolve
-                self.presentViewController(loginVC, animated: false, completion: nil)
+                self.performSegueWithIdentifier("rootToLogin", sender: self)
             }
         }
 

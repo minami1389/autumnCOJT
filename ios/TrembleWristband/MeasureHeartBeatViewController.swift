@@ -144,9 +144,13 @@ class MeasureHeartBeatViewController: UIViewController, CBCentralManagerDelegate
         heartBeatLabel.text = "\(resultHeartBeat)"
         print("resultHeartBeat:\(resultHeartBeat)")
         NSUserDefaults.standardUserDefaults().setInteger(resultHeartBeat, forKey: kUserDefaultHeartBeatKey)
+        vibrate(3)
+    }
+    
+    
+    func vibrate(time: Double) {
         switchVibration(true)
-        //showCompleteMeasureAlert()
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.switchVibration(false)
         }

@@ -1,2 +1,4 @@
+use_frameworks!
 pod "SVProgressHUD"
 pod "GoogleMaps"
+pod "FontAwesome.swift"

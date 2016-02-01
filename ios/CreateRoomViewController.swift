@@ -88,10 +88,7 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
     }
     
 //IBAction
-    @IBAction func didPushedCancelButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-
+  
     @IBAction func didPushedDoneButton(sender: AnyObject) {
         var acceptedUserIds = [String]()
         for var i = 0; i < memberUsers.count; i++ {

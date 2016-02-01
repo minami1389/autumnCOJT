@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import TwitterKit
 import GoogleMaps
+import FontAwesome_swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

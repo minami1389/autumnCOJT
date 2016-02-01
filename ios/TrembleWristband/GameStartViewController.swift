@@ -13,6 +13,8 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var createTeamButton: UIButton!
     @IBOutlet weak var joinTeamButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var createTeamArrow: UIImageView!
+    @IBOutlet weak var joinTeamArrow: UIImageView!
     
     @IBOutlet weak var userInfoView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
@@ -27,15 +29,18 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
         setShowdow(joinTeamButton)
         setShowdow(logoutButton)
         setShowdow(userInfoView)
+        
+        navigationItem.titleView =  UIImageView(image: UIImage.fontAwesomeIconWithName(.Home, textColor: UIColor(red: 3/255, green: 169/255, blue: 244/255, alpha: 1.0), size: CGSizeMake(40, 40)).imageWithRenderingMode(.AlwaysOriginal))
+        
+        createTeamArrow.image = UIImage.fontAwesomeIconWithName(.ArrowCircleORight, textColor: UIColor.whiteColor(), size: CGSizeMake(40, 40)).imageWithRenderingMode(.AlwaysOriginal)
+        joinTeamArrow.image = UIImage.fontAwesomeIconWithName(.ArrowCircleORight, textColor: UIColor.whiteColor(), size: CGSizeMake(40, 40)).imageWithRenderingMode(.AlwaysOriginal)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let me = UserManager.sharedInstance.getMe()
         userNameLabel.text = me?.name
-        if let screenName = me?.screenName {
-            userScreenNameLabel.text = "@\(screenName)"
-        }
+        userScreenNameLabel.text = me?.screenName
         userImageView.image = me?.image
     }
     
@@ -52,13 +57,6 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
         self.view.endEditing(true)
     }
     
-    @IBAction func didPushedCreateRoomButton(sender: AnyObject) {
-        performSegueWithIdentifier("toCreateRoomVC", sender: self)
-    }
-
-    @IBAction func didPushedJoinRoomButton(sender: AnyObject) {
-        performSegueWithIdentifier("toJoinRoomVC", sender: self)
-    }
     @IBAction func didPushLogoutButton(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().removeObjectForKey(kUserDefaultTwitterIdKey)
         NSUserDefaults.standardUserDefaults().synchronize()

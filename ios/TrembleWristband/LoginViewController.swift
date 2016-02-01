@@ -61,6 +61,7 @@ class LoginViewController: UIViewController {
             if let unwrappedSession = session {
                 self.didLoggedIn(unwrappedSession)
             } else {
+                SVProgressHUD.dismiss()
                 NSLog("Login error: %@", error!.localizedDescription);
             }
         }

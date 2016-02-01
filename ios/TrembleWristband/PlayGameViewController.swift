@@ -33,6 +33,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     var isAbnormal = "false"
     var averageHeartBeat = 0
     let defalutHeartBeat = NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey)
+    var abnormalHeartBeatDiff = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +55,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         if let me = UserManager.sharedInstance.getMe() {
             myImageView.image = me.image
             myScreenNameLabel.text = me.name
-            if let screenName = me.screenName {
-                myUserNameLabel.text = "@\(screenName)"
-            }
+            myUserNameLabel.text = me.screenName
             myHeartBeatLabel.text = String(NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey))
         }
         
@@ -117,9 +116,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
                 marker.position = CLLocationCoordinate2DMake(latitude, longitude)
                 marker.icon = user.image
                 marker.title = user.name
-                if let screenName = user.screenName {
-                    marker.snippet = "@\(screenName)"
-                }
+                marker.snippet = user.screenName
                 marker.map = mapView
             }
         }
@@ -131,12 +128,30 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
                 var heartBeat: NSInteger = 0
                 value.getBytes(&heartBeat, length: sizeof(NSInteger))
                 averageHeartBeat = (averageHeartBeat+heartBeat)/2
-                if averageHeartBeat > defalutHeartBeat+30 {
+                myHeartBeatLabel.text = String(averageHeartBeat)
+                if averageHeartBeat > defalutHeartBeat+abnormalHeartBeatDiff && isAbnormal == "false" {
                     isAbnormal = "true"
+                    twiceVibrate(2.0)
                 } else {
                     isAbnormal = "false"
                 }
             }
+        }
+    }
+    
+    func twiceVibrate(time:Double) {
+        vibrate(time)
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time+1.0 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.vibrate(time)
+        }
+    }
+    
+    func vibrate(time: Double) {
+        switchVibration(true)
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.switchVibration(false)
         }
     }
     
@@ -158,9 +173,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         let member = UserManager.sharedInstance.getOthers()[indexPath.row]
         cell.imageView?.image = member.image
         cell.nameLabel.text = member.name
-        if let screenName = member.screenName {
-            cell.idLabel.text = "@\(screenName)"
-        }
+        cell.idLabel.text = member.screenName
         return cell
     }
     

@@ -31,7 +31,7 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
     override func viewDidLoad() {
         super.viewDidLoad()
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
-        SVProgressHUD.setBackgroundColor(UIColor.blackColor())
+        SVProgressHUD.setBackgroundColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.5))
         SVProgressHUD.setForegroundColor(UIColor.whiteColor())
         twitterId = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultTwitterIdKey) as? String
     }
@@ -156,8 +156,8 @@ class JointRoomViewController: UIViewController, CBCentralManagerDelegate, CBPer
         let cell = tableView.dequeueReusableCellWithIdentifier("HostUserCell") as! HostUserTableViewCell
         let user = users[indexPath.row]
         cell.iconImageView.image = user.image
-        cell.nameLabel.text = user.screenName
-        cell.idLabel.text = user.name
+        cell.nameLabel.text = user.name
+        cell.idLabel.text = user.screenName
         return cell
     }
     
