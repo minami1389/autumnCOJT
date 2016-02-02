@@ -182,7 +182,6 @@ class APIManager: NSObject {
             } catch {}
         }
         task.resume()
-
     }
     
     func deleteRoom(roomID: String, completion:()->Void) {
@@ -199,6 +198,48 @@ class APIManager: NSObject {
         task.resume()
     }
 
+    func createDevice(deviceID: String, completion:()->Void) {
+        let params:[String: AnyObject] = [
+            "device_id": deviceID,
+        ]
+        guard let url = NSURL(string: "\(endPoint)/devices") else { return }
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: .PrettyPrinted)
+            let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+                if err != nil {
+                    print("createDeviceError:\(err)")
+                    return
+                }
+                completion()
+            }
+            task.resume()
+        } catch{}
+    }
     
+    func fetchDevice(deviceID: String, completion:(usedID: Bool)->Void) {
+        guard let url = NSURL(string: "\(endPoint)/devices/\(deviceID)") else { return }
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "GET"
+        let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+            if err != nil {
+                print("fetchDeviceError:\(err)")
+                return
+            }
+            do {
+                if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? NSDictionary {
+                    print(json)
+                    completion(usedID: true)
+                } else {
+                    completion(usedID: false)
+                }
+            } catch {}
+        }
+        task.resume()
+        
+    }
+
     
 }

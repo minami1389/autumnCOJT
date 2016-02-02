@@ -69,22 +69,41 @@ class RegisterDeviceViewController: UIViewController, AVCaptureMetadataOutputObj
 
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
         if metadataObjects.count == 0 { return }
-        let qrData = (metadataObjects[0] as? AVMetadataMachineReadableCodeObject)!
-        if !qrData.stringValue.hasPrefix("FZED") { return }
-        NSUserDefaults.standardUserDefaults().setObject(qrData.stringValue, forKey: kUserDefaultDeviceIDKey)
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        guard let qrData = (metadataObjects[0] as? AVMetadataMachineReadableCodeObject) else { return }
+        let deviceID = qrData.stringValue
+        print(deviceID)
+        if !deviceID.hasPrefix("FZED") { return }
+        APIManager.sharedInstance.fetchDevice(deviceID) { (usedID) -> Void in
             self.session?.stopRunning()
-            self.showCompleteAlert()
+            if usedID {
+                self.showUsedDeviceAlert()
+            } else {
+                APIManager.sharedInstance.createDevice(deviceID, completion: { () -> Void in
+                    NSUserDefaults.standardUserDefaults().setObject(deviceID, forKey: kUserDefaultDeviceIDKey)
+                    self.showCompleteAlert()
+                })
+            }
+        }
+    }
+    
+    func showUsedDeviceAlert() {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            let alert = UIAlertController(title: "失敗", message: "このデバイスはすでに\n他のユーザーに登録されています", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
+                self.session?.startRunning()
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
     
     func showCompleteAlert() {
-        let alert = UIAlertController(title: "完了", message: "デバイスが登録されました", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
-            self.performSegueWithIdentifier("registerDeviceToGameStart", sender: self)
-        }))
-        presentViewController(alert, animated: true, completion: nil)
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            let alert = UIAlertController(title: "完了", message: "デバイスが登録されました", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
+                self.performSegueWithIdentifier("registerDeviceToGameStart", sender: self)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     

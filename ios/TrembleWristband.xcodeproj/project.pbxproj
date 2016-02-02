@@ -109,8 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				19B081311C5DC911008757F0 /* RootViewController.swift */,
-				19EF8C841C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift */,
 				E90386CC1BF5CF9C00AE4BD3 /* LoginViewController.swift */,
+				19EF8C841C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift */,
 				E90386D01BF5D19400AE4BD3 /* GameStartViewController.swift */,
 				E90386D61BF5D56D00AE4BD3 /* CreateRoomViewController.swift */,
 				E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */,

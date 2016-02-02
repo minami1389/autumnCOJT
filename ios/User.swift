@@ -59,9 +59,9 @@ class User: NSObject, NSURLSessionDelegate, NSURLSessionDataDelegate {
         })
     }
     
-    func location() -> CLLocation? {
-        guard let latitude = latitude else { return nil }
-        guard let longitude = longitude else { return nil }
+    func location() -> CLLocation {
+        guard let latitude = latitude else { return CLLocation() }
+        guard let longitude = longitude else { return CLLocation() }
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     

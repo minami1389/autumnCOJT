@@ -110,8 +110,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     func checkNarrowUser() {
         let me = UserManager.sharedInstance.getMe()
         for user in UserManager.sharedInstance.getOthers() {
-            guard let userLocation = user.location() else { return }
-            let dis = me?.location()?.distanceFromLocation(userLocation)
+            let dis = me?.location().distanceFromLocation(user.location())
             if dis < distanceDiff {
                 vibrate(1.0)
                 return
