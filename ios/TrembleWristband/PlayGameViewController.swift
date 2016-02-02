@@ -36,6 +36,8 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     var abnormalHeartBeatDiff = 10
     var distanceDiff:Double = 100
     
+    var continuityVibrateTimer:NSTimer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -108,13 +110,17 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     }
     
     func checkNarrowUser() {
+        var minDis:Double = 0
         let me = UserManager.sharedInstance.getMe()
         for user in UserManager.sharedInstance.getOthers() {
-            let dis = me?.location().distanceFromLocation(user.location())
-            if dis < distanceDiff {
-                vibrate(1.0)
-                return
+            guard let dis = me?.location().distanceFromLocation(user.location()) else { return }
+            if minDis == 0 || minDis > dis {
+                print("dis:\(dis)")
+                minDis = dis
             }
+        }
+        if minDis < distanceDiff {
+            continuityVibrate(minDis/20)
         }
     }
     
@@ -154,7 +160,16 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         }
     }
     
-    func twiceVibrate(time:Double) {
+    func continuityVibrate(interval: NSTimeInterval) {
+        continuityVibrateTimer?.invalidate()
+        continuityVibrateTimer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: "continuitySingleVibrate", userInfo: nil, repeats: true)
+    }
+    
+    func continuitySingleVibrate() {
+        vibrate(0.3)
+    }
+    
+    func twiceVibrate(time:NSTimeInterval) {
         vibrate(time)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time+1.0 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
@@ -162,7 +177,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         }
     }
     
-    func vibrate(time: Double) {
+    func vibrate(time: NSTimeInterval) {
         switchVibration(true)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
