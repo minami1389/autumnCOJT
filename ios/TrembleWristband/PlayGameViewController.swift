@@ -79,19 +79,19 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
     func updateHeartbeat() {
         let heartbeat = deviceManager.getHeaertbeat()
         myHeartBeatLabel.text = String(heartbeat)
-        print(heartbeat)
-        print(defalutHeartBeat+abnormalHeartBeatDiff)
         print(isAbnormal)
-        print("")
-        if heartbeat > defalutHeartBeat+abnormalHeartBeatDiff && isAbnormal == "false" {
-            print("true")
-            isAbnormal = "true"
-            myHeartBeatLabel.textColor = UIColor(red: 255/255, green: 85/85, blue: 85/85, alpha: 1.0)
-            deviceManager.twiceVibrate(2.0)
-        } else {
-            print("false")
-            isAbnormal = "false"
-            myHeartBeatLabel.textColor = UIColor.whiteColor()
+        let border = defalutHeartBeat+abnormalHeartBeatDiff
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            if heartbeat > border && self.isAbnormal == "false" {
+                print("true")
+                self.isAbnormal = "true"
+                self.myHeartBeatLabel.textColor = UIColor(red: 255/255, green: 85/85, blue: 85/85, alpha: 1.0)
+                self.deviceManager.twiceVibrate(2.0)
+            } else if heartbeat <= border && self.isAbnormal == "true" {
+                print("false")
+                self.isAbnormal = "false"
+                self.myHeartBeatLabel.textColor = UIColor.whiteColor()
+            }
         }
     }
     
