@@ -69,6 +69,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
             guard let heartBeatCharacteristic = heartBeatCharacteristic else { return }
             centralManager?.cancelPeripheralConnection(asobiPeripheral)
             asobiPeripheral.setNotifyValue(false, forCharacteristic: heartBeatCharacteristic)
+            centralManager?.connectPeripheral(asobiPeripheral, options: nil)
         }
         heartBeatCharacteristic = nil
         vibrationCharacteristic = nil
@@ -79,7 +80,6 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
             print("error: \(error)")
             return
         }
-        print("did discover service")
         let services = peripheral.services!
         for service in services {
             asobiPeripheral?.discoverCharacteristics(nil, forService: service)
@@ -91,15 +91,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
             print("error: \(error)")
             return
         }
-        print("did discover chara")
-        guard let characteristics = service.characteristics else {
-            print("cha0:\(service.characteristics)")
-            return
-        }
-        print("ser:\(service)")
-        print("cha2:\(service.characteristics)")
-        print("cha1:\(characteristics)")
-        
+        guard let characteristics = service.characteristics else { return }
         for characteristic in characteristics {
             if characteristic.UUID.isEqual(kHeartBeatCharacteristicUUID) {
                 heartBeatCharacteristic = characteristic
@@ -128,6 +120,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
                     heartbeatQueue.removeFirst()
                 }
                 heartbeatQueue.append(heartbeat)
+                print(heartbeat)
             }
         }
     }

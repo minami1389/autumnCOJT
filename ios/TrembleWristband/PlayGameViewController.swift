@@ -30,6 +30,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
     var distanceDiff:Double = 100
     
     let deviceManager = DeviceManager.sharedInstance
+    let gpsManager = GPSManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,11 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
             myUserNameLabel.text = me.screenName
             myHeartBeatLabel.text = String(NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey))
         }
+        
+        gpsManager.setDidUpdateLocationBlock { (location) -> Void in
+            self.mapView.camera = GMSCameraPosition.cameraWithTarget(location.coordinate, zoom: 15)
+        }
+        self.mapView.camera = GMSCameraPosition.cameraWithTarget(gpsManager.coordinate(), zoom: 15)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,10 +71,6 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
         timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "routine", userInfo: nil, repeats: true)
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        mapView.camera = GMSCameraPosition.cameraWithTarget(newLocation.coordinate, zoom: 15)
-    }
-    
     func routine() {
         onUpdate()
         updateHeartbeat()
@@ -77,11 +79,17 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
     func updateHeartbeat() {
         let heartbeat = deviceManager.getHeaertbeat()
         myHeartBeatLabel.text = String(heartbeat)
+        print(heartbeat)
+        print(defalutHeartBeat+abnormalHeartBeatDiff)
+        print(isAbnormal)
+        print("")
         if heartbeat > defalutHeartBeat+abnormalHeartBeatDiff && isAbnormal == "false" {
+            print("true")
             isAbnormal = "true"
             myHeartBeatLabel.textColor = UIColor(red: 255/255, green: 85/85, blue: 85/85, alpha: 1.0)
             deviceManager.twiceVibrate(2.0)
         } else {
+            print("false")
             isAbnormal = "false"
             myHeartBeatLabel.textColor = UIColor.whiteColor()
         }
