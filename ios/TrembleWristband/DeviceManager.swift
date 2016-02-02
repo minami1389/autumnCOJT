@@ -44,17 +44,12 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        print(advertisementData["kCBAdvDataLocalName"])
-        print(deviceID)
-        print("")
-        if let localName = advertisementData["kCBAdvDataLocalName"] as? String {
+       if let localName = advertisementData["kCBAdvDataLocalName"] as? String {
             if localName == "\(deviceID)" {
-                print("getPeripheral")
                 asobiPeripheral = peripheral
                 asobiPeripheral?.delegate = self
                 guard let asobiPeripheral = self.asobiPeripheral else { return }
                 self.centralManager?.connectPeripheral(asobiPeripheral, options: nil)
-                print("try connect")
             }
         }
     }
@@ -87,7 +82,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
         print("did discover service")
         let services = peripheral.services!
         for service in services {
-            peripheral.discoverCharacteristics(nil, forService: service)
+            asobiPeripheral?.discoverCharacteristics(nil, forService: service)
         }
     }
     
