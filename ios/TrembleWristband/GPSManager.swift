@@ -12,7 +12,7 @@ class GPSManager: NSObject, CLLocationManagerDelegate{
 
     static let sharedInstance = GPSManager()
     
-    private var locationManager:CLLocationManager?
+    var locationManager:CLLocationManager?
    
     func start() {
         locationManager = CLLocationManager()

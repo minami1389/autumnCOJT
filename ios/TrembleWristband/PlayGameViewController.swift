@@ -11,10 +11,9 @@ import CoreLocation
 import GoogleMaps
 import CoreBluetooth
 
-class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, CBPeripheralDelegate,UITableViewDelegate,UITableViewDataSource {
+class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var mapView: GMSMapView!
-    
     @IBOutlet weak var memberTableView: UITableView!
     @IBOutlet weak var memberTableViewBottom: NSLayoutConstraint!
     @IBOutlet weak var myImageView: UIImageView!
@@ -22,36 +21,21 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     @IBOutlet weak var myUserNameLabel: UILabel!
     @IBOutlet weak var myHeartBeatLabel: UILabel!
     
-    var locationManager: CLLocationManager?
-    var asobiPeripheral: CBPeripheral?
-    var heartBeatCharacteristic: CBCharacteristic?
-    var vibrationCharacteristic: CBCharacteristic?
-    
-    var roomID: String?
+    var roomID = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultRoomIdKey)
     var timer:NSTimer?
     var didUpdate = true
     var isAbnormal = "false"
     let defalutHeartBeat = NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey)
-    var averageHeartBeat = NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey)
     var abnormalHeartBeatDiff = 10
     var distanceDiff:Double = 100
     
-    var continuityVibrateTimer:NSTimer?
+    let deviceManager = DeviceManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
         mapView.myLocationEnabled = true
-        
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.requestAlwaysAuthorization()
-        locationManager?.distanceFilter = 300
-        locationManager?.startUpdatingLocation()
-        
-        asobiPeripheral?.delegate = self
         
         memberTableViewBottom.constant = -150
         
@@ -61,15 +45,12 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             myUserNameLabel.text = me.screenName
             myHeartBeatLabel.text = String(NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey))
         }
-        
-        if let value = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultRoomIdKey) as? String {
-            roomID = value
-        }
     }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         SVProgressHUD.showWithStatus("", maskType: .Gradient)
-        guard let roomID = self.roomID else { return }
+        guard let roomID = roomID as? String else { return }
         APIManager.sharedInstance.fetchUsers(roomID, completion: { (users) -> Void in
             UserManager.sharedInstance.setOthers(users)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -81,32 +62,48 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "onUpdate:", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "routine", userInfo: nil, repeats: true)
     }
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         mapView.camera = GMSCameraPosition.cameraWithTarget(newLocation.coordinate, zoom: 15)
     }
     
+    func routine() {
+        onUpdate()
+        updateHeartbeat()
+    }
     
-    func onUpdate(timer:NSTimer) {
-        if didUpdate {
-            didUpdate = false
-            guard let location = locationManager?.location else { return }
-            guard let twitterID = UserManager.sharedInstance.getMe()?.twitterId else { return }
-            APIManager.sharedInstance.updateUser(twitterID, location: location, isAbnormal: isAbnormal, completion: { () -> Void in
-                guard let roomID = self.roomID else { return }
-                APIManager.sharedInstance.fetchUsers(roomID, completion: { (users) -> Void in
-                    UserManager.sharedInstance.setOthers(users)
-                    self.didUpdate = true
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.addAbnormalUserMarker()
-                        self.memberTableView.reloadData()
-                        self.checkNarrowUser()
-                    })
+    func updateHeartbeat() {
+        let heartbeat = deviceManager.getHeaertbeat()
+        myHeartBeatLabel.text = String(heartbeat)
+        if heartbeat > defalutHeartBeat+abnormalHeartBeatDiff && isAbnormal == "false" {
+            isAbnormal = "true"
+            myHeartBeatLabel.textColor = UIColor(red: 255/255, green: 85/85, blue: 85/85, alpha: 1.0)
+            deviceManager.twiceVibrate(2.0)
+        } else {
+            isAbnormal = "false"
+            myHeartBeatLabel.textColor = UIColor.whiteColor()
+        }
+    }
+    
+    func onUpdate() {
+        if !didUpdate { return }
+        didUpdate = false
+        guard let location = GPSManager.sharedInstance.locationManager?.location else { return }
+        guard let twitterID = UserManager.sharedInstance.getMe()?.twitterId else { return }
+        APIManager.sharedInstance.updateUser(twitterID, location: location, isAbnormal: isAbnormal, completion: { () -> Void in
+            guard let roomID = self.roomID as? String else { return }
+            APIManager.sharedInstance.fetchUsers(roomID, completion: { (users) -> Void in
+                UserManager.sharedInstance.setOthers(users)
+                self.didUpdate = true
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.addAbnormalUserMarker()
+                    self.memberTableView.reloadData()
+                    self.checkNarrowUser()
                 })
             })
-        }
+        })
     }
     
     func checkNarrowUser() {
@@ -120,7 +117,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
             }
         }
         if minDis < distanceDiff {
-            continuityVibrate(minDis/20)
+            deviceManager.continuityVibrate(minDis/20)
         }
     }
     
@@ -141,58 +138,6 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         }
     }
     
-    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        if characteristic.UUID.isEqual(kHeartBeatCharacteristicUUID) {
-            if let value = characteristic.value {
-                var heartBeat: NSInteger = 0
-                value.getBytes(&heartBeat, length: sizeof(NSInteger))
-                averageHeartBeat = (averageHeartBeat+heartBeat)/2
-                myHeartBeatLabel.text = String(averageHeartBeat)
-                if averageHeartBeat > defalutHeartBeat+abnormalHeartBeatDiff && isAbnormal == "false" {
-                    isAbnormal = "true"
-                    myHeartBeatLabel.textColor = UIColor(red: 255/255, green: 85/85, blue: 85/85, alpha: 1.0)
-                    twiceVibrate(2.0)
-                } else {
-                    isAbnormal = "false"
-                    myHeartBeatLabel.textColor = UIColor.whiteColor()
-                }
-            }
-        }
-    }
-    
-    func continuityVibrate(interval: NSTimeInterval) {
-        continuityVibrateTimer?.invalidate()
-        continuityVibrateTimer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: "continuitySingleVibrate", userInfo: nil, repeats: true)
-    }
-    
-    func continuitySingleVibrate() {
-        vibrate(0.3)
-    }
-    
-    func twiceVibrate(time:NSTimeInterval) {
-        vibrate(time)
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time+1.0 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            self.vibrate(time)
-        }
-    }
-    
-    func vibrate(time: NSTimeInterval) {
-        switchVibration(true)
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            self.switchVibration(false)
-        }
-    }
-    
-    func switchVibration(on: Bool) {
-        var switchValue = "0"
-        if on { switchValue = "1" }
-        guard let value = switchValue.dataUsingEncoding(NSUTF8StringEncoding) else { return }
-        guard let vibrationCharacteristic = vibrationCharacteristic else { return }
-        asobiPeripheral?.writeValue(value, forCharacteristic: vibrationCharacteristic, type: .WithResponse)
-    }
-
 //TableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return UserManager.sharedInstance.getOthers().count
@@ -222,7 +167,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate, CLLocationMa
         let alert = UIAlertController(title: "End Game", message: "本当に終了してよろしいですか？", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "End", style: .Default, handler: { (action) -> Void in
-            guard let roomID = self.roomID else { return }
+            guard let roomID = self.roomID as? String else { return }
             APIManager.sharedInstance.deleteRoom(roomID, completion: {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                       UIApplication.sharedApplication().keyWindow?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
