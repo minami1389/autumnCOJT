@@ -21,6 +21,9 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
     @IBOutlet weak var myScreenNameLabel: UILabel!
     @IBOutlet weak var myUserNameLabel: UILabel!
     @IBOutlet weak var myHeartBeatLabel: UILabel!
+    @IBOutlet weak var myHeartImageView: UIImageView!
+    
+    @IBOutlet weak var myInfoView: UIView!
     
     var roomID = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultRoomIdKey)
     var timer:NSTimer?
@@ -53,6 +56,11 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
         }
         self.mapView.camera = GMSCameraPosition.cameraWithTarget(gpsManager.coordinate(), zoom: 15)
     }
+
+    override func viewDidLayoutSubviews() {
+        myHeartImageView.image = UIImage.fontAwesomeIconWithName(.Heartbeat, textColor: UIColor(red: 229/255, green: 57/255, blue: 53/255, alpha: 1.0), size: CGSizeMake(myHeartImageView.frame.width, myHeartImageView.frame.height)).imageWithRenderingMode(.AlwaysOriginal)
+        setShadow(myInfoView)
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,6 +73,15 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
                 SVProgressHUD.dismiss()
             })
         })
+    }
+    
+    
+    func setShadow(view:UIView) {
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowOpacity = 1.0
+        view.layer.shadowRadius = 1.0
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.darkGrayColor().CGColor
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -25,7 +25,8 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil, options: [CBPeripheralManagerOptionShowPowerAlertKey:true]);
+        peripheralManager = CBPeripheralManager(delegate: self, queue: nil, options: [CBPeripheralManagerOptionShowPowerAlertKey:true])
+        
     }
     
     override func viewWillDisappear(animated: Bool) {

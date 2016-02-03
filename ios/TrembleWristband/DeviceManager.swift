@@ -34,6 +34,20 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
         self.didFailToDiscoverDevice = didFailToDiscoverDevice
     }
     
+    func reset() {
+        if let asobiPeripheral = asobiPeripheral {
+            if let heartBeatCharacteristic = heartBeatCharacteristic {
+                asobiPeripheral.setNotifyValue(false, forCharacteristic: heartBeatCharacteristic)
+                centralManager?.cancelPeripheralConnection(asobiPeripheral)
+            }
+        }
+        centralManager?.stopScan()
+        asobiPeripheral = nil
+        heartBeatCharacteristic = nil
+        vibrationCharacteristic = nil
+        print("device reset")
+    }
+    
     func stopScan() {
         centralManager?.stopScan()
     }
@@ -106,13 +120,16 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
                 heartBeatCharacteristic = characteristic
                 guard let heartBeatCharacteristic = heartBeatCharacteristic else { return }
                 asobiPeripheral?.setNotifyValue(true, forCharacteristic: heartBeatCharacteristic)
-                didDiscoverDevice()
             } else if characteristic.UUID.isEqual(kVibrationCharacteristicUUID) == true {
                 vibrationCharacteristic = characteristic
             }
         }
+        guard let _ = heartBeatCharacteristic else { return }
+        guard let _ = vibrationCharacteristic else { return }
+        print("ok")
+        didDiscoverDevice()
+        
     }
-    
     
     func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         if error != nil {
@@ -121,12 +138,17 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
         }
     }
     
+    func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        if error != nil {
+            print("notifError:\(error)")
+        }
+    }
+    
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         
         if let error = error {
             print("error:\(error)")
         }
-        
         if characteristic.UUID.isEqual(kHeartBeatCharacteristicUUID) {
             if let value = characteristic.value {
                 var heartbeat: NSInteger = 0

@@ -27,7 +27,7 @@ class MeasureHeartBeatViewController: UIViewController {
         
         heartImageView.image = UIImage.fontAwesomeIconWithName(.Heartbeat, textColor: UIColor(red: 229/255, green: 57/255, blue: 53/255, alpha: 0.5), size: CGSizeMake(220, 220)).imageWithRenderingMode(.AlwaysOriginal)
         heartBgImageView.image = UIImage.fontAwesomeIconWithName(.Heartbeat, textColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0), size: CGSizeMake(220, 220)).imageWithRenderingMode(.AlwaysOriginal)
-        setHeartBeatLabelText("123")
+        setHeartBeatLabelText("0")
         
         let attrText = NSMutableAttributedString(string: "bpm")
         attrText.addAttributes([NSStrokeColorAttributeName:UIColor.darkGrayColor(), NSStrokeWidthAttributeName:-1.0], range: NSRange(location: 0, length: attrText.length))

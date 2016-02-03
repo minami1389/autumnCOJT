@@ -733,45 +733,45 @@ AsoBeatデバイスを登録しましょう</string>
                                         <rect key="frame" x="10" y="90" width="300" height="200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="の時" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkY-Yu-k6g">
-                                                <rect key="frame" x="170" y="131" width="30" height="18"/>
+                                                <rect key="frame" x="185" y="136" width="30" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="平常時より" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGP-jv-dVX">
-                                                <rect key="frame" x="20" y="131" width="75" height="18"/>
+                                                <rect key="frame" x="20" y="136" width="75" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="2Ae-CN-jlL">
-                                                <rect key="frame" x="43" y="38" width="214" height="31"/>
-                                            </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30以下" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrL-0x-wnP">
-                                                <rect key="frame" x="100" y="128" width="65" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+30以下" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrL-0x-wnP">
+                                                <rect key="frame" x="100" y="133" width="80" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" red="0.8980392157" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="心拍数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQP-q4-GKa">
-                                                <rect key="frame" x="10" y="10" width="51" height="20.5"/>
+                                                <rect key="frame" x="15" y="15" width="51" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.8980392157" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BFK-eE-8c7">
-                                                <rect key="frame" x="45" y="78" width="210" height="29"/>
+                                                <rect key="frame" x="45" y="83" width="210" height="29"/>
                                                 <segments>
                                                     <segment title="以内"/>
                                                     <segment title="以上"/>
                                                 </segments>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="他のユーザーに位置情報がバレてしまう" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5u-0F-a8P">
-                                                <rect key="frame" x="20" y="154" width="270" height="18"/>
+                                                <rect key="frame" x="20" y="159" width="270" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="2Ae-CN-jlL">
+                                                <rect key="frame" x="43" y="43" width="214" height="31"/>
+                                            </slider>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -781,7 +781,7 @@ AsoBeatデバイスを登録しましょう</string>
                                             <constraint firstItem="dGP-jv-dVX" firstAttribute="top" secondItem="BFK-eE-8c7" secondAttribute="bottom" constant="25" id="GDZ-Nk-XT0"/>
                                             <constraint firstItem="BFK-eE-8c7" firstAttribute="leading" secondItem="2Ae-CN-jlL" secondAttribute="leading" id="I9p-H3-7iO"/>
                                             <constraint firstItem="2Ae-CN-jlL" firstAttribute="leading" secondItem="IsF-eq-k8H" secondAttribute="leading" constant="45" id="KCi-Yb-NaV"/>
-                                            <constraint firstItem="pQP-q4-GKa" firstAttribute="top" secondItem="IsF-eq-k8H" secondAttribute="top" constant="10" id="Nuu-BD-XjD"/>
+                                            <constraint firstItem="pQP-q4-GKa" firstAttribute="top" secondItem="IsF-eq-k8H" secondAttribute="top" constant="15" id="Nuu-BD-XjD"/>
                                             <constraint firstItem="UkY-Yu-k6g" firstAttribute="leading" secondItem="IrL-0x-wnP" secondAttribute="trailing" constant="5" id="O6d-XT-RGc"/>
                                             <constraint firstItem="dGP-jv-dVX" firstAttribute="leading" secondItem="IsF-eq-k8H" secondAttribute="leading" constant="20" id="TSw-bs-Mfb"/>
                                             <constraint firstItem="UkY-Yu-k6g" firstAttribute="centerY" secondItem="dGP-jv-dVX" secondAttribute="centerY" id="aj0-nE-2zt"/>
@@ -789,7 +789,7 @@ AsoBeatデバイスを登録しましょう</string>
                                             <constraint firstItem="IrL-0x-wnP" firstAttribute="centerY" secondItem="dGP-jv-dVX" secondAttribute="centerY" id="qkF-BM-EyQ"/>
                                             <constraint firstItem="BFK-eE-8c7" firstAttribute="trailing" secondItem="2Ae-CN-jlL" secondAttribute="trailing" id="raU-4d-F6a"/>
                                             <constraint firstItem="IrL-0x-wnP" firstAttribute="leading" secondItem="dGP-jv-dVX" secondAttribute="trailing" constant="5" id="v2P-kc-RTl"/>
-                                            <constraint firstItem="pQP-q4-GKa" firstAttribute="leading" secondItem="IsF-eq-k8H" secondAttribute="leading" constant="10" id="xaG-0n-5dL"/>
+                                            <constraint firstItem="pQP-q4-GKa" firstAttribute="leading" secondItem="IsF-eq-k8H" secondAttribute="leading" constant="15" id="xaG-0n-5dL"/>
                                             <constraint firstItem="Z5u-0F-a8P" firstAttribute="top" secondItem="dGP-jv-dVX" secondAttribute="bottom" constant="5" id="zMZ-7b-Gu6"/>
                                             <constraint firstItem="BFK-eE-8c7" firstAttribute="top" secondItem="2Ae-CN-jlL" secondAttribute="bottom" constant="10" id="zXu-aw-0gY"/>
                                         </constraints>
@@ -798,46 +798,47 @@ AsoBeatデバイスを登録しましょう</string>
                                         <rect key="frame" x="10" y="310" width="300" height="200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距離" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kus-jP-zae">
-                                                <rect key="frame" x="10" y="10" width="34" height="20.5"/>
+                                                <rect key="frame" x="15" y="15" width="34" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="他のユーザーがいると通知される" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ep-5g-7Ch">
-                                                <rect key="frame" x="20" y="94" width="255" height="21"/>
+                                                <rect key="frame" x="15" y="140" width="255" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="半径" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK4-LX-tAi">
-                                                <rect key="frame" x="27" y="75" width="34" height="21"/>
+                                                <rect key="frame" x="23" y="111" width="34" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHe-lD-3b3">
-                                                <rect key="frame" x="69" y="64" width="59" height="32"/>
+                                                <rect key="frame" x="65" y="100" width="59" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mkR-jv-xz2">
+                                                <rect key="frame" x="43" y="45.5" width="214" height="31"/>
+                                            </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="m以内に" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLd-K4-iR1">
-                                                <rect key="frame" x="119" y="73" width="66" height="21"/>
+                                                <rect key="frame" x="132" y="105" width="66" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mkR-jv-xz2">
-                                                <rect key="frame" x="34" y="38" width="118" height="31"/>
-                                            </slider>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="mkR-jv-xz2" secondAttribute="trailing" constant="45" id="Fub-uc-dKA"/>
-                                            <constraint firstItem="Kus-jP-zae" firstAttribute="leading" secondItem="svJ-Ea-Gpf" secondAttribute="leading" constant="10" id="KGE-9M-b6G"/>
+                                            <constraint firstItem="Kus-jP-zae" firstAttribute="leading" secondItem="svJ-Ea-Gpf" secondAttribute="leading" constant="15" id="KGE-9M-b6G"/>
                                             <constraint firstItem="mkR-jv-xz2" firstAttribute="leading" secondItem="svJ-Ea-Gpf" secondAttribute="leading" constant="45" id="L4h-9z-66O"/>
-                                            <constraint firstItem="Kus-jP-zae" firstAttribute="top" secondItem="svJ-Ea-Gpf" secondAttribute="top" constant="10" id="UEe-hn-dWv"/>
+                                            <constraint firstItem="Kus-jP-zae" firstAttribute="top" secondItem="svJ-Ea-Gpf" secondAttribute="top" constant="15" id="UEe-hn-dWv"/>
                                             <constraint firstAttribute="height" constant="200" id="ZC4-aL-tDD"/>
+                                            <constraint firstItem="mkR-jv-xz2" firstAttribute="top" secondItem="Kus-jP-zae" secondAttribute="bottom" constant="10" id="mYS-hB-RUf"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -945,16 +946,16 @@ AsoBeatデバイスを登録しましょう</string>
                                     <constraint firstItem="EcU-tZ-Llj" firstAttribute="centerX" secondItem="ZLX-OD-vWn" secondAttribute="centerX" id="w20-96-wpE"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efh-3M-aif">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efh-3M-aif">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.8980392157" green="0.45098039220000002" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Measure HearBeat" id="PUk-gZ-mXG">
                                         <barButtonItem key="leftBarButtonItem" title="End" id="Jzu-6h-NGV">
-                                            <color key="tintColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.93725490199999995" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="didPushedCancelButton:" destination="ev3-bI-2NR" id="eAk-Ja-uUP"/>
                                             </connections>
@@ -1035,28 +1036,11 @@ AsoBeatデバイスを登録しましょう</string>
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ou-yO-3w2">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="barTintColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Play Asobeat" id="P5l-i0-u4g">
-                                        <barButtonItem key="leftBarButtonItem" title="End" id="ojD-eE-c0u">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="didTapEndButton:" destination="jVq-7N-zVc" id="aNR-nZ-WcK"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbz-F9-TrV">
-                                <rect key="frame" x="0.0" y="64" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="59" width="320" height="75"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7uX-gm-fTw">
-                                        <rect key="frame" x="5" y="5" width="60" height="60"/>
+                                        <rect key="frame" x="5" y="10" width="60" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="7uX-gm-fTw" secondAttribute="height" multiplier="1:1" id="ZG7-qt-g9H"/>
@@ -1068,19 +1052,19 @@ AsoBeatデバイスを登録しましょう</string>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@minami1389" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSn-3O-lJ0">
-                                        <rect key="frame" x="75" y="41" width="97.5" height="18"/>
+                                        <rect key="frame" x="75" y="46" width="97.5" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ぶらっく" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIx-Ow-5Z9">
-                                        <rect key="frame" x="75" y="10" width="97.5" height="26.5"/>
+                                        <rect key="frame" x="75" y="15" width="97.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Th2-dU-n7n">
-                                        <rect key="frame" x="225" y="5" width="90" height="60"/>
+                                        <rect key="frame" x="225" y="10" width="90" height="60"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEd-o8-YBk">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="60"/>
@@ -1095,25 +1079,26 @@ AsoBeatデバイスを登録しましょう</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wN-ua-5IP">
-                                                        <rect key="frame" x="58" y="28.5" width="27" height="16"/>
+                                                        <rect key="frame" x="58" y="28" width="27" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="♡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGE-Oi-a6l">
-                                                        <rect key="frame" x="62" y="4.5" width="19" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <color key="textColor" red="1" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sXS-la-SmD">
+                                                        <rect key="frame" x="59" y="3.5" width="25" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="25" id="hzv-gM-c3v"/>
+                                                            <constraint firstAttribute="height" constant="25" id="rKE-Hf-hxg"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="1wN-ua-5IP" firstAttribute="top" secondItem="OGE-Oi-a6l" secondAttribute="bottom" id="50q-W1-BPA"/>
                                                     <constraint firstAttribute="trailing" secondItem="1wN-ua-5IP" secondAttribute="trailing" constant="5" id="9sg-YW-zAD"/>
+                                                    <constraint firstItem="1wN-ua-5IP" firstAttribute="centerX" secondItem="sXS-la-SmD" secondAttribute="centerX" id="NIM-tF-gVZ"/>
                                                     <constraint firstItem="1wN-ua-5IP" firstAttribute="bottom" secondItem="iW5-4W-B0E" secondAttribute="bottom" constant="-2" id="NMh-E5-c0b"/>
                                                     <constraint firstItem="iW5-4W-B0E" firstAttribute="leading" secondItem="YEd-o8-YBk" secondAttribute="leading" constant="5" id="SzP-qd-fsm"/>
-                                                    <constraint firstItem="OGE-Oi-a6l" firstAttribute="centerX" secondItem="1wN-ua-5IP" secondAttribute="centerX" id="v0G-Bj-EX4"/>
+                                                    <constraint firstItem="1wN-ua-5IP" firstAttribute="top" secondItem="sXS-la-SmD" secondAttribute="bottom" id="UGq-CR-llp"/>
                                                     <constraint firstItem="iW5-4W-B0E" firstAttribute="centerY" secondItem="YEd-o8-YBk" secondAttribute="centerY" id="yRJ-8K-mQQ"/>
                                                 </constraints>
                                             </view>
@@ -1153,12 +1138,35 @@ AsoBeatデバイスを登録しましょう</string>
                                     <constraint firstAttribute="trailing" secondItem="Th2-dU-n7n" secondAttribute="trailing" constant="5" id="bg5-wW-WK4"/>
                                     <constraint firstItem="Llr-us-nz8" firstAttribute="leading" secondItem="zbz-F9-TrV" secondAttribute="leading" id="dps-Mv-qq0"/>
                                     <constraint firstItem="7uX-gm-fTw" firstAttribute="leading" secondItem="zbz-F9-TrV" secondAttribute="leading" constant="5" id="eg5-5H-bTX"/>
-                                    <constraint firstAttribute="height" constant="70" id="gnH-xQ-4j6"/>
+                                    <constraint firstAttribute="height" constant="75" id="gnH-xQ-4j6"/>
                                     <constraint firstItem="Th2-dU-n7n" firstAttribute="top" secondItem="7uX-gm-fTw" secondAttribute="top" id="q8d-FG-EXI"/>
                                     <constraint firstItem="hIx-Ow-5Z9" firstAttribute="top" secondItem="7uX-gm-fTw" secondAttribute="top" constant="5" id="yY3-kx-F1h"/>
-                                    <constraint firstItem="7uX-gm-fTw" firstAttribute="top" secondItem="zbz-F9-TrV" secondAttribute="top" constant="5" id="z3f-fW-9bd"/>
+                                    <constraint firstItem="7uX-gm-fTw" firstAttribute="top" secondItem="zbz-F9-TrV" secondAttribute="top" constant="10" id="z3f-fW-9bd"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ou-yO-3w2">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="tintColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Play Asobeat" id="P5l-i0-u4g">
+                                        <barButtonItem key="leftBarButtonItem" title="End" id="ojD-eE-c0u">
+                                            <color key="tintColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="didTapEndButton:" destination="jVq-7N-zVc" id="aNR-nZ-WcK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhi-A7-Xpw">
                                 <rect key="frame" x="0.0" y="385" width="320" height="183"/>
                                 <subviews>
@@ -1227,17 +1235,16 @@ AsoBeatデバイスを登録しましょう</string>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJO-Bx-fQ5">
                                                                             <rect key="frame" x="0.0" y="0.0" width="49.5" height="49"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="♡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvn-8u-J6e">
-                                                                                    <rect key="frame" x="11" y="6" width="28.5" height="36"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                                                    <color key="textColor" red="1" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                    <nil key="highlightedColor"/>
-                                                                                </label>
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sfG-fD-3Fd">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="49.5" height="49"/>
+                                                                                </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                             <constraints>
-                                                                                <constraint firstItem="uvn-8u-J6e" firstAttribute="centerX" secondItem="JJO-Bx-fQ5" secondAttribute="centerX" id="WUP-1p-3RN"/>
-                                                                                <constraint firstItem="uvn-8u-J6e" firstAttribute="centerY" secondItem="JJO-Bx-fQ5" secondAttribute="centerY" id="teK-SZ-yZx"/>
+                                                                                <constraint firstItem="sfG-fD-3Fd" firstAttribute="top" secondItem="JJO-Bx-fQ5" secondAttribute="top" id="1xp-vr-gwo"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="sfG-fD-3Fd" secondAttribute="trailing" id="EFh-VL-xeU"/>
+                                                                                <constraint firstItem="sfG-fD-3Fd" firstAttribute="leading" secondItem="JJO-Bx-fQ5" secondAttribute="leading" id="ZNC-dy-sal"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="sfG-fD-3Fd" secondAttribute="bottom" id="rcf-Qa-Xjp"/>
                                                                             </constraints>
                                                                         </view>
                                                                     </subviews>
@@ -1280,7 +1287,7 @@ AsoBeatデバイスを登録しましょう</string>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="heartLabel" destination="uvn-8u-J6e" id="r7E-qY-q0a"/>
+                                                    <outlet property="heartImageView" destination="sfG-fD-3Fd" id="A5a-7h-31n"/>
                                                     <outlet property="iconImageView" destination="h83-c4-4Ji" id="YqT-5w-lRL"/>
                                                     <outlet property="idLabel" destination="gfm-5R-Qhn" id="PvR-6x-T7R"/>
                                                     <outlet property="nameLabel" destination="zux-fP-ru9" id="Vur-sC-2TA"/>
@@ -1304,10 +1311,9 @@ AsoBeatデバイスを登録しましょう</string>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeO-BZ-E4v" userLabel="statusBar">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="fln-44-TFe"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="iIY-jm-Bw4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1324,7 +1330,7 @@ AsoBeatデバイスを登録しましょう</string>
                             <constraint firstItem="4ou-yO-3w2" firstAttribute="leading" secondItem="nHf-zR-DhG" secondAttribute="leading" id="bxU-IU-NOA"/>
                             <constraint firstAttribute="trailing" secondItem="lhi-A7-Xpw" secondAttribute="trailing" id="cg0-4e-tH5"/>
                             <constraint firstItem="4ou-yO-3w2" firstAttribute="top" secondItem="Mle-9s-U9p" secondAttribute="bottom" id="d7N-F5-b4L"/>
-                            <constraint firstItem="zbz-F9-TrV" firstAttribute="top" secondItem="4ou-yO-3w2" secondAttribute="bottom" id="emP-z7-Q6a"/>
+                            <constraint firstItem="zbz-F9-TrV" firstAttribute="top" secondItem="4ou-yO-3w2" secondAttribute="bottom" constant="-5" id="emP-z7-Q6a"/>
                             <constraint firstAttribute="trailing" secondItem="zbz-F9-TrV" secondAttribute="trailing" id="gKa-I0-Khi"/>
                             <constraint firstAttribute="trailing" secondItem="xeO-BZ-E4v" secondAttribute="trailing" id="iKA-NG-9eT"/>
                             <constraint firstItem="eZc-ZC-Xwy" firstAttribute="top" secondItem="QhE-c2-WcQ" secondAttribute="bottom" id="mjL-73-IIW"/>
@@ -1336,7 +1342,9 @@ AsoBeatデバイスを登録しましょう</string>
                         <outlet property="memberTableView" destination="FDN-UN-jFz" id="Fx6-Sg-jTw"/>
                         <outlet property="memberTableViewBottom" destination="wS5-n2-9oH" id="Kyv-uf-XET"/>
                         <outlet property="myHeartBeatLabel" destination="iW5-4W-B0E" id="DNx-nS-rCp"/>
+                        <outlet property="myHeartImageView" destination="sXS-la-SmD" id="KEC-Mt-jxH"/>
                         <outlet property="myImageView" destination="7uX-gm-fTw" id="oba-dH-KTp"/>
+                        <outlet property="myInfoView" destination="zbz-F9-TrV" id="9K4-Fi-Txr"/>
                         <outlet property="myScreenNameLabel" destination="hIx-Ow-5Z9" id="4vk-D1-T8x"/>
                         <outlet property="myUserNameLabel" destination="BSn-3O-lJ0" id="IyR-IL-fig"/>
                     </connections>
