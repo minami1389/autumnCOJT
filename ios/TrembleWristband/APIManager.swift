@@ -238,8 +238,26 @@ class APIManager: NSObject {
             } catch {}
         }
         task.resume()
-        
     }
+    
+    func deleteDevice(deviceID: String, completion:()->Void) {
+        guard let url = NSURL(string: "\(endPoint)/devices/\(deviceID)") else { return }
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "DELETE"
+        let task = session.dataTaskWithRequest(request) { (data, res, err) -> Void in
+            if err != nil {
+                print("deleteDeviceError:\(err)")
+                return
+            }
+            completion()
+        }
+        task.resume()
+    }
+
+    
+    
+    
+    
 
     
 }

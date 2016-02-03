@@ -100,7 +100,8 @@ class RegisterDeviceViewController: UIViewController, AVCaptureMetadataOutputObj
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             let alert = UIAlertController(title: "完了", message: "デバイスが登録されました", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) -> Void in
-                self.performSegueWithIdentifier("registerDeviceToGameStart", sender: self)
+                UIApplication.sharedApplication().keyWindow?.rootViewController?.dismissViewControllerAnimated(false, completion: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }))
             self.presentViewController(alert, animated: true, completion: nil)
         }

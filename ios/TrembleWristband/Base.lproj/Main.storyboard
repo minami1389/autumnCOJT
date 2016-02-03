@@ -46,8 +46,8 @@
                                 <rect key="frame" x="0.0" y="284" width="320" height="284"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EN-6p-HoA">
-                                        <rect key="frame" x="26" y="122" width="268" height="41"/>
-                                        <string key="text">まずはQRコードを読み取って
+                                        <rect key="frame" x="26" y="121" width="268" height="41"/>
+                                        <string key="text">QRコードを読み取って
 AsoBeatデバイスを登録しましょう</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -344,6 +344,7 @@ AsoBeatデバイスを登録しましょう</string>
                         <outlet property="userInfoView" destination="iZ7-L9-O6v" id="eaS-Wh-Aeq"/>
                         <outlet property="userNameLabel" destination="Nn3-4c-jsV" id="EMh-nI-XoU"/>
                         <outlet property="userScreenNameLabel" destination="QJF-UZ-PFi" id="V8s-Mn-dhI"/>
+                        <segue destination="dPu-i5-8X7" kind="modal" identifier="toSettingVC" id="UtB-pK-SzI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNV-q9-BVC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -461,6 +462,111 @@ AsoBeatデバイスを登録しましょう</string>
             </objects>
             <point key="canvasLocation" x="1093" y="570"/>
         </scene>
+        <!--Device Setting View Controller-->
+        <scene sceneID="Jc9-ld-tPa">
+            <objects>
+                <viewController storyboardIdentifier="DeviceSettingVC" id="dPu-i5-8X7" customClass="DeviceSettingViewController" customModule="TrembleWristband" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qBZ-nL-SA2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tm7-4p-e8L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iaS-Jh-DPZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device ID" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1Z-WE-Mar">
+                                <rect key="frame" x="54" y="176.5" width="88.5" height="22"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FZED445D025CX501" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd2-3R-cVa">
+                                <rect key="frame" x="54" y="203" width="211" height="24.5"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyq-Pg-iPG">
+                                <rect key="frame" x="50" y="468" width="220" height="50"/>
+                                <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UQk-8A-a9O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="登録解除">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapRegisterButton:" destination="dPu-i5-8X7" eventType="touchUpInside" id="Aql-H0-yfG"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ1-ys-X6Z">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Device Setting" id="TzV-36-znW">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IiG-gL-iLx">
+                                            <connections>
+                                                <action selector="didTapCancelButton:" destination="dPu-i5-8X7" id="1Cd-cd-jUh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFe-0s-byL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="fit-bC-sRk"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qcZ-GP-uaK">
+                                <rect key="frame" x="-120" y="64" width="560" height="404"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.73333333329999995" green="0.87058823529999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fFe-0s-byL" secondAttribute="trailing" id="09H-5K-OQc"/>
+                            <constraint firstItem="qd2-3R-cVa" firstAttribute="top" secondItem="w1Z-WE-Mar" secondAttribute="bottom" constant="5" id="3t4-Hk-gFp"/>
+                            <constraint firstItem="fFe-0s-byL" firstAttribute="leading" secondItem="iaS-Jh-DPZ" secondAttribute="leading" id="8E5-jQ-Ue1"/>
+                            <constraint firstItem="Xyq-Pg-iPG" firstAttribute="leading" secondItem="iaS-Jh-DPZ" secondAttribute="leading" constant="50" id="9Su-gj-pBD"/>
+                            <constraint firstAttribute="trailing" secondItem="qcZ-GP-uaK" secondAttribute="trailing" constant="-120" id="BKq-rH-Tns"/>
+                            <constraint firstItem="qd2-3R-cVa" firstAttribute="centerX" secondItem="iaS-Jh-DPZ" secondAttribute="centerX" id="EUP-oW-adS"/>
+                            <constraint firstItem="hZ1-ys-X6Z" firstAttribute="leading" secondItem="iaS-Jh-DPZ" secondAttribute="leading" id="Moe-c3-jtf"/>
+                            <constraint firstAttribute="trailing" secondItem="Xyq-Pg-iPG" secondAttribute="trailing" constant="50" id="Px5-1j-hqm"/>
+                            <constraint firstItem="fFe-0s-byL" firstAttribute="top" secondItem="iaS-Jh-DPZ" secondAttribute="top" id="S1r-5h-6yB"/>
+                            <constraint firstItem="hZ1-ys-X6Z" firstAttribute="top" secondItem="fFe-0s-byL" secondAttribute="bottom" id="Tq3-1p-65Y"/>
+                            <constraint firstItem="qcZ-GP-uaK" firstAttribute="leading" secondItem="iaS-Jh-DPZ" secondAttribute="leading" constant="-120" id="XEI-cQ-ldy"/>
+                            <constraint firstItem="Tm7-4p-e8L" firstAttribute="top" secondItem="Xyq-Pg-iPG" secondAttribute="bottom" constant="50" id="cDX-pU-wmp"/>
+                            <constraint firstAttribute="trailing" secondItem="hZ1-ys-X6Z" secondAttribute="trailing" id="cea-V1-KhD"/>
+                            <constraint firstItem="qcZ-GP-uaK" firstAttribute="top" secondItem="hZ1-ys-X6Z" secondAttribute="bottom" id="dWg-4k-GNH"/>
+                            <constraint firstItem="Xyq-Pg-iPG" firstAttribute="top" secondItem="qcZ-GP-uaK" secondAttribute="bottom" id="plh-SV-psB"/>
+                            <constraint firstItem="qd2-3R-cVa" firstAttribute="centerY" secondItem="qcZ-GP-uaK" secondAttribute="centerY" constant="-50" id="vYa-Gv-4gw"/>
+                            <constraint firstItem="qd2-3R-cVa" firstAttribute="leading" secondItem="w1Z-WE-Mar" secondAttribute="leading" id="xcS-D9-MeV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="y8D-Hc-kSp"/>
+                    <connections>
+                        <outlet property="deviceIDLabel" destination="qd2-3R-cVa" id="hJM-Jh-Wut"/>
+                        <outlet property="deviceIDTitleLabel" destination="w1Z-WE-Mar" id="X90-cJ-yGX"/>
+                        <outlet property="deviceImageView" destination="qcZ-GP-uaK" id="q8Z-Vr-8n7"/>
+                        <outlet property="registerButton" destination="Xyq-Pg-iPG" id="50A-bF-Lut"/>
+                        <segue destination="Zmv-Fn-f6W" kind="modal" identifier="deviceToQr" id="ITA-fV-Dsm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQU-uC-WMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="-459"/>
+        </scene>
         <!--Create Team-->
         <scene sceneID="ZEF-sg-Ihv">
             <objects>
@@ -470,22 +576,22 @@ AsoBeatデバイスを登録しましょう</string>
                         <viewControllerLayoutGuide type="bottom" id="pcg-To-NCL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XLX-Dw-1QU">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cAu-Ip-8YF">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="0.78431372549019607" green="0.90196078431372551" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MemberUserCell" id="ooy-Fd-gCU" customClass="MemberUserTableViewCell" customModule="TrembleWristband" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="400" height="98"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ooy-Fd-gCU" id="88V-em-hxe">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="98"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ux-IJ-wFK">
-                                                    <rect key="frame" x="10" y="10" width="380" height="78"/>
+                                                    <rect key="frame" x="10" y="10" width="300" height="78"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ss_shopetan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCl-NS-M8C">
                                                             <rect key="frame" x="78" y="44" width="110" height="18.5"/>
@@ -511,7 +617,7 @@ AsoBeatデバイスを登録しましょう</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sPh-1E-LIG">
-                                                            <rect key="frame" x="320" y="19" width="40" height="40"/>
+                                                            <rect key="frame" x="240" y="19" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="84i-hA-tb6"/>
                                                                 <constraint firstAttribute="width" constant="40" id="97H-eh-R6h"/>
@@ -1059,5 +1165,6 @@ AsoBeatデバイスを登録しましょう</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="axk-Qt-SDO"/>
+        <segue reference="ITA-fV-Dsm"/>
     </inferredMetricsTieBreakers>
 </document>

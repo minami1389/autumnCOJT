@@ -13,6 +13,7 @@
 		1946D2AB1C21265000C0C4AB /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1946D2AA1C21265000C0C4AB /* Constans.swift */; };
 		194F4F481C60CD9E00353786 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F4F471C60CD9E00353786 /* DeviceManager.swift */; };
 		1970A9351C17D74800154A9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A9341C17D74800154A9E /* User.swift */; };
+		198FB5721C61BC17004586D8 /* DeviceSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198FB5711C61BC17004586D8 /* DeviceSettingViewController.swift */; };
 		19A5D0011C23EF6D0032B349 /* GPSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D0001C23EF6D0032B349 /* GPSManager.swift */; };
 		19A5D0031C23FF880032B349 /* MeasureHeartBeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */; };
 		19B081321C5DC911008757F0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B081311C5DC911008757F0 /* RootViewController.swift */; };
@@ -54,6 +55,7 @@
 		1946D2AA1C21265000C0C4AB /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		194F4F471C60CD9E00353786 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		1970A9341C17D74800154A9E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
+		198FB5711C61BC17004586D8 /* DeviceSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSettingViewController.swift; sourceTree = "<group>"; };
 		19A5D0001C23EF6D0032B349 /* GPSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSManager.swift; sourceTree = "<group>"; };
 		19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureHeartBeatViewController.swift; sourceTree = "<group>"; };
 		19AFA3C81C1ABC720005235F /* TrembleWristband-Bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrembleWristband-Bridging-header.h"; sourceTree = SOURCE_ROOT; };
@@ -118,6 +120,7 @@
 				E90386D41BF5D55400AE4BD3 /* JointRoomViewController.swift */,
 				19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */,
 				1911D3681C2D1BF5005DB43E /* PlayGameViewController.swift */,
+				198FB5711C61BC17004586D8 /* DeviceSettingViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				E9E06DF31BE9BDB7006E99D3 /* AppDelegate.swift in Sources */,
 				19A5D0031C23FF880032B349 /* MeasureHeartBeatViewController.swift in Sources */,
 				19EF8C851C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift in Sources */,
+				198FB5721C61BC17004586D8 /* DeviceSettingViewController.swift in Sources */,
 				E90386D51BF5D55500AE4BD3 /* JointRoomViewController.swift in Sources */,
 				19A5D0011C23EF6D0032B349 /* GPSManager.swift in Sources */,
 				E90386D11BF5D19400AE4BD3 /* GameStartViewController.swift in Sources */,
