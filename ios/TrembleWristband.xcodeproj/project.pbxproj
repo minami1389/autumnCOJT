@@ -14,12 +14,13 @@
 		194F4F481C60CD9E00353786 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F4F471C60CD9E00353786 /* DeviceManager.swift */; };
 		1970A9351C17D74800154A9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A9341C17D74800154A9E /* User.swift */; };
 		198FB5721C61BC17004586D8 /* DeviceSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198FB5711C61BC17004586D8 /* DeviceSettingViewController.swift */; };
+		198FB5741C61CADA004586D8 /* GameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198FB5731C61CADA004586D8 /* GameSettingViewController.swift */; };
 		19A5D0011C23EF6D0032B349 /* GPSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D0001C23EF6D0032B349 /* GPSManager.swift */; };
 		19A5D0031C23FF880032B349 /* MeasureHeartBeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */; };
+		19AB63E41C61DC9A00CFBC0A /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AB63E31C61DC9A00CFBC0A /* UserManager.swift */; };
 		19B081321C5DC911008757F0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B081311C5DC911008757F0 /* RootViewController.swift */; };
 		19EB33A81C55262300C04A23 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB33A71C55262300C04A23 /* APIManager.swift */; };
 		19EB33AA1C55263100C04A23 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB33A91C55263100C04A23 /* Room.swift */; };
-		19EB33AC1C55372B00C04A23 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EB33AB1C55372B00C04A23 /* UserManager.swift */; };
 		19EF8C851C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EF8C841C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift */; };
 		AAEDE002C0BF480FBA78C931 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F234A730F3EC4E8514CFC37 /* Pods.framework */; };
 		E90386C71BF5CEFB00AE4BD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90386C31BF5CEFB00AE4BD3 /* Fabric.framework */; };
@@ -56,13 +57,14 @@
 		194F4F471C60CD9E00353786 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		1970A9341C17D74800154A9E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		198FB5711C61BC17004586D8 /* DeviceSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSettingViewController.swift; sourceTree = "<group>"; };
+		198FB5731C61CADA004586D8 /* GameSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettingViewController.swift; sourceTree = "<group>"; };
 		19A5D0001C23EF6D0032B349 /* GPSManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSManager.swift; sourceTree = "<group>"; };
 		19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureHeartBeatViewController.swift; sourceTree = "<group>"; };
+		19AB63E31C61DC9A00CFBC0A /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		19AFA3C81C1ABC720005235F /* TrembleWristband-Bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrembleWristband-Bridging-header.h"; sourceTree = SOURCE_ROOT; };
 		19B081311C5DC911008757F0 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		19EB33A71C55262300C04A23 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		19EB33A91C55263100C04A23 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		19EB33AB1C55372B00C04A23 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		19EF8C841C5F5A0F00EC4F65 /* RegisterDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterDeviceViewController.swift; sourceTree = "<group>"; };
 		2F234A730F3EC4E8514CFC37 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E66436F7D49CF9D9A8F875 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				19A5D0021C23FF880032B349 /* MeasureHeartBeatViewController.swift */,
 				1911D3681C2D1BF5005DB43E /* PlayGameViewController.swift */,
 				198FB5711C61BC17004586D8 /* DeviceSettingViewController.swift */,
+				198FB5731C61CADA004586D8 /* GameSettingViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -129,11 +132,11 @@
 			isa = PBXGroup;
 			children = (
 				1946D2AA1C21265000C0C4AB /* Constans.swift */,
+				19AB63E31C61DC9A00CFBC0A /* UserManager.swift */,
 				19A5D0001C23EF6D0032B349 /* GPSManager.swift */,
 				19EB33A71C55262300C04A23 /* APIManager.swift */,
 				19EB33A91C55263100C04A23 /* Room.swift */,
 				1970A9341C17D74800154A9E /* User.swift */,
-				19EB33AB1C55372B00C04A23 /* UserManager.swift */,
 				194F4F471C60CD9E00353786 /* DeviceManager.swift */,
 			);
 			name = Model;
@@ -419,12 +422,13 @@
 				E90386CD1BF5CF9C00AE4BD3 /* LoginViewController.swift in Sources */,
 				194F4F481C60CD9E00353786 /* DeviceManager.swift in Sources */,
 				19B081321C5DC911008757F0 /* RootViewController.swift in Sources */,
+				198FB5741C61CADA004586D8 /* GameSettingViewController.swift in Sources */,
 				E90386D71BF5D56D00AE4BD3 /* CreateRoomViewController.swift in Sources */,
 				1911D3691C2D1BF5005DB43E /* PlayGameViewController.swift in Sources */,
 				1946D2AB1C21265000C0C4AB /* Constans.swift in Sources */,
 				1946D2A71C211EF900C0C4AB /* MemberUserTableViewCell.swift in Sources */,
 				E9C4D1141C0EC359008D2A5C /* HostUserTableViewCell.swift in Sources */,
-				19EB33AC1C55372B00C04A23 /* UserManager.swift in Sources */,
+				19AB63E41C61DC9A00CFBC0A /* UserManager.swift in Sources */,
 				19EB33A81C55262300C04A23 /* APIManager.swift in Sources */,
 				1970A9351C17D74800154A9E /* User.swift in Sources */,
 				19446D9F1C2D3C49006420AE /* PlayUserTableViewCell.swift in Sources */,

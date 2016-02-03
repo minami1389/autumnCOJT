@@ -2,12 +2,13 @@
 //  UserManager.swift
 //  TrembleWristband
 //
-//  Created by Baba Minami on 1/25/16.
+//  Created by Baba Minami on 2/3/16.
 //  Copyright © 2016 AutumnCOJT. All rights reserved.
 //
 
-class UserManager: NSObject {
+import UIKit
 
+class UserManager: NSObject {
     static let sharedInstance = UserManager()
     
     private var me: User?
@@ -41,4 +42,5 @@ class UserManager: NSObject {
     func deleteMe() {
         me = nil
     }
+
 }

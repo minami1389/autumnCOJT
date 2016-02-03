@@ -19,15 +19,19 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     
     private var deviceID = ""
     private var didDiscoverDevice:()->Void = {}
+    private var didFailToDiscoverDevice:()->Void = {}
+    
+    private var timeout:NSTimer?
     
     var continuityVibrateTimer:NSTimer?
     
     private var heartbeatQueue = [Int]()
     
-    func setup(deviceID: String, didDiscoverDevice:()->Void) {
+    func setup(deviceID: String, didDiscoverDevice:()->Void, didFailToDiscoverDevice:()->Void) {
         centralManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey:true])
         self.deviceID = deviceID
         self.didDiscoverDevice = didDiscoverDevice
+        self.didFailToDiscoverDevice = didFailToDiscoverDevice
     }
     
     func stopScan() {
@@ -44,11 +48,13 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+        print("name0:\(advertisementData["kCBAdvDataLocalName"])")
+        print("name1:\(peripheral.name)")
        if let localName = advertisementData["kCBAdvDataLocalName"] as? String {
             if localName == "\(deviceID)" {
                 asobiPeripheral = peripheral
                 asobiPeripheral?.delegate = self
-                guard let asobiPeripheral = self.asobiPeripheral else { return }
+                guard let asobiPeripheral = asobiPeripheral else { return }
                 self.centralManager?.connectPeripheral(asobiPeripheral, options: nil)
             }
         }
@@ -61,18 +67,20 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         print("Connect error...")
+        didFailToDiscoverDevice()
     }
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         print("didDisconnectPeripheral:\(error)")
-        if let asobiPeripheral = asobiPeripheral {
-            guard let heartBeatCharacteristic = heartBeatCharacteristic else { return }
-            centralManager?.cancelPeripheralConnection(asobiPeripheral)
+        guard let asobiPeripheral = asobiPeripheral else { return }
+        if let heartBeatCharacteristic = heartBeatCharacteristic {
             asobiPeripheral.setNotifyValue(false, forCharacteristic: heartBeatCharacteristic)
-            centralManager?.connectPeripheral(asobiPeripheral, options: nil)
         }
+        centralManager?.cancelPeripheralConnection(asobiPeripheral)
+        centralManager?.stopScan()
         heartBeatCharacteristic = nil
         vibrationCharacteristic = nil
+        didFailToDiscoverDevice()
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
@@ -80,9 +88,10 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
             print("error: \(error)")
             return
         }
+
         let services = peripheral.services!
         for service in services {
-            asobiPeripheral?.discoverCharacteristics(nil, forService: service)
+            asobiPeripheral?.discoverCharacteristics([kHeartBeatCharacteristicUUID, kVibrationCharacteristicUUID], forService: service)
         }
     }
     
@@ -93,16 +102,19 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
         }
         guard let characteristics = service.characteristics else { return }
         for characteristic in characteristics {
-            if characteristic.UUID.isEqual(kHeartBeatCharacteristicUUID) {
+            if characteristic.UUID.isEqual(kHeartBeatCharacteristicUUID) == true {
                 heartBeatCharacteristic = characteristic
                 guard let heartBeatCharacteristic = heartBeatCharacteristic else { return }
                 asobiPeripheral?.setNotifyValue(true, forCharacteristic: heartBeatCharacteristic)
                 didDiscoverDevice()
-            } else if characteristic.UUID.isEqual(kVibrationCharacteristicUUID) {
+                print("chara:\(characteristic.description)")
+            } else if characteristic.UUID.isEqual(kVibrationCharacteristicUUID) == true {
                 vibrationCharacteristic = characteristic
+                print("chara:\(characteristic.description)")
             }
         }
     }
+    
     
     func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         if error != nil {
@@ -112,7 +124,19 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        
+        print("aaa")
+        print(peripheral.description)
+        print(characteristic.value)
+        print(error)
+        
+        if let error = error {
+            print("error:\(error)")
+        }
+        
+        print("update:\(characteristic)")
         if characteristic.UUID.isEqual(kHeartBeatCharacteristicUUID) {
+            print("updateupdate")
             if let value = characteristic.value {
                 var heartbeat: NSInteger = 0
                 value.getBytes(&heartbeat, length: sizeof(NSInteger))
@@ -126,6 +150,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func getHeaertbeat() -> Int {
+        if heartbeatQueue.count == 0 { return 0 }
         var heartbeat = 0
         for i in heartbeatQueue {
             heartbeat += i
@@ -145,8 +170,8 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
         var switchValue = "0"
         if on { switchValue = "1" }
         guard let value = switchValue.dataUsingEncoding(NSUTF8StringEncoding) else { return }
-        guard let vibrationCharacteristic = vibrationCharacteristic else { return }
-        asobiPeripheral?.writeValue(value, forCharacteristic: vibrationCharacteristic, type: .WithResponse)
+        guard let _ = self.vibrationCharacteristic else { return }
+        asobiPeripheral?.writeValue(value, forCharacteristic: self.vibrationCharacteristic!, type: .WithResponse)
     }
     
     func continuityVibrate(interval: NSTimeInterval) {

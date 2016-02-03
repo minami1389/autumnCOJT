@@ -9,6 +9,5 @@
 #ifndef TrembleWristband_Bridging_header_h
 #define TrembleWristband_Bridging_header_h
 
-#import "SVProgressHUD.h"
 
 #endif /* TrembleWristband_Bridging_header_h */

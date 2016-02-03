@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class MeasureHeartBeatViewController: UIViewController {
 
@@ -33,7 +34,12 @@ class MeasureHeartBeatViewController: UIViewController {
             self.stateLabel.text = "Device発見"
             self.measureButton.hidden = false
             self.measureButton.setTitle("計測開始", forState: .Normal)
-        })
+            }) { () -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    SVProgressHUD.dismiss()
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

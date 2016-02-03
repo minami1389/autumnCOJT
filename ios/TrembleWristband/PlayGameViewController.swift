@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import GoogleMaps
 import CoreBluetooth
+import SVProgressHUD
 
 class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableViewDelegate, UITableViewDataSource {
 
