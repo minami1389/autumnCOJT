@@ -892,36 +892,36 @@ AsoBeatデバイスを登録しましょう</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLX-OD-vWn">
-                                <rect key="frame" x="50" y="174" width="220" height="220"/>
+                                <rect key="frame" x="0.0" y="94" width="320" height="320"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8HN-A9-gaU">
-                                        <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8HN-A9-gaU" secondAttribute="height" multiplier="1:1" id="6vn-Y0-IQq"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ckg-9l-0G9">
-                                        <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcU-tZ-Llj">
-                                        <rect key="frame" x="26" y="56" width="167" height="67"/>
+                                        <rect key="frame" x="48" y="97" width="223.5" height="85.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYq-2k-Vi0">
-                                                <rect key="frame" x="127" y="40" width="40" height="22"/>
-                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
+                                                <rect key="frame" x="149" y="44" width="74" height="36.5"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBk-Yo-5bE">
-                                                <rect key="frame" x="0.0" y="0.0" width="117.5" height="67"/>
-                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="55"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="149.5" height="85.5"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="70"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="LYq-2k-Vi0" firstAttribute="leading" secondItem="iBk-Yo-5bE" secondAttribute="trailing" constant="10" id="1NB-VI-Njn"/>
+                                            <constraint firstItem="LYq-2k-Vi0" firstAttribute="leading" secondItem="iBk-Yo-5bE" secondAttribute="trailing" id="1NB-VI-Njn"/>
                                             <constraint firstItem="LYq-2k-Vi0" firstAttribute="bottom" secondItem="iBk-Yo-5bE" secondAttribute="bottom" constant="-5" id="5fC-3B-keT"/>
                                             <constraint firstItem="iBk-Yo-5bE" firstAttribute="centerY" secondItem="EcU-tZ-Llj" secondAttribute="centerY" id="5jc-7V-xYg"/>
                                             <constraint firstItem="iBk-Yo-5bE" firstAttribute="leading" secondItem="EcU-tZ-Llj" secondAttribute="leading" id="RNV-Ib-NNS"/>
@@ -930,12 +930,6 @@ AsoBeatデバイスを登録しましょう</string>
                                             <constraint firstAttribute="trailing" secondItem="LYq-2k-Vi0" secondAttribute="trailing" id="oC7-QT-8Li"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="計測開始" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZh-wT-Kpc">
-                                        <rect key="frame" x="70" y="156" width="80" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="1" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ckg-9l-0G9" firstAttribute="top" secondItem="ZLX-OD-vWn" secondAttribute="top" id="1IQ-Q3-57U"/>
@@ -945,11 +939,9 @@ AsoBeatデバイスを登録しましょう</string>
                                     <constraint firstItem="8HN-A9-gaU" firstAttribute="leading" secondItem="ZLX-OD-vWn" secondAttribute="leading" id="HgZ-o8-fIZ"/>
                                     <constraint firstAttribute="bottom" secondItem="8HN-A9-gaU" secondAttribute="bottom" id="Jpv-ci-T4K"/>
                                     <constraint firstAttribute="bottom" secondItem="Ckg-9l-0G9" secondAttribute="bottom" id="P9i-Wx-mtC"/>
-                                    <constraint firstAttribute="bottom" secondItem="cZh-wT-Kpc" secondAttribute="bottom" constant="40" id="U12-li-gUX"/>
                                     <constraint firstAttribute="trailing" secondItem="Ckg-9l-0G9" secondAttribute="trailing" id="W3D-sa-bBA"/>
                                     <constraint firstAttribute="trailing" secondItem="8HN-A9-gaU" secondAttribute="trailing" id="dvQ-AW-pDH"/>
                                     <constraint firstItem="EcU-tZ-Llj" firstAttribute="centerY" secondItem="ZLX-OD-vWn" secondAttribute="centerY" constant="-20" id="f6N-h8-VOV"/>
-                                    <constraint firstItem="cZh-wT-Kpc" firstAttribute="centerX" secondItem="ZLX-OD-vWn" secondAttribute="centerX" id="pHQ-Va-PWj"/>
                                     <constraint firstItem="EcU-tZ-Llj" firstAttribute="centerX" secondItem="ZLX-OD-vWn" secondAttribute="centerX" id="w20-96-wpE"/>
                                 </constraints>
                             </view>
@@ -971,7 +963,7 @@ AsoBeatデバイスを登録しましょう</string>
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bl-Gb-dJx">
-                                <rect key="frame" x="70" y="444" width="180" height="50"/>
+                                <rect key="frame" x="70" y="448" width="180" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Zb3-1E-j8B"/>
@@ -990,6 +982,12 @@ AsoBeatデバイスを登録しましょう</string>
                                     <action selector="didPushMeasureButton:" destination="K3m-5g-bQJ" eventType="touchUpInside" id="ma5-l4-kJc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="計測開始" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZh-wT-Kpc">
+                                <rect key="frame" x="120" y="414" width="80" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.73333333333333328" green="0.87058823529411766" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -997,16 +995,19 @@ AsoBeatデバイスを登録しましょう</string>
                             <constraint firstAttribute="trailing" secondItem="6kW-60-VQg" secondAttribute="trailing" id="HJN-6H-gXt"/>
                             <constraint firstItem="efh-3M-aif" firstAttribute="top" secondItem="0dt-yz-uTi" secondAttribute="bottom" id="NZP-qs-75q"/>
                             <constraint firstItem="ZLX-OD-vWn" firstAttribute="centerX" secondItem="wo0-EV-ZMT" secondAttribute="centerX" id="Oos-sm-ALD"/>
+                            <constraint firstItem="cZh-wT-Kpc" firstAttribute="centerX" secondItem="wo0-EV-ZMT" secondAttribute="centerX" id="T6H-Bn-zD8"/>
                             <constraint firstItem="6kW-60-VQg" firstAttribute="top" secondItem="wo0-EV-ZMT" secondAttribute="top" id="bZr-zm-HA3"/>
-                            <constraint firstItem="ZLX-OD-vWn" firstAttribute="centerY" secondItem="wo0-EV-ZMT" secondAttribute="centerY" id="cUa-4S-W9T"/>
+                            <constraint firstItem="ZLX-OD-vWn" firstAttribute="centerY" secondItem="wo0-EV-ZMT" secondAttribute="centerY" constant="-30" id="cUa-4S-W9T"/>
                             <constraint firstAttribute="trailing" secondItem="efh-3M-aif" secondAttribute="trailing" id="fvP-7O-sw5"/>
                             <constraint firstItem="3bl-Gb-dJx" firstAttribute="centerX" secondItem="wo0-EV-ZMT" secondAttribute="centerX" id="iYp-Vx-Fyb"/>
-                            <constraint firstAttribute="trailing" secondItem="ZLX-OD-vWn" secondAttribute="trailing" constant="50" id="l4M-Lv-lbt"/>
-                            <constraint firstItem="3bl-Gb-dJx" firstAttribute="top" secondItem="ZLX-OD-vWn" secondAttribute="bottom" constant="50" id="rF9-tb-DXo"/>
+                            <constraint firstItem="cZh-wT-Kpc" firstAttribute="top" secondItem="ZLX-OD-vWn" secondAttribute="bottom" id="jjV-nT-rdz"/>
+                            <constraint firstAttribute="trailing" secondItem="ZLX-OD-vWn" secondAttribute="trailing" id="l4M-Lv-lbt"/>
+                            <constraint firstItem="3bl-Gb-dJx" firstAttribute="top" secondItem="cZh-wT-Kpc" secondAttribute="bottom" constant="10" id="ode-XT-kmT"/>
                             <constraint firstItem="efh-3M-aif" firstAttribute="leading" secondItem="wo0-EV-ZMT" secondAttribute="leading" id="tjn-14-JCx"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bpmLabel" destination="LYq-2k-Vi0" id="XhI-ya-v1C"/>
                         <outlet property="heartBeatLabel" destination="iBk-Yo-5bE" id="FmO-ZX-qtW"/>
                         <outlet property="heartBgImageView" destination="8HN-A9-gaU" id="j0Z-rU-rOV"/>
                         <outlet property="heartImageView" destination="Ckg-9l-0G9" id="Dj8-6V-Gnh"/>

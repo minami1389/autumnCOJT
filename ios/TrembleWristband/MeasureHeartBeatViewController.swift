@@ -14,6 +14,7 @@ class MeasureHeartBeatViewController: UIViewController {
     var measureTimer:NSTimer?
     
     @IBOutlet weak var heartBeatLabel: UILabel!
+    @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var measureButton: UIButton!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var heartImageView: UIImageView!
@@ -26,7 +27,11 @@ class MeasureHeartBeatViewController: UIViewController {
         
         heartImageView.image = UIImage.fontAwesomeIconWithName(.Heartbeat, textColor: UIColor(red: 229/255, green: 57/255, blue: 53/255, alpha: 0.5), size: CGSizeMake(220, 220)).imageWithRenderingMode(.AlwaysOriginal)
         heartBgImageView.image = UIImage.fontAwesomeIconWithName(.Heartbeat, textColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0), size: CGSizeMake(220, 220)).imageWithRenderingMode(.AlwaysOriginal)
-        setHeartBeatLabelText(" - ")
+        setHeartBeatLabelText("123")
+        
+        let attrText = NSMutableAttributedString(string: "bpm")
+        attrText.addAttributes([NSStrokeColorAttributeName:UIColor.darkGrayColor(), NSStrokeWidthAttributeName:-1.0], range: NSRange(location: 0, length: attrText.length))
+        bpmLabel.attributedText = attrText
         
         guard let deviceID = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultDeviceIDKey) as? String else { return }
         deviceManager.setup(deviceID, didDiscoverDevice: { () -> Void in
@@ -36,8 +41,8 @@ class MeasureHeartBeatViewController: UIViewController {
             self.measureButton.setTitle("計測開始", forState: .Normal)
             }) { () -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    SVProgressHUD.dismiss()
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    //SVProgressHUD.dismiss()
+                    //self.dismissViewControllerAnimated(true, completion: nil)
                 })
         }
     }
@@ -64,7 +69,7 @@ class MeasureHeartBeatViewController: UIViewController {
     
     func setHeartBeatLabelText(text:String) {
         let attrText = NSMutableAttributedString(string: text)
-        attrText.addAttributes([NSStrokeColorAttributeName:UIColor.darkGrayColor(), NSStrokeWidthAttributeName:-0.5], range: NSRange(location: 0, length: attrText.length))
+        attrText.addAttributes([NSStrokeColorAttributeName:UIColor.darkGrayColor(), NSStrokeWidthAttributeName:-1.0], range: NSRange(location: 0, length: attrText.length))
         heartBeatLabel.attributedText = attrText
     }
     

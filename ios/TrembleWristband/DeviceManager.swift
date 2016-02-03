@@ -107,10 +107,8 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
                 guard let heartBeatCharacteristic = heartBeatCharacteristic else { return }
                 asobiPeripheral?.setNotifyValue(true, forCharacteristic: heartBeatCharacteristic)
                 didDiscoverDevice()
-                print("chara:\(characteristic.description)")
             } else if characteristic.UUID.isEqual(kVibrationCharacteristicUUID) == true {
                 vibrationCharacteristic = characteristic
-                print("chara:\(characteristic.description)")
             }
         }
     }
@@ -118,25 +116,18 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         if error != nil {
-            print("write:\(error)")
+            print("writeError:\(error)")
             return
         }
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         
-        print("aaa")
-        print(peripheral.description)
-        print(characteristic.value)
-        print(error)
-        
         if let error = error {
             print("error:\(error)")
         }
         
-        print("update:\(characteristic)")
         if characteristic.UUID.isEqual(kHeartBeatCharacteristicUUID) {
-            print("updateupdate")
             if let value = characteristic.value {
                 var heartbeat: NSInteger = 0
                 value.getBytes(&heartbeat, length: sizeof(NSInteger))
@@ -159,6 +150,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func vibrate(time: Double) {
+        print("vibrate")
         switchVibration(true)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
@@ -175,6 +167,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func continuityVibrate(interval: NSTimeInterval) {
+        print("continuityVibrate")
         continuityVibrateTimer?.invalidate()
         continuityVibrateTimer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: "continuitySingleVibrate", userInfo: nil, repeats: true)
     }
@@ -184,6 +177,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func twiceVibrate(time:NSTimeInterval) {
+        print("twiceVibrate")
         vibrate(time)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time+1.0 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
