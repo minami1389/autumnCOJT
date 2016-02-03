@@ -49,6 +49,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
             myScreenNameLabel.text = me.name
             myUserNameLabel.text = me.screenName
             myHeartBeatLabel.text = String(NSUserDefaults.standardUserDefaults().integerForKey(kUserDefaultHeartBeatKey))
+            myHeartBeatLabel.text = "69"
         }
         
         gpsManager.setDidUpdateLocationBlock { (location) -> Void in
@@ -97,6 +98,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
     func updateHeartbeat() {
         let heartbeat = deviceManager.getHeaertbeat()
         myHeartBeatLabel.text = String(heartbeat)
+        myHeartBeatLabel.text = "69"
         print(isAbnormal)
         let border = defalutHeartBeat+abnormalHeartBeatDiff
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -142,7 +144,7 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
                 minDis = dis
             }
         }
-        if minDis < distanceDiff {
+        if minDis != 0 && minDis < distanceDiff {
             deviceManager.continuityVibrate(minDis/20)
         }
     }
@@ -189,6 +191,14 @@ class PlayGameViewController: UIViewController, GMSMapViewDelegate,  UITableView
         }
     }
     
+    @IBAction func didTapDebugButton(sender: AnyObject) {
+        if isAbnormal == "true" {
+            isAbnormal = "false"
+        } else {
+            isAbnormal = "true"
+        }
+        
+    }
     @IBAction func didTapEndButton(sender: AnyObject) {
         let alert = UIAlertController(title: "End Game", message: "本当に終了してよろしいですか？", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))

@@ -53,7 +53,8 @@ class DeviceSettingViewController: UIViewController {
         if isRegisterDevice() {
             showConfirmRelease()
         } else {
-            self.performSegueWithIdentifier("deviceToQr", sender: nil)
+            let registerDeviceVC = self.storyboard?.instantiateViewControllerWithIdentifier("RegisterDeviceVC") as! RegisterDeviceViewController
+            self.presentViewController(registerDeviceVC, animated: true, completion: nil)
         }
     }
     

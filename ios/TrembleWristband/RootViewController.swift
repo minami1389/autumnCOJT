@@ -25,10 +25,12 @@ class RootViewController: UIViewController {
             SVProgressHUD.show()
             let user = User(twitterId: twitterID)
             user.fetchUserTwitterData({ () -> Void in
-                UserManager.sharedInstance.setMe(user)
+                 UserManager.sharedInstance.setMe(user)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     SVProgressHUD.dismiss()
-                    self.performSegueWithIdentifier("rootToGame", sender: self)
+                    let nav = self.storyboard?.instantiateViewControllerWithIdentifier("Navigation") as! UINavigationController
+                    nav.modalTransitionStyle = .CrossDissolve
+                    self.presentViewController(nav, animated: true, completion: nil)
                 })
             })
         } else {

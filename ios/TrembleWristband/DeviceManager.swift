@@ -85,31 +85,30 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
-        print("didDisconnectPeripheral:\(error)")
-        guard let asobiPeripheral = asobiPeripheral else { return }
-        if let heartBeatCharacteristic = heartBeatCharacteristic {
-            asobiPeripheral.setNotifyValue(false, forCharacteristic: heartBeatCharacteristic)
-        }
-        centralManager?.cancelPeripheralConnection(asobiPeripheral)
-        centralManager?.stopScan()
-        heartBeatCharacteristic = nil
-        vibrationCharacteristic = nil
+        print("DisConnected")
+        print("error:\(error)")
+        reset()
         didFailToDiscoverDevice()
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+        print("didDiscoverService:\(asobiPeripheral?.services)")
+        print("didDiscoverService:\(asobiPeripheral)")
         if error != nil {
             print("error: \(error)")
             return
         }
-
+        
         let services = peripheral.services!
         for service in services {
+            if service.UUID.isEqual(kDeviceServiceUUID) {
             asobiPeripheral?.discoverCharacteristics([kHeartBeatCharacteristicUUID, kVibrationCharacteristicUUID], forService: service)
+            }
         }
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+        print("didDiscoverCharacter")
         if error != nil {
             print("error: \(error)")
             return
@@ -120,15 +119,11 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
                 heartBeatCharacteristic = characteristic
                 guard let heartBeatCharacteristic = heartBeatCharacteristic else { return }
                 asobiPeripheral?.setNotifyValue(true, forCharacteristic: heartBeatCharacteristic)
+                print("notify:\(heartBeatCharacteristic)")
             } else if characteristic.UUID.isEqual(kVibrationCharacteristicUUID) == true {
                 vibrationCharacteristic = characteristic
             }
         }
-        guard let _ = heartBeatCharacteristic else { return }
-        guard let _ = vibrationCharacteristic else { return }
-        print("ok")
-        didDiscoverDevice()
-        
     }
     
     func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
@@ -141,6 +136,13 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         if error != nil {
             print("notifError:\(error)")
+            return
+        }
+        print("didUpdateNotify:\(characteristic)")
+        guard let _ = heartBeatCharacteristic else { return }
+        guard let _ = vibrationCharacteristic else { return }
+        if heartBeatCharacteristic?.isNotifying == true {
+            didDiscoverDevice()
         }
     }
     

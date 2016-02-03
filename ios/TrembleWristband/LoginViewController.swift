@@ -98,22 +98,13 @@ class LoginViewController: UIViewController {
     
     func presentToNextVC() {
         if let _ = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultDeviceIDKey) as? String  {
-            self.performSegueWithIdentifier("toGameStartVC", sender: self)
+            let nav = self.storyboard?.instantiateViewControllerWithIdentifier("Navigation") as! UINavigationController
+            nav.modalTransitionStyle = .CrossDissolve
+            self.presentViewController(nav, animated: true, completion: nil)
         } else {
-            self.performSegueWithIdentifier("toRegisterDeviceVC", sender: self)
+            let registerDeviceVC = self.storyboard?.instantiateViewControllerWithIdentifier("RegisterDeviceVC") as! RegisterDeviceViewController
+            self.presentViewController(registerDeviceVC, animated: true, completion: nil)
         }
-    }
-    
-    func showDidLoginAlert(userName: String) {
-        let alert = UIAlertController(title: "ログイン",
-            message: "\(userName)でログインしました",
-            preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK",
-            style: UIAlertActionStyle.Default,
-            handler: { (action:UIAlertAction!) -> Void in
-                self.performSegueWithIdentifier("toGameStartVC", sender: self)
-        }))
-        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }

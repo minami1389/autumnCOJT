@@ -34,12 +34,13 @@ class GameStartViewController: UIViewController, UIScrollViewDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.fontAwesomeIconWithName(.Tablet, textColor: UIColor(red: 3/255, green: 169/255, blue: 244/255, alpha: 1.0), size: CGSizeMake(30, 30)).imageWithRenderingMode(.AlwaysOriginal), style:.Plain, target: self, action: "didTapSettingButton")
         
         
-        createTeamArrow.image = UIImage.fontAwesomeIconWithName(.ArrowCircleORight, textColor: UIColor.whiteColor(), size: CGSizeMake(40, 40)).imageWithRenderingMode(.AlwaysOriginal)
-        joinTeamArrow.image = UIImage.fontAwesomeIconWithName(.ArrowCircleORight, textColor: UIColor.whiteColor(), size: CGSizeMake(40, 40)).imageWithRenderingMode(.AlwaysOriginal)
+        createTeamArrow.image = UIImage.fontAwesomeIconWithName(.HandPointerO, textColor: UIColor.whiteColor(), size: CGSizeMake(40, 40)).imageWithRenderingMode(.AlwaysOriginal)
+        joinTeamArrow.image = UIImage.fontAwesomeIconWithName(.HandPaperO, textColor: UIColor.whiteColor(), size: CGSizeMake(40, 40)).imageWithRenderingMode(.AlwaysOriginal)
     }
     
     func didTapSettingButton() {
-        performSegueWithIdentifier("toSettingVC", sender: nil)
+        let deviceSettingVC = self.storyboard?.instantiateViewControllerWithIdentifier("DeviceSettingVC") as! DeviceSettingViewController
+        presentViewController(deviceSettingVC, animated: true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

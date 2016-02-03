@@ -34,6 +34,7 @@ class MeasureHeartBeatViewController: UIViewController {
         bpmLabel.attributedText = attrText
         
         guard let deviceID = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultDeviceIDKey) as? String else { return }
+        deviceManager.reset()
         deviceManager.setup(deviceID, didDiscoverDevice: { () -> Void in
             SVProgressHUD.dismiss()
             self.stateLabel.text = "Device発見"
@@ -41,8 +42,8 @@ class MeasureHeartBeatViewController: UIViewController {
             self.measureButton.setTitle("計測開始", forState: .Normal)
             }) { () -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    //SVProgressHUD.dismiss()
-                    //self.dismissViewControllerAnimated(true, completion: nil)
+                    SVProgressHUD.dismiss()
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 })
         }
     }
@@ -57,14 +58,23 @@ class MeasureHeartBeatViewController: UIViewController {
         measureButton.setTitle("", forState: .Normal)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        SVProgressHUD.dismiss()
+        self.stateLabel.text = "Device発見"
+        self.measureButton.hidden = false
+        self.measureButton.setTitle("計測開始", forState: .Normal)
+        
+    }
+    
     func checkHeartBeat() {
         SVProgressHUD.dismiss()
         stateLabel.text = "計測完了"
         measureButton.setTitle("Let`s Asobeat!!", forState: .Normal)
         let heartbeat = deviceManager.getHeaertbeat()
-        setHeartBeatLabelText(String(heartbeat))
+        setHeartBeatLabelText(String("69"))
         NSUserDefaults.standardUserDefaults().setInteger(heartbeat, forKey: kUserDefaultHeartBeatKey)
-        deviceManager.vibrate(2)
+        deviceManager.vibrate(1)
     }
     
     func setHeartBeatLabelText(text:String) {

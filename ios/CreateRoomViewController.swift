@@ -9,6 +9,7 @@
 import UIKit
 import CoreBluetooth
 import TwitterKit
+import SVProgressHUD
 
 
 //Peripheral
@@ -37,7 +38,7 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
         if peripheral.state != CBPeripheralManagerState.PoweredOn { return }
         writeCharacteristic = CBMutableCharacteristic(type: kWriteCharacteristicUUID, properties: .Write, value: nil, permissions: .Writeable)
         notifyCharacteristic = CBMutableCharacteristic(type: kNotifyCharacteristicUUID, properties: .Notify, value: nil, permissions: .Readable)
-        let service = CBMutableService(type: kServiceUUID, primary: true)
+        let service = CBMutableService(type: kUserServiceUUID, primary: true)
         guard let writeCharacteristic = writeCharacteristic else { return }
         guard let notifyCharacteristic = notifyCharacteristic else { return }
         service.characteristics = [writeCharacteristic, notifyCharacteristic]
@@ -91,6 +92,7 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
 //IBAction
   
     @IBAction func didPushedDoneButton(sender: AnyObject) {
+        SVProgressHUD.show()
         var acceptedUserIds = [String]()
         for var i = 0; i < memberUsers.count; i++ {
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0))
@@ -100,21 +102,16 @@ class CreateRoomViewController: UIViewController, CBPeripheralManagerDelegate, U
             }
         }
         APIManager.sharedInstance.createRoom(acceptedUserIds) { (roomId) -> Void in
-            print("roomId:\(roomId)")
+            print("createRoom ID:\(roomId)")
             NSUserDefaults.standardUserDefaults().setObject(roomId, forKey: kUserDefaultRoomIdKey)
-            self.broadCastRoomNumberToOther(roomId)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("measureVC") as? MeasureHeartBeatViewController {
-                    self.presentViewController(vc, animated: true, completion: nil)
-                }
+                SVProgressHUD.dismiss()
+                let gameSettingVC = self.storyboard?.instantiateViewControllerWithIdentifier("GameSettingVC") as! GameSettingViewController
+                gameSettingVC.peripheralManager = self.peripheralManager
+                gameSettingVC.notifyCharacteristic = self.notifyCharacteristic
+                self.presentViewController(gameSettingVC, animated: true, completion: nil)
             })
         }
-    }
-    
-    func broadCastRoomNumberToOther(roomId: String) {
-        guard let value = "createRoom:\(roomId)".dataUsingEncoding(NSUTF8StringEncoding) else { return }
-        guard let notifyCharacteristic = self.notifyCharacteristic else { return }
-        self.peripheralManager?.updateValue(value, forCharacteristic: notifyCharacteristic, onSubscribedCentrals: nil)
     }
    
 }
