@@ -62,9 +62,10 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        print("name0:\(advertisementData["kCBAdvDataLocalName"])")
-        print("name1:\(peripheral.name)")
-       if let localName = advertisementData["kCBAdvDataLocalName"] as? String {
+        print(advertisementData["kCBAdvDataLocalName"])
+        print(peripheral.name)
+        print(deviceID)
+        if let localName = advertisementData["kCBAdvDataLocalName"] as? String {
             if localName == "\(deviceID)" {
                 asobiPeripheral = peripheral
                 asobiPeripheral?.delegate = self
@@ -76,7 +77,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         print("Connected")
-        asobiPeripheral?.discoverServices(nil)
+        peripheral.discoverServices(nil)
     }
     
     func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
@@ -92,8 +93,7 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
-        print("didDiscoverService:\(asobiPeripheral?.services)")
-        print("didDiscoverService:\(asobiPeripheral)")
+        print("didDiscoverService:\(peripheral.services)")
         if error != nil {
             print("error: \(error)")
             return
@@ -101,20 +101,19 @@ class DeviceManager: NSObject,CBCentralManagerDelegate, CBPeripheralDelegate {
         
         let services = peripheral.services!
         for service in services {
-            if service.UUID.isEqual(kDeviceServiceUUID) {
-            asobiPeripheral?.discoverCharacteristics([kHeartBeatCharacteristicUUID, kVibrationCharacteristicUUID], forService: service)
-            }
+            print("service:\(service)")
+            asobiPeripheral?.discoverCharacteristics(nil, forService: service)
         }
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
-        print("didDiscoverCharacter")
         if error != nil {
             print("error: \(error)")
             return
         }
         guard let characteristics = service.characteristics else { return }
         for characteristic in characteristics {
+            print("charact:\(characteristic)")
             if characteristic.UUID.isEqual(kHeartBeatCharacteristicUUID) == true {
                 heartBeatCharacteristic = characteristic
                 guard let heartBeatCharacteristic = heartBeatCharacteristic else { return }

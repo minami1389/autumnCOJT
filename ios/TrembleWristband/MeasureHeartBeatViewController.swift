@@ -58,15 +58,6 @@ class MeasureHeartBeatViewController: UIViewController {
         measureButton.setTitle("", forState: .Normal)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        SVProgressHUD.dismiss()
-        self.stateLabel.text = "Device発見"
-        self.measureButton.hidden = false
-        self.measureButton.setTitle("計測開始", forState: .Normal)
-        
-    }
-    
     func checkHeartBeat() {
         SVProgressHUD.dismiss()
         stateLabel.text = "計測完了"

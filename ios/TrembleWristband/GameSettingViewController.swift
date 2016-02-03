@@ -37,21 +37,32 @@ class GameSettingViewController: UIViewController {
     }
     
     func didChangeValueHearatbeatSlider() {
-        heartbeatLabel.text = "+\(Int(heartbeatSlider.value))"
+        heartbeatLabel.text = "+\(Int(heartbeatSlider.value)*5)"
     }
     
     func didChangeValueDistanceSlider() {
-        distanceLabel.text = "\(Int(distanceSlider.value))"
+        distanceLabel.text = "\(Int(distanceSlider.value)*100)"
     }
     
     func didChangeValueHeartbeatSegment() {
         heartbeatUnitLabel.text = "\(heartbeatSegmentArray[heartbeatSegment.selectedSegmentIndex])"
     }
 
+    func getHeartbeatBorder() -> Int {
+        var heartbeatBorder = Int(heartbeatSlider.value)*5
+        if heartbeatSegment.selectedSegmentIndex == 1 {
+            heartbeatBorder = -heartbeatBorder
+        }
+        return heartbeatBorder
+    }
+    
     @IBAction func didTapCancelButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func didTapDoneButton(sender: AnyObject) {
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.setInteger(getHeartbeatBorder(), forKey: kUserDefaultHearbeatBorderKey)
+        userDefault.setInteger(Int(distanceSlider.value)*100, forKey: kUserDefaultDistanceBorderKey)
         guard let roomID = NSUserDefaults.standardUserDefaults().objectForKey(kUserDefaultRoomIdKey) as? String else { return }
         broadCastRoomNumberToOther(roomID)
         if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("measureVC") as? MeasureHeartBeatViewController {
